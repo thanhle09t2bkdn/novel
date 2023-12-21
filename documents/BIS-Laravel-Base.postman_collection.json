@@ -1,0 +1,364 @@
+{
+	"variables": [],
+	"info": {
+		"name": "BIS-Laravel-Base",
+		"_postman_id": "0fc38376-2408-2cb1-8d47-695cbea3ebbc",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"description": "",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"url": "http://bis-laravel-base.local/api/v1/admin/guest/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@email.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "t0ny@2022",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Account - Profile",
+					"request": {
+						"url": "http://bis-laravel-base.local/api/v1/admin/account/profile",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 50d8db4b-2f88-44e3-a66d-697946107ab3|8Mtk79iLDHFZNUg2lpad17nzf8U6ypL09WenMgFM",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Account - Logout",
+					"request": {
+						"url": "http://bis-laravel-base.local/api/v1/admin/account/logout",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 50d8db4b-2f88-44e3-a66d-697946107ab3|8Mtk79iLDHFZNUg2lpad17nzf8U6ypL09WenMgFM",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Users - Index",
+					"request": {
+						"url": {
+							"raw": "http://bis-laravel-base.local/api/v1/admin/users?page=1",
+							"protocol": "http",
+							"host": [
+								"bis-laravel-base",
+								"local"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer c967a225-f45b-42b0-95a5-1b4cb9c6d9b9|X4g1PGnzAp90ERwfCRFEI54WfnDqrRdg5GYLhw06",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Commons - Upload Image",
+					"request": {
+						"url": "http://bis-laravel-base.local/api/v1/admin/commons/upload-image",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer a9578481-245e-4585-8873-b84447bacf34|FxvQN9rbF00oJr7gKsxwE6qHG8ji4gSUdUKFgyS8",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"description": "",
+									"type": "file",
+									"src": "USA_Worldisavillage-scaled.jpg"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Categories - Create",
+					"request": {
+						"url": "http://bis-laravel-base.local/api/v1/admin/categories",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer a9578481-245e-4585-8873-b84447bacf34|FxvQN9rbF00oJr7gKsxwE6qHG8ji4gSUdUKFgyS8",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "thanh1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "fdfdfdf.jpg",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Categories - Update",
+					"request": {
+						"url": "http://bis-laravel-base.local/api/v1/admin/categories/8694ab15-7764-4351-890d-796254279c21",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer a9578481-245e-4585-8873-b84447bacf34|FxvQN9rbF00oJr7gKsxwE6qHG8ji4gSUdUKFgyS8",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "afdfdfdf",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "fdf.jpg",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Categories - Delete",
+					"request": {
+						"url": "http://bis-laravel-base.local/api/v1/admin/categories/8694ab15-7764-4351-890d-796254279c21",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 0b8b3a0c-76b4-433d-9c33-26d67ac83ad7|UciVY1wQRL3EbTvBSL01dan7rmMSIuorHyjGP31Y",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Categories - Delete Ids",
+					"request": {
+						"url": "http://bis-laravel-base.local/api/v1/admin/categories",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 0b8b3a0c-76b4-433d-9c33-26d67ac83ad7|UciVY1wQRL3EbTvBSL01dan7rmMSIuorHyjGP31Y",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "ids[]",
+									"value": "eb470f78-49f4-4b9d-873e-7b16ac24eaf3",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Categories - Show",
+					"request": {
+						"url": "http://bis-laravel-base.local/api/v1/admin/categories/8694ab15-7764-4351-890d-796254279c21",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer a9578481-245e-4585-8873-b84447bacf34|FxvQN9rbF00oJr7gKsxwE6qHG8ji4gSUdUKFgyS8",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Categories - Index",
+					"request": {
+						"url": "http://bis-laravel-base.local/api/v1/admin/categories",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer a9578481-245e-4585-8873-b84447bacf34|FxvQN9rbF00oJr7gKsxwE6qHG8ji4gSUdUKFgyS8",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "App",
+			"description": "",
+			"item": []
+		}
+	]
+}

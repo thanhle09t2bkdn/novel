@@ -1,7 +1,11 @@
+@php
+    $route = request()->route();
+@endphp
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -19,14 +23,9 @@
             Admin
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('backend.super_admin.surveys.index') }}">
+            <a class="nav-link {{ $route->named('backend.categories*') ? 'active' : '' }}" href="{{ route('backend.categories.index') }}">
                 <i class="fas fa-fw fa-chart-bar"></i>
-                <span>Surveys</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('backend.super_admin.questions.index') }}">
-                <i class="fas fa-fw fa-chart-bar"></i>
-                <span>Questions</span></a>
+                <span>Categories</span></a>
         </li>
     @endif
     <!-- Divider -->

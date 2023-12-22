@@ -42,7 +42,7 @@ class LoginController extends Controller
     protected function attemptLogin(Request $request)
     {
         $attributes = $this->credentials($request);
-        $attributes['role'] = [User::SUPER_ADMIN_ROLE];
+        $attributes['role'] = [User::ADMIN_ROLE];
         return $this->guard()->attempt(
             $attributes, $request->boolean('remember')
         );

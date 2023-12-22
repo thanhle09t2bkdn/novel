@@ -10,7 +10,7 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
-    @if(Auth::user()->role == \App\Models\User::SUPER_ADMIN_ROLE)
+    @if(Auth::user()->role == \App\Models\User::ADMIN_ROLE)
         <!-- Divider -->
         <hr class="sidebar-divider">
 

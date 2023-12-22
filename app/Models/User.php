@@ -14,11 +14,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, Uuids;
 
-    const SUPER_ADMIN_ROLE = 1;
-
-    const ANDROID_DEVICE_TYPE = 1;
-    const IOS_DEVICE_TYPE = 2;
-    const WEB_DEVICE_TYPE = 3;
+    const ADMIN_ROLE = 1;
+    const TEACHER_ROLE = 2;
+    const USER_ROLE = 3;
     /**
      * The attributes that are mass assignable.
      *
@@ -57,7 +55,7 @@ class User extends Authenticatable
      * @var string[]
      */
     public static $roleNames = [
-        self::SUPER_ADMIN_ROLE => 'Super Admin',
+        self::ADMIN_ROLE => 'Admin',
     ];
 
     /**
@@ -86,11 +84,6 @@ class User extends Authenticatable
         ]);
 
         return new NewAccessToken($token, $token->getKey() . '|' . $plainTextToken);
-    }
-
-    public function results()
-    {
-        return $this->hasOne(Survey::class);
     }
 
 

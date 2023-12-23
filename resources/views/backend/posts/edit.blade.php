@@ -28,11 +28,25 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-12">
-                                                @include('backend.fields.edit.name')
-                                            </div>
-                                            <div class="col-md-12">
-                                                @include('backend.fields.edit.description')
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    @include('backend.fields.edit.name')
+                                                </div>
+                                                <div class="col-md-12">
+                                                    @include('backend.fields.edit.category')
+                                                </div>
+                                                <div class="col-md-12">
+                                                    @include('backend.fields.edit.type')
+                                                </div>
+                                                <div class="col-md-12">
+                                                    @include('backend.fields.edit.description')
+                                                </div>
+                                                <div class="col-md-12">
+                                                    @include('backend.fields.edit.content')
+                                                </div>
+                                                <div class="col-md-12">
+                                                    @include('backend.fields.edit.image')
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

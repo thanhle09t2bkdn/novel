@@ -91,7 +91,7 @@
                                                 <input type="checkbox" onchange="checkItem()" value="{{ $item->id }}" name="id[]">
                                             </td>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ dd($item) }}</td>
+                                            <td>{{ $item->category ? $item->category->name : '' }}</td>
                                             <td>{{ $item->description }}</td>
                                             <td class="text-center">{{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}</td>
                                             <td class="text-center">

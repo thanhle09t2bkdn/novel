@@ -33,7 +33,7 @@ class PostCreateRequest extends FormRequest
             'content' => 'required',
             'type' => 'required|integer|in:' . implode(',', array_keys(Post::$typeNames)),
             'description' => 'required',
-            'image' => 'required|max:255',
+            'image' => 'nullable|url|max:255',
         ];
     }
 }

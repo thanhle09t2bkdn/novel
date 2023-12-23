@@ -114,7 +114,6 @@ class PostController extends Controller
     {
         try {
             $item = $this->postRepository->getById($id);
-
             return view('backend.posts.show', compact('item'));
         } catch (ModelNotFoundException $exception) {
             $request->session()->flash('error', 'Sorry, the page you are looking for could not be found.');
@@ -137,9 +136,11 @@ class PostController extends Controller
     public function edit(Request $request, string $id)
     {
         try {
+            $categories = $this->categoryRepository->all();
+            $typeNames = Post::$typeNames;
             $item = $this->postRepository->getById($id);
 
-            return view('backend.posts.edit', compact('item'));
+            return view('backend.posts.edit', compact('item', 'categories', 'typeNames'));
         } catch (ModelNotFoundException $e) {
             $request->session()->flash('error', 'Sorry, the page you are looking for could not be found.');
         } catch (Exception $exception) {

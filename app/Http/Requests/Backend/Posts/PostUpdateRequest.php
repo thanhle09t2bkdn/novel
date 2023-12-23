@@ -32,7 +32,7 @@ class PostUpdateRequest extends FormRequest
             'category_id' => 'nullable|exists:App\Models\Category,id',
             'content' => 'required',
             'description' => 'required',
-            'image' => 'required|max:255',
+            'image' => 'nullable|url|max:255',
         ];
     }
 }

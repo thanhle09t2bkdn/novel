@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     @include('components.alert')
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Post</h3>
@@ -31,17 +31,25 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <p>
                                                 <strong>Name:</strong>
                                                 {{ $item->name }}
                                             </p>
                                             <p>
+                                                <strong>Category:</strong>
+                                                {{ $item->category->name }}
+                                            </p>
+                                            <p>
                                                 <strong>Description:</strong>
                                                 {{ $item->description }}
                                             </p>
+                                            <p>
+                                                <strong>Content:</strong>
+                                                {{ $item->content }}
+                                            </p>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <p>
                                                 <strong>Created at:</strong>
                                                 {{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}
@@ -51,6 +59,23 @@
                                                 {{ date('d-m-Y H:i:s', strtotime($item->updated_at)) }}
                                             </p>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Image</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-center">
+                                        <img src="{{ $item->image }}" class="w-100" style="max-width: 300px">
                                     </div>
                                 </div>
                             </div>

@@ -44,10 +44,7 @@
                                                 <strong>Description:</strong>
                                                 {{ $item->description }}
                                             </p>
-                                            <p>
-                                                <strong>Content:</strong>
-                                                {{ $item->content }}
-                                            </p>
+
                                         </div>
                                         <div class="col-md-6">
                                             <p>
@@ -57,6 +54,12 @@
                                             <p>
                                                 <strong>Updated at:</strong>
                                                 {{ date('d-m-Y H:i:s', strtotime($item->updated_at)) }}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p>
+                                                <strong>Content:</strong>
+                                                {!! $item->content !!}
                                             </p>
                                         </div>
                                     </div>

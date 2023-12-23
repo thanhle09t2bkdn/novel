@@ -1,3 +1,7 @@
+@push('after-scripts')
+    <script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('admin/js/editor.js') }}"></script>
+@endpush
 @extends('layouts.backend')
 
 @section('content')
@@ -33,6 +37,9 @@
                                                     @include('backend.fields.edit.name')
                                                 </div>
                                                 <div class="col-md-12">
+                                                    @include('backend.fields.edit.image')
+                                                </div>
+                                                <div class="col-md-12">
                                                     @include('backend.fields.edit.category')
                                                 </div>
                                                 <div class="col-md-12">
@@ -43,9 +50,6 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     @include('backend.fields.edit.content')
-                                                </div>
-                                                <div class="col-md-12">
-                                                    @include('backend.fields.edit.image')
                                                 </div>
                                             </div>
                                         </div>

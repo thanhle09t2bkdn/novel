@@ -93,7 +93,8 @@
             </div>
         </div>
     </div>
-
+    <!-- Scripts -->
+    @stack('before-scripts')
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('admin/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -110,6 +111,7 @@
     <script src="{{asset('admin/vendor/datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     <!-- Laravel File Manager -->
     <script src="{{ asset('/vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
+    @stack('after-scripts')
     <script src="{{asset('admin/js/common.js')}}"></script>
 
 </body>

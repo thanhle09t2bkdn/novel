@@ -19,13 +19,19 @@ class Post extends Model
     use HasFactory;
     use Sluggable;
 
+    const POST_TYPE = 1;
+    const PAGE_TYPE = 2;
+    const BOOK_TYPE = 3;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'title',
+        'name',
+        'type',
+        'description',
         'content',
         'image'
     ];

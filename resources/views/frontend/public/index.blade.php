@@ -5,20 +5,17 @@
     <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
         <div class="row align-items-center px-3">
             <div class="col-lg-6 text-center text-lg-left">
-                <h4 class="text-white mb-4 mt-5 mt-lg-0">Kids Learning Center</h4>
+                <h4 class="text-white mb-4 mt-5 mt-lg-0">Thầy Giáo Tiếng Anh</h4>
                 <h1 class="display-3 font-weight-bold text-white">
-                    New Approach to Kids Education
+                    Người Hướng Dẫn Sáng Tạo và Nhiệt Huyết
                 </h1>
                 <p class="text-white mb-4">
-                    Sea ipsum kasd eirmod kasd magna, est sea et diam ipsum est amet sed
-                    sit. Ipsum dolor no justo dolor et, lorem ut dolor erat dolore sed
-                    ipsum at ipsum nonumy amet. Clita lorem dolore sed stet et est justo
-                    dolore.
+                    Thầy Thắng là một giáo viên tiếng Anh dành cho học sinh cấp 2 và cấp 3. Với kinh nghiệm giảng dạy và tâm huyết với nghệ thuật giáo dục, thầy Thắng không chỉ là một người hướng dẫn mà còn là nguồn động viên lớn cho học sinh.
                 </p>
                 <a href="" class="btn btn-secondary mt-1 py-3 px-5">Learn More</a>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
-                <img class="img-fluid mt-5" src="{{ asset('user/img/header.png') }}" alt=""/>
+                <img class="img-fluid" src="{{ asset('user/img/header.png') }}" alt=""/>
             </div>
         </div>
     </div>
@@ -37,10 +34,9 @@
                             class="flaticon-050-fence h1 font-weight-normal text-primary mb-3"
                         ></i>
                         <div class="pl-4">
-                            <h4>Play Ground</h4>
+                            <h4>Tâm Huyết và Nhiệt Huyết</h4>
                             <p class="m-0">
-                                Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero
-                                lorem amet elitr vero...
+                                Thầy Thắng được biết đến với sự nhiệt huyết cao và lòng đam mê với việc truyền đạt kiến thức tiếng Anh.
                             </p>
                         </div>
                     </div>
@@ -54,61 +50,11 @@
                             class="flaticon-022-drum h1 font-weight-normal text-primary mb-3"
                         ></i>
                         <div class="pl-4">
-                            <h4>Music and Dance</h4>
+                            <h4>Phong Cách Giảng Dạy</h4>
                             <p class="m-0">
-                                Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero
-                                lorem amet elitr vero...
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div
-                        class="d-flex bg-light shadow-sm border-top rounded mb-4"
-                        style="padding: 30px"
-                    >
-                        <i
-                            class="flaticon-030-crayons h1 font-weight-normal text-primary mb-3"
-                        ></i>
-                        <div class="pl-4">
-                            <h4>Arts and Crafts</h4>
-                            <p class="m-0">
-                                Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero
-                                lorem amet elitr vero...
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div
-                        class="d-flex bg-light shadow-sm border-top rounded mb-4"
-                        style="padding: 30px"
-                    >
-                        <i
-                            class="flaticon-017-toy-car h1 font-weight-normal text-primary mb-3"
-                        ></i>
-                        <div class="pl-4">
-                            <h4>Safe Transportation</h4>
-                            <p class="m-0">
-                                Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero
-                                lorem amet elitr vero...
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div
-                        class="d-flex bg-light shadow-sm border-top rounded mb-4"
-                        style="padding: 30px"
-                    >
-                        <i
-                            class="flaticon-025-sandwich h1 font-weight-normal text-primary mb-3"
-                        ></i>
-                        <div class="pl-4">
-                            <h4>Healthy food</h4>
-                            <p class="m-0">
-                                Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero
-                                lorem amet elitr vero...
+                                Phương pháp giảng dạy của thầy Thắng  rất linh hoạt và đa dạng.
+                                <br/>
+                                <br/>
                             </p>
                         </div>
                     </div>
@@ -122,10 +68,9 @@
                             class="flaticon-047-backpack h1 font-weight-normal text-primary mb-3"
                         ></i>
                         <div class="pl-4">
-                            <h4>Educational Tour</h4>
+                            <h4>Tổ Chức Sự Kiện và Hoạt Động Ngoại Khóa</h4>
                             <p class="m-0">
-                                Kasd labore kasd et dolor est rebum dolor ut, clita dolor vero
-                                lorem amet elitr vero...
+                                Ngoài giảng dạy, thầy Thắng còn là người tổ chức nhiều sự kiện và hoạt động ngoại khóa
                             </p>
                         </div>
                     </div>
@@ -142,7 +87,7 @@
                 <div class="col-lg-5">
                     <img
                         class="img-fluid rounded mb-5 mb-lg-0"
-                        src="{{ asset('user/img/about-1.jpg') }}"
+                        src="{{ asset('user/img/about.png') }}"
                         alt=""
                     />
                 </div>
@@ -152,10 +97,7 @@
                     </p>
                     <h1 class="mb-4">Best School For Your Kids</h1>
                     <p>
-                        Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo
-                        dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.
-                        Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
-                        dolor
+                        Thầy Thắng Không chỉ là một người giảng dạy mà còn là người đồng hành và nguồn động viên cho học sinh. Bằng sự nhiệt huyết và tâm huyết của mình, thầy đã góp phần quan trọng vào sự phát triển toàn diện của các em, làm cho học tiếng Anh trở nên thú vị và ý nghĩa.
                     </p>
                     <div class="row pt-2 pb-4">
                         <div class="col-6 col-md-4">

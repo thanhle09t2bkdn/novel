@@ -104,9 +104,7 @@
                 <span class="text-white">KidKinder</span>
             </a>
             <p>
-                Labore dolor amet ipsum ea, erat sit ipsum duo eos. Volup amet ea
-                dolor et magna dolor, elitr rebum duo est sed diam elitr. Stet elitr
-                stet diam duo eos rebum ipsum diam ipsum elitr.
+                Thầy Thắng là một giáo viên tiếng Anh dành cho học sinh cấp 2 và cấp 3. Thầy Thắng không chỉ là một người hướng dẫn mà còn là nguồn động viên lớn cho học sinh.
             </p>
             <div class="d-flex justify-content-start mt-4">
                 <a

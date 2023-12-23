@@ -108,6 +108,8 @@
     <script src="{{asset('admin/vendor/chart.js/Chart.min.js')}}"></script>
 
     <script src="{{asset('admin/vendor/datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+    <!-- Laravel File Manager -->
+    <script src="{{ asset('/vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
     <script src="{{asset('admin/js/common.js')}}"></script>
 
 </body>

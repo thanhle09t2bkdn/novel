@@ -25,4 +25,5 @@ Route::group(['namespace' => 'Frontend', 'prefix' => '', 'as' => 'frontend.', 'm
 });
 Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', 'web', 'roles:' . \App\Models\User::ADMIN_ROLE . ',' . \App\Models\User::TEACHER_ROLE]], function () {
     require 'web/backend/categories.php';
+    require 'web/backend/posts.php';
 });

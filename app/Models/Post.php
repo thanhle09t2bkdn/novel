@@ -57,4 +57,18 @@ class Post extends Model
             ]
         ];
     }
+
+    public static $typeNames = [
+        self::POST_TYPE => 'Post',
+        self::PAGE_TYPE => 'Page',
+        self::BOOK_TYPE => 'Book',
+    ];
+
+    public function getTypeNameAttribute()
+    {
+        if (!isset($this->type)) {
+            return null;
+        }
+        return self::$typeNames[$this->type];
+    }
 }

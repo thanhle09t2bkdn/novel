@@ -27,6 +27,11 @@
                 <i class="fas fa-fw fa-chart-bar"></i>
                 <span>Categories</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link {{ $route->named('backend.posts*') ? 'active' : '' }}" href="{{ route('backend.posts.index') }}">
+                <i class="fas fa-fw fa-chart-bar"></i>
+                <span>Posts</span></a>
+        </li>
     @endif
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

@@ -1,3 +1,6 @@
+@php
+    $route = request()->route();
+@endphp
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -42,7 +45,7 @@
         class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5"
     >
         <a
-            href=""
+            href="{{ route('frontend.public.index') }}"
             class="navbar-brand font-weight-bold text-secondary"
             style="font-size: 50px"
         >
@@ -62,26 +65,12 @@
             id="navbarCollapse"
         >
             <div class="navbar-nav font-weight-bold mx-auto py-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="class.html" class="nav-item nav-link">Classes</a>
-                <a href="team.html" class="nav-item nav-link">Teachers</a>
-                <a href="gallery.html" class="nav-item nav-link">Gallery</a>
-                <div class="nav-item dropdown">
-                    <a
-                        href="#"
-                        class="nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                    >Pages</a
-                    >
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                        <a href="single.html" class="dropdown-item">Blog Detail</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="{{ route('frontend.public.index') }}" class="nav-item nav-link {{ $route->named('frontend.public.index') ? 'active' : '' }}">Trang Chủ</a>
+                <a href="about.html" class="nav-item nav-link">Giới thiệu</a>
+                <a href="class.html" class="nav-item nav-link">Sách</a>
+                <a href="team.html" class="nav-item nav-link">Chuyên đề</a>
+                <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
             </div>
-            <a href="" class="btn btn-primary px-4">Join Class</a>
         </div>
     </nav>
 </div>

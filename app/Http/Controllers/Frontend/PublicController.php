@@ -3,17 +3,22 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use App\Repositories\PostRepository;
 
 class PublicController extends Controller
 {
+
+    private $postRepository;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
 
-    public function __construct()
+    public function __construct(PostRepository $postRepository)
     {
+        $this->postRepository = $postRepository;
     }
 
     /**
@@ -23,6 +28,26 @@ class PublicController extends Controller
      */
     public function index()
     {
-        return view('frontend.public.index');
+        $books = $this->postRepository->where('type', Post::BOOK_TYPE)->limit(3)->orderBy('created_at', 'desc')->get();
+        $posts = $this->postRepository->where('type', Post::POST_TYPE)->limit(3)->orderBy('created_at', 'desc')->get();
+        return view('frontend.public.index', compact('books', 'posts'));
+    }
+
+    public function single(string $slug)
+    {
+        $post = $this->postRepository->where('slug', $slug)->first();
+        $relatedPosts = $this->postRepository
+            ->where('type', $post->type)
+            ->where('category_id', $post->category_id)
+            ->where('id', $post->id, '!=')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $recentPosts = $this->postRepository
+            ->where('id', $post->id, '!=')
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
+        return view('frontend.public.single', compact('post', 'relatedPosts', 'recentPosts'));
     }
 }

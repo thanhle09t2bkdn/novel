@@ -49,7 +49,7 @@
             class="navbar-brand font-weight-bold text-secondary"
             style="font-size: 50px"
         >
-            <img src="{{ asset('user/img/logo.png') }}" alt="logo">
+            <img width="120px" src="{{ asset('user/img/logo.svg') }}" alt="logo">
         </a>
         <button
             type="button"

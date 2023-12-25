@@ -66,6 +66,97 @@
             <div class="navbar-nav font-weight-bold mx-auto py-0">
                 <a href="{{ route('frontend.public.index') }}" class="nav-item nav-link {{ $route->named('frontend.public.index') ? 'active' : '' }}">Trang Chủ</a>
                 <a href="{{ route('frontend.public.book') }}" class="nav-item nav-link">Sách</a>
+                <div class="nav-item dropdown">
+                    <a
+                        href="#"
+                        class="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                    >Lớp 6</a
+                    >
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="" class="dropdown-item">Blog Grid</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a
+                        href="#"
+                        class="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                    >Lớp 7</a
+                    >
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="" class="dropdown-item">Blog Grid</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a
+                        href="#"
+                        class="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                    >Lớp 8</a
+                    >
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="" class="dropdown-item">Blog Grid</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a
+                        href="#"
+                        class="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                    >Lớp 9</a
+                    >
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="" class="dropdown-item">Blog Grid</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a
+                        href="#"
+                        class="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                    >Lớp 10</a
+                    >
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="" class="dropdown-item">Blog Grid</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a
+                        href="#"
+                        class="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                    >Lớp 11</a
+                    >
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="" class="dropdown-item">Blog Grid</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a
+                        href="#"
+                        class="nav-link dropdown-toggle"
+                        data-toggle="dropdown"
+                    >Lớp 12</a
+                    >
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="" class="dropdown-item">Blog Grid</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="" class="dropdown-item">Blog Detail</a>
+                    </div>
+                </div>
                 <a href="{{ route('frontend.public.article') }}" class="nav-item nav-link">Chuyên đề</a>
                 <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
             </div>
@@ -87,8 +178,7 @@
                 class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0"
                 style="font-size: 40px; line-height: 40px"
             >
-                <i class="flaticon-007-sandbox"></i>
-                <span class="text-white">KidKinder</span>
+                <img width="100px" src="{{ asset('user/img/logo.svg') }}" alt="logo">
             </a>
             <p>
                 Thầy Thắng là một giáo viên tiếng Anh dành cho học sinh cấp 2 và cấp 3. Thầy Thắng không chỉ là một người hướng dẫn mà còn là nguồn động viên lớn cho học sinh.
@@ -202,7 +292,7 @@
 <a href="#" class="btn btn-primary p-3 back-to-top"
 ><i class="fa fa-angle-double-up"></i
     ></a>
-
+{{ \TawkTo::widgetCode() }}
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -211,9 +301,6 @@
 <script src="{{ asset('user/lib/isotope/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('user/lib/lightbox/js/lightbox.min.js') }}"></script>
 
-<!-- Contact Javascript File -->
-<script src="{{ asset('user/mail/jqBootstrapValidation.min.js') }}"></script>
-<script src="{{ asset('user/mail/contact.js') }}"></script>
 
 <!-- Template Javascript -->
 <script src="{{ asset('user/js/main.js') }}"></script>

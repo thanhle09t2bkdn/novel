@@ -37,6 +37,9 @@
                                                     @include('backend.fields.edit.name')
                                                 </div>
                                                 <div class="col-md-12">
+                                                    @include('backend.fields.edit.slug')
+                                                </div>
+                                                <div class="col-md-12">
                                                     @include('backend.fields.edit.image')
                                                 </div>
                                                 <div class="col-md-12">

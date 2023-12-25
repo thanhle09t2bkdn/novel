@@ -28,6 +28,7 @@ class PostUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:255',
+            'slug' => 'required|min:3|max:255',
             'content' => 'required',
             'category_id' => 'nullable|exists:App\Models\Category,id',
             'content' => 'required',

@@ -28,6 +28,7 @@ class CategoryUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:255',
+            'slug' => 'required|min:3|max:255',
             'description' => 'nullable'
         ];
     }

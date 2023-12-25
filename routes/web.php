@@ -15,8 +15,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index', 'middleware' => ['auth', 'web']])->name('home');
-Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', 'web', 'role:' . \App\Models\User::SUPER_ADMIN_ROLE]], function () {
+Route::group(['namespace' => 'Frontend', 'prefix' => '', 'as' => 'frontend.', 'middleware' => ['web']], function () {
+    require 'web/frontend/public.php';
+});
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', 'web', 'roles:' . \App\Models\User::ADMIN_ROLE . ',' . \App\Models\User::TEACHER_ROLE]], function () {
+    require 'web/backend/categories.php';
+    require 'web/backend/posts.php';
 });

@@ -14,7 +14,7 @@ class CheckRole
      * @param \Closure $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $roles)
+    public function handle($request, Closure $next, ...$roles)
     {
         $allowAccess = false;
         if (auth()->check()) {

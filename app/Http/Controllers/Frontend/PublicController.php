@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
 use Illuminate\Support\Facades\Log;
 
@@ -11,15 +12,17 @@ class PublicController extends Controller
 {
 
     private $postRepository;
+    private $categoryRepository;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
 
-    public function __construct(PostRepository $postRepository)
+    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository)
     {
         $this->postRepository = $postRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -76,6 +79,23 @@ class PublicController extends Controller
                 ->paginate();
 
             return view('frontend.public.book', compact('list'));
+        } catch (Exception $exception) {
+            Log::error($exception);
+            abort(500);
+        }
+    }
+
+    public function topic(string $slug)
+    {
+        $category = $this->categoryRepository->where('slug', $slug)->first();
+        try {
+            $list = $this->postRepository
+                ->where('type', Post::POST_TYPE)
+                ->where('category_id', $category->id)
+                ->orderBy('created_at', 'desc')
+                ->paginate();
+
+            return view('frontend.public.topic', compact('list', 'category'));
         } catch (Exception $exception) {
             Log::error($exception);
             abort(500);

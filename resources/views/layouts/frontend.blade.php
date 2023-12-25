@@ -74,9 +74,9 @@
                     >Lớp 6</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-6') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-6') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-6') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -87,9 +87,9 @@
                     >Lớp 7</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-7') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-7') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-7') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -100,9 +100,9 @@
                     >Lớp 8</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-8') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-8') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-8') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -113,9 +113,9 @@
                     >Lớp 9</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-9') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-9') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-9') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -126,9 +126,9 @@
                     >Lớp 10</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-10') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-10') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-10') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -139,9 +139,9 @@
                     >Lớp 11</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-11') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-11') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-11') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -152,9 +152,9 @@
                     >Lớp 12</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-12') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-12') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-12') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
                 <a href="{{ route('frontend.public.article') }}" class="nav-item nav-link">Chuyên đề</a>

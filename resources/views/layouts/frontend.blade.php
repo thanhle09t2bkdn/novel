@@ -65,7 +65,7 @@
         >
             <div class="navbar-nav font-weight-bold mx-auto py-0">
                 <a href="{{ route('frontend.public.index') }}" class="nav-item nav-link {{ $route->named('frontend.public.index') ? 'active' : '' }}">Trang Chủ</a>
-                <a href="class.html" class="nav-item nav-link">Sách</a>
+                <a href="{{ route('frontend.public.book') }}" class="nav-item nav-link">Sách</a>
                 <a href="{{ route('frontend.public.article') }}" class="nav-item nav-link">Chuyên đề</a>
                 <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
             </div>

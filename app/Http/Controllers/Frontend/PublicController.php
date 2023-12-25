@@ -66,4 +66,19 @@ class PublicController extends Controller
             abort(500);
         }
     }
+
+    public function book()
+    {
+        try {
+            $list = $this->postRepository
+                ->where('type', Post::BOOK_TYPE)
+                ->orderBy('created_at', 'desc')
+                ->paginate();
+
+            return view('frontend.public.book', compact('list'));
+        } catch (Exception $exception) {
+            Log::error($exception);
+            abort(500);
+        }
+    }
 }

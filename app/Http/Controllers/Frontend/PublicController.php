@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Repositories\PostRepository;
+use Illuminate\Support\Facades\Log;
 
 class PublicController extends Controller
 {
@@ -49,5 +50,20 @@ class PublicController extends Controller
             ->limit(5)
             ->get();
         return view('frontend.public.single', compact('post', 'relatedPosts', 'recentPosts'));
+    }
+
+    public function article()
+    {
+        try {
+            $list = $this->postRepository
+                ->where('type', Post::POST_TYPE)
+                ->orderBy('created_at', 'desc')
+                ->paginate();
+
+            return view('frontend.public.article', compact('list'));
+        } catch (Exception $exception) {
+            Log::error($exception);
+            abort(500);
+        }
     }
 }

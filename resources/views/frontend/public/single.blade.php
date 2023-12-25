@@ -188,7 +188,7 @@
                     class="d-flex flex-column text-center bg-primary rounded mb-5 py-5 px-4"
                 >
                     <img
-                        src="{{ asset('user/img/user.jpg') }}"
+                        src="{{ asset('user/img/thang.png') }}"
                         class="img-fluid rounded-circle mx-auto mb-3"
                         style="width: 100px"
                     />

@@ -49,8 +49,7 @@
             class="navbar-brand font-weight-bold text-secondary"
             style="font-size: 50px"
         >
-            <i class="flaticon-043-teddy-bear"></i>
-            <span class="text-primary">KidKinder</span>
+            <img src="{{ asset('user/img/logo.png') }}" alt="logo">
         </a>
         <button
             type="button"
@@ -89,7 +88,7 @@
                 class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0"
                 style="font-size: 40px; line-height: 40px"
             >
-                <i class="flaticon-043-teddy-bear"></i>
+                <i class="flaticon-007-sandbox"></i>
                 <span class="text-white">KidKinder</span>
             </a>
             <p>
@@ -123,31 +122,31 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
-            <h3 class="text-primary mb-4">Get In Touch</h3>
+            <h3 class="text-primary mb-4">Liên Hệ</h3>
             <div class="d-flex">
                 <h4 class="fa fa-map-marker-alt text-primary"></h4>
                 <div class="pl-3">
-                    <h5 class="text-white">Address</h5>
-                    <p>123 Street, New York, USA</p>
+                    <h5 class="text-white">Địa Chỉ</h5>
+                    <p>Kiệt 82/157, Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</p>
                 </div>
             </div>
             <div class="d-flex">
                 <h4 class="fa fa-envelope text-primary"></h4>
                 <div class="pl-3">
                     <h5 class="text-white">Email</h5>
-                    <p>info@example.com</p>
+                    <p>thang.phanlucky@gmail.com</p>
                 </div>
             </div>
             <div class="d-flex">
                 <h4 class="fa fa-phone-alt text-primary"></h4>
                 <div class="pl-3">
                     <h5 class="text-white">Phone</h5>
-                    <p>+012 345 67890</p>
+                    <p>034 8371 758</p>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
-            <h3 class="text-primary mb-4">Quick Links</h3>
+            <h3 class="text-primary mb-4">Liên Kết</h3>
             <div class="d-flex flex-column justify-content-start">
                 <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
                 <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About Us</a>
@@ -193,12 +192,8 @@
     >
         <p class="m-0 text-center text-white">
             &copy;
-            <a class="text-primary font-weight-bold" href="#">Your Site Name</a>.
+            <a class="text-primary font-weight-bold" href="#">Tiếng Anh Thầy Thắng</a>.
             All Rights Reserved.
-            Designed by
-            <a class="text-primary font-weight-bold" href="3"
-            >Tony</a
-            >
         </p>
     </div>
 </div>

@@ -80,23 +80,6 @@
             </div>
 
             <div class="col-lg-4 mt-5 mt-lg-0">
-                <!-- Author Bio -->
-                <div
-                    class="d-flex flex-column text-center bg-primary rounded mb-5 py-5 px-4"
-                >
-                    <img
-                        src="{{ asset('user/img/thang.png') }}"
-                        class="img-fluid rounded-circle mx-auto mb-3"
-                        style="width: 100px"
-                    />
-                    <h3 class="text-secondary mb-3">Thầy Thắng</h3>
-                    <p class="text-white m-0">
-                        Thầy Thắng là một giáo viên tiếng Anh dành cho học sinh cấp 2 và cấp 3. Với kinh nghiệm giảng dạy và tâm huyết với nghệ thuật giáo dục, thầy Thắng không chỉ là một người hướng dẫn mà còn là nguồn động viên lớn cho học sinh.
-                    </p>
-                </div>
-
-
-
                 <!-- Single Image -->
                 <div class="mb-5">
                     <img src="{{ asset('user/img/blog-1.jpg') }}" alt="" class="img-fluid rounded"/>
@@ -109,13 +92,13 @@
                         <div
                             class="d-flex align-items-center bg-light shadow-sm rounded overflow-hidden mb-3"
                         >
-                            <a href="{{ route('frontend.public.single', $post->slug) }}"><img
+                            <a href="{{ route('frontend.public.single', $recentPost->slug) }}"><img
                                 class="img-fluid"
                                 src="{{ $recentPost->image }}"
                                 style="width: 80px; height: 80px"
                                 /></a>
                             <div class="pl-3">
-                                <h5 class=""><a href="{{ route('frontend.public.single', $post->slug) }}">{{ $recentPost->name }}</a></h5>
+                                <h5 class=""><a href="{{ route('frontend.public.single', $recentPost->slug) }}">{{ $recentPost->name }}</a></h5>
                                 <div class="d-flex">
                                     <small class="mr-3"
                                     ><i class="fa fa-user text-primary"></i> Thầy Thắng</small
@@ -130,18 +113,6 @@
                             </div>
                         </div>
                     @endforeach
-                </div>
-
-                <!-- Single Image -->
-                <div class="mb-5">
-                    <img src="{{ asset('user/img/blog-2.jpg') }}" alt="" class="img-fluid rounded"/>
-                </div>
-
-
-                <!-- Plain Text -->
-                <div>
-                    <h2 class="mb-4">Nhận làm đề</h2>
-                    Liên hệ: 0123344334
                 </div>
             </div>
         </div>

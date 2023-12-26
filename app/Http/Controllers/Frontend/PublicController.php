@@ -48,6 +48,7 @@ class PublicController extends Controller
             ->get();
 
         $recentPosts = $this->postRepository
+            ->where('type', Post::POST_TYPE)
             ->where('id', $post->id, '!=')
             ->orderBy('created_at', 'desc')
             ->limit(5)

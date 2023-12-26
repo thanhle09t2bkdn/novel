@@ -66,9 +66,7 @@
 </g>
 <g id="TEXTS">
 	<g>
-		<text transform="matrix(1 0 0 1 82.7129 376.191)"><tspan x="0" y="0" style="fill:#392467; font-family:'Montserrat-Bold'; font-size:34.3158px;">ENGLISH </tspan><tspan x="168.522" y="0" style="fill:#DE4B54; font-family:'Montserrat-Bold'; font-size:34.3158px;">COURSES</tspan></text>
-
-			<text transform="matrix(1 0 0 1 133.7817 408.1773)" x="70" y="0" style="fill:#392467; font-family:'Montserrat-Light'; font-size:27.9275px;">PT - ET</text>
+			<text transform="matrix(1 0 0 1 133.7817 408.1773)" x="40" y="-30" style="fill:#DE4B54; font-family:'Montserrat-Bold'; font-size:50px;">PT - ET</text>
 	</g>
 </g>
 </svg>

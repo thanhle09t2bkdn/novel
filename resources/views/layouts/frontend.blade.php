@@ -12,8 +12,6 @@
 
     <title>{{ config('app.name', 'Tiếng Anh Thầy Thắng') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com"/>
@@ -167,31 +165,35 @@
 
 <!-- Footer Start -->
 <div
-    class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5"
+    class="container-fluid bg-secondary text-white mt-1 py-1 px-sm-3 px-md-5"
 >
-    <div class="row pt-5">
+    <div class="row pt-3">
         <div class="col-lg-1 col-md-1 mb-5">
         </div>
-        <div class="col-lg-10 col-md-8 mb-5">
+        <div class="col-lg-10 col-md-8 mb-3">
             <h3 class="text-primary mb-4">Liên Hệ</h3>
             <div class="d-flex">
 
                 <div class="pl-3">
-                    <p class="text-white d-inline"><i class="fa fa-map-marker-alt text-primary"></i> Địa Chỉ: Kiệt 82/157, Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</p>
+                    <p class="text-white"><i class="fa fa-map-marker-alt text-primary"></i> Địa Chỉ: Kiệt 82/157, Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</p>
                 </div>
             </div>
             <div class="d-flex">
-                <div class="col-lg-3 col-md-3">
-                    <p><i class="fa fa-envelope text-primary"></i> thang.phanlucky@gmail.com</p>
+
+                <div class="pl-3">
+                    <p><i class="fa fa-envelope text-primary"></i> Email: thang.phanlucky@gmail.com </p>
                 </div>
-                <div class="col-lg-3 col-md-3">
-                    <p><i class="fa fa-phone-alt text-primary"></i> 034 8371 758</p>
+            </div>
+            <div class="d-flex">
+
+                <div class="pl-3">
+                    <p><i class="fa fa-phone-alt text-primary"></i> Điện Thoại: 034 8371 758</p>
                 </div>
             </div>
         </div>
     </div>
     <div
-        class="container-fluid pt-5"
+        class="container-fluid pt-3"
         style="border-top: 1px solid rgba(23, 162, 184, 0.2) ;"
     >
         <p class="m-0 text-center text-white">

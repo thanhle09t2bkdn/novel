@@ -5,12 +5,12 @@
     <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
         <div class="row align-items-center px-3">
             <div class="col-lg-6 text-center text-lg-left">
-                <h4 class="font-italic text-white">
+                <p class="font-italic text-white">
                     "Chương trình học tập thường được thiết kế linh hoạt để đáp ứng nhu cầu học tập của từng học sinh, từ việc củng cố kiến thức cơ bản đến việc phát triển kỹ năng ngôn ngữ và giao tiếp."
-                </h4>
-                <h4 class="font-italic text-white mt-5">
+                </p>
+                <p class="font-italic text-white mt-5">
                     "Giúp học sinh làm quen với các dạng đề thi, rèn kỹ năng làm bài, và tăng cường tự tin trong việc sử dụng tiếng Anh."
-                </h4>
+                </p>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <img class="img-fluid" src="{{ asset('user/img/header.png') }}" alt=""/>
@@ -212,7 +212,7 @@
                         </div>
                     </div>
                     <h4>Phan Thắng</h4>
-                    <i>Giáo Viên Tiếng Anh Cấp 2-3</i>
+                    <i>Giáo Viên Tiếng Anh</i>
                 </div>
                 <div class="col-md-6 col-lg-6 text-center team mb-5">
                     <div
@@ -231,7 +231,7 @@
                         </div>
                     </div>
                     <h4>Trần Thị Phúc Anh</h4>
-                    <i>Giáo Viên Tiếng Anh Cấp 1</i>
+                    <i>Giáo Viên Tiếng Anh</i>
                 </div>
             </div>
         </div>

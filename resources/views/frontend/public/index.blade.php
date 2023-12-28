@@ -98,7 +98,7 @@
                         <div class="pl-4">
                             <h4>Mối Quan Hệ Học Sinh - Giáo Viên</h4>
                             <p class="m-0">
-                                Không chỉ là người hướng dẫn mà còn là người bạn đồng hành, lluôn lắng nghe và chia sẻ, tạo ra một môi trường học thuận lợi cho sự phát triển toàn diện của học sinh.
+                                Không chỉ là người hướng dẫn mà còn là người bạn đồng hành, luôn lắng nghe và chia sẻ, tạo ra một môi trường học thuận lợi cho sự phát triển toàn diện của học sinh.
                             </p>
                         </div>
                     </div>

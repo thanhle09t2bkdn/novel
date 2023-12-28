@@ -7,7 +7,7 @@
             class="d-flex flex-column align-items-center justify-content-center"
             style="min-height: 400px"
         >
-            <h3 class="display-3 font-weight-bold text-white">{{ $post->type == \App\Models\Post::BOOK_TYPE ? 'Sách' : 'Đề Kiếm Tra' }}</h3>
+            <h3 class="display-3 font-weight-bold text-white">{{ $post->type == \App\Models\Post::BOOK_TYPE ? 'Sách' : 'Đề Kiểm Tra' }}</h3>
             <div class="d-inline-flex text-white">
                 <p class="m-0"><a class="text-white" href="{{ route('frontend.public.index') }}">Trang Chủ</a></p>
                 <p class="m-0 px-2">/</p>

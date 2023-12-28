@@ -2,7 +2,9 @@ function initCkeditor() {
     var route_prefix = "/filemanager";
     var config = {
         height: 400,
-        filebrowserImageBrowseUrl: route_prefix + '?type=Images'
+        filebrowserImageBrowseUrl: route_prefix + '?type=Images',
+        // toolbar: [['TextColor', 'BGColor']]
+        colorButton_enableAutomatic: true
     };
 
     if (typeof(CKEDITOR) !== "undefined") {

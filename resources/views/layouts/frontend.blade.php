@@ -47,7 +47,7 @@
             class="navbar-brand font-weight-bold text-secondary"
             style="font-size: 50px"
         >
-            <img width="120px" src="{{ asset('user/img/logo.svg') }}" alt="logo">
+            <img width="60px" src="{{ asset('user/img/logo_tt.png') }}" alt="logo">
         </a>
         <button
             type="button"

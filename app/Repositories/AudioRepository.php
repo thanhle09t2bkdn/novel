@@ -4,9 +4,9 @@
 namespace App\Repositories;
 
 
-use App\Models\Post;
+use App\Models\Audio;
 
-class PostRepository extends BaseRepository
+class AudioRepository extends BaseRepository
 {
     /**
      * Attribute searchable
@@ -18,7 +18,7 @@ class PostRepository extends BaseRepository
         'name' => ['column' => 'posts.name', 'operator' => 'like'],
     ];
 
-    public function __construct(Post $model)
+    public function __construct(Audio $model)
     {
         $this->model = $model;
     }

@@ -51,6 +51,11 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function audios()
+    {
+        return $this->hasMany(Audio::class);
+    }
+
     public function sluggable(): array
     {
         return [

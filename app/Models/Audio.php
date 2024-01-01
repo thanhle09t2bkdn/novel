@@ -18,6 +18,8 @@ class Audio extends Model
     use Uuids;
     use HasFactory;
     use Sluggable;
+    protected $table = 'audios';
+
 
     /**
      * The attributes that are mass assignable.

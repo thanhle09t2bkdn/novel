@@ -32,6 +32,11 @@
                 <i class="fas fa-fw fa-chart-bar"></i>
                 <span>Posts</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link {{ $route->named('backend.audios*') ? 'active' : '' }}" href="{{ route('backend.audios.index') }}">
+                <i class="fas fa-fw fa-chart-bar"></i>
+                <span>Audios</span></a>
+        </li>
     @endif
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

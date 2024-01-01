@@ -14,8 +14,8 @@ class AudioRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'id' => ['column' => 'posts.id', 'operator' => '='],
-        'name' => ['column' => 'posts.name', 'operator' => 'like'],
+        'id' => ['column' => 'audios.id', 'operator' => '='],
+        'name' => ['column' => 'audios.name', 'operator' => 'like'],
     ];
 
     public function __construct(Audio $model)

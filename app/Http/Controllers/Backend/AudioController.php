@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Posts\AudioCreateRequest;
-use App\Http\Requests\Backend\Posts\AudioUpdateRequest;
-use App\Models\Post;
-use App\Repositories\CategoryRepository;
-use App\Repositories\PostRepository;
+use App\Http\Requests\Backend\Audios\AudioCreateRequest;
+use App\Http\Requests\Backend\Audios\AudioUpdateRequest;
+use App\Repositories\postRepository;
+use App\Repositories\AudioRepository;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -16,26 +15,26 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 
-class PostController extends Controller
+class AudioController extends Controller
 {
     /**
      * Repository
      *
+     * @var audioRepository
      * @var postRepository
-     * @var categoryRepository
      */
+    private $audioRepository;
     private $postRepository;
-    private $categoryRepository;
 
     /**
      * Constructor.
      *
-     * @param PostRepository $postRepository
+     * @param AudioRepository $audioRepository
      */
-    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository)
+    public function __construct(AudioRepository $audioRepository, postRepository $postRepository)
     {
+        $this->audioRepository = $audioRepository;
         $this->postRepository = $postRepository;
-        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -48,9 +47,9 @@ class PostController extends Controller
     public function index(Request $request)
     {
         try {
-            $list = $this->postRepository->searchFromRequest($request);
+            $list = $this->audioRepository->searchFromRequest($request);
 
-            return view('backend.posts.index', compact('list'));
+            return view('backend.audios.index', compact('list'));
         } catch (Exception $exception) {
             Log::error($exception);
             abort(500);
@@ -65,9 +64,8 @@ class PostController extends Controller
     public function create()
     {
         try {
-            $categories = $this->categoryRepository->all();
-            $typeNames = Post::$typeNames;
-            return view('backend.posts.create', compact('categories', 'typeNames'));
+            $posts = $this->postRepository->all();
+            return view('backend.audios.create', compact('posts'));
         } catch (Exception $exception) {
             Log::error($exception);
             abort(500);
@@ -85,21 +83,21 @@ class PostController extends Controller
     {
         try {
             $attributes = $request->only(array_keys($request->rules()));
-            $item = $this->postRepository->create($attributes);
+            $item = $this->audioRepository->create($attributes);
 
             $request->session()->flash('success', 'The post has been successfully created.');
 
             if ($request->get('action') === 'edit') {
-                return redirect()->route('backend.posts.edit', $item->id);
+                return redirect()->route('backend.audios.edit', $item->id);
             }
 
-            return redirect()->route('backend.posts.show', $item->id);
+            return redirect()->route('backend.audios.show', $item->id);
         } catch (Exception $exception) {
             Log::error($exception);
             $request->session()->flash('error', 'An error occurred while creating the post.');
         }
 
-        return redirect()->route('backend.posts.index');
+        return redirect()->route('backend.audios.index');
     }
 
     /**
@@ -113,8 +111,8 @@ class PostController extends Controller
     public function show(Request $request, $id)
     {
         try {
-            $item = $this->postRepository->getById($id);
-            return view('backend.posts.show', compact('item'));
+            $item = $this->audioRepository->getById($id);
+            return view('backend.audios.show', compact('item'));
         } catch (ModelNotFoundException $exception) {
             $request->session()->flash('error', 'Sorry, the page you are looking for could not be found.');
         } catch (Exception $exception) {
@@ -122,7 +120,7 @@ class PostController extends Controller
             $request->session()->flash('error', 'An error occurred while showing the post.');
         }
 
-        return redirect()->route('backend.posts.index');
+        return redirect()->route('backend.audios.index');
     }
 
     /**
@@ -136,11 +134,10 @@ class PostController extends Controller
     public function edit(Request $request, string $id)
     {
         try {
-            $categories = $this->categoryRepository->all();
-            $typeNames = Post::$typeNames;
-            $item = $this->postRepository->getById($id);
+            $posts = $this->postRepository->all();
+            $item = $this->audioRepository->getById($id);
 
-            return view('backend.posts.edit', compact('item', 'categories', 'typeNames'));
+            return view('backend.audios.edit', compact('item', 'posts'));
         } catch (ModelNotFoundException $e) {
             $request->session()->flash('error', 'Sorry, the page you are looking for could not be found.');
         } catch (Exception $exception) {
@@ -148,7 +145,7 @@ class PostController extends Controller
             $request->session()->flash('error', 'An error occurred while showing the post.');
         }
 
-        return redirect()->route('backend.posts.index');
+        return redirect()->route('backend.audios.index');
     }
 
     /**
@@ -163,21 +160,21 @@ class PostController extends Controller
     {
         try {
             $attributes = $request->only(array_keys($request->rules()));
-            $this->postRepository->update($attributes, $id);
+            $this->audioRepository->update($attributes, $id);
 
-            $request->session()->flash('success', 'The post has been successfully updated.');
+            $request->session()->flash('success', 'The audio has been successfully updated.');
 
             if ($request->get('action') === 'edit') {
-                return redirect()->route('backend.posts.edit', $id);
+                return redirect()->route('backend.audios.edit', $id);
             }
 
-            return redirect()->route('backend.posts.show', $id);
+            return redirect()->route('backend.audios.show', $id);
         } catch (Exception $exception) {
             Log::error($exception);
             $request->session()->flash('error', 'An error occurred while updating the post.');
         }
 
-        return redirect()->route('backend.posts.index');
+        return redirect()->route('backend.audios.index');
     }
 
     /**
@@ -192,16 +189,16 @@ class PostController extends Controller
         try {
             $ids = $request->get('id');
             if (empty($ids)) {
-                $request->session()->flash('error', 'Please choose any posts to delete.');
+                $request->session()->flash('error', 'Please choose any audios to delete.');
             } else {
-                $this->postRepository->deleteByIds($ids);
-                $request->session()->flash('success', 'The posts has been successfully deleted.');
+                $this->audioRepository->deleteByIds($ids);
+                $request->session()->flash('success', 'The audios has been successfully deleted.');
             }
         } catch (Exception $exception) {
             Log::error($exception);
-            $request->session()->flash('error', 'An error occurred while deleting the posts.');
+            $request->session()->flash('error', 'An error occurred while deleting the audios.');
         }
 
-        return redirect()->route('backend.posts.index');
+        return redirect()->route('backend.audios.index');
     }
 }

@@ -122,4 +122,20 @@ class PublicController extends Controller
             ->get();
         return view('frontend.public.audio', compact('audio', 'relatedAudios', 'recentPosts'));
     }
+
+    public function postAudio(string $slug)
+    {
+        $post = $this->postRepository
+            ->where('slug', $slug)
+            ->first();
+        $list = $this->audioRepository->where('post_id', $post->id)
+            ->orderBy('created_at')
+            ->paginate(1);
+        $recentPosts = $this->postRepository
+            ->where('type', Post::POST_TYPE)
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
+        return view('frontend.public.post_audio', compact('list', 'recentPosts', 'post'));
+    }
 }

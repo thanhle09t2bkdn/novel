@@ -57,7 +57,7 @@
                 <div class="col-sm-12">
                     <nav aria-label="Page navigation">
                         {{ $list->withQueryString()->links() }}
-                    </div>
+                    </nav>
                 </div>
             </div>
         </div>

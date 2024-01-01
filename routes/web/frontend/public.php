@@ -6,3 +6,4 @@ Route::get('sach', 'PublicController@book')->name('public.book');
 Route::get('chu-de/{slug}', 'PublicController@topic')->name('public.topic');
 Route::get('{slug}', 'PublicController@single')->name('public.single');
 Route::get('audio/{slug}', 'PublicController@audio')->name('public.audio');
+Route::get('chuyen-muc/{slug}', 'PublicController@postAudio')->name('public.postAudio');

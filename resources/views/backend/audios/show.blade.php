@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     @include('components.alert')
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Audio</h3>
@@ -61,22 +61,6 @@
                             </div>
                         </div>
 
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Image</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="text-center">
-                                        <img src="{{ $item->image }}" class="w-100" style="max-width: 300px">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

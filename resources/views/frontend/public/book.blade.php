@@ -7,11 +7,11 @@
             class="d-flex flex-column align-items-center justify-content-center"
             style="min-height: 400px"
         >
-            <h3 class="display-3 font-weight-bold text-white">Chuyên Đề</h3>
+            <h3 class="display-3 font-weight-bold text-white">Sách Có Audio</h3>
             <div class="d-inline-flex text-white">
                 <p class="m-0"><a class="text-white" href="{{ route('frontend.public.index') }}">Trang Chủ</a></p>
                 <p class="m-0 px-2">/</p>
-                <p class="m-0">Chuyên Đề</p>
+                <p class="m-0">Sách Có Audio</p>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
     <div class="container-fluid pt-5">
         <div class="container">
             <div class="text-center pb-2">
-                <h1 class="mb-4">Chuyên đề mới nhất</h1>
+                <h1 class="mb-4">Sách Có Audio</h1>
             </div>
             <div class="row pb-3">
                 @forelse ($list as $item)

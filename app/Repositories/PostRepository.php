@@ -5,7 +5,6 @@ namespace App\Repositories;
 
 
 use App\Models\Post;
-use Illuminate\Support\Facades\DB;
 
 class PostRepository extends BaseRepository
 {

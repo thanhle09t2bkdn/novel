@@ -95,6 +95,9 @@
                                             <td>{{ $item->description }}</td>
                                             <td class="text-center">{{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}</td>
                                             <td class="text-center">
+                                                <a href="{{ route('frontend.public.postAudio', $item->slug) }}" target="_blank" class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-file-audio"></i>
+                                                </a>
                                                 <a href="{{ route('backend.posts.show', $item->id) }}" class="btn btn-sm btn-info">
                                                     <i class="fas fa-eye"></i>
                                                 </a>

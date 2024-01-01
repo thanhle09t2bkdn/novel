@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Posts\PostCreateRequest;
-use App\Http\Requests\Backend\Posts\PostUpdateRequest;
+use App\Http\Requests\Backend\Posts\AudioCreateRequest;
+use App\Http\Requests\Backend\Posts\AudioUpdateRequest;
 use App\Models\Post;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
@@ -78,10 +78,10 @@ class PostController extends Controller
      * Store a newly created resource in storage.
      *
      *
-     * @param PostCreateRequest $request
+     * @param AudioCreateRequest $request
      * @return RedirectResponse
      */
-    public function store(PostCreateRequest $request)
+    public function store(AudioCreateRequest $request)
     {
         try {
             $attributes = $request->only(array_keys($request->rules()));
@@ -154,12 +154,12 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param PostUpdateRequest $request
+     * @param AudioUpdateRequest $request
      * @param mixed $id
      *
      * @return RedirectResponse
      */
-    public function update(PostUpdateRequest $request, $id)
+    public function update(AudioUpdateRequest $request, $id)
     {
         try {
             $attributes = $request->only(array_keys($request->rules()));

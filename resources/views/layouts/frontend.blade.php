@@ -12,8 +12,6 @@
 
     <title>{{ config('app.name', 'Tiếng Anh Thầy Thắng') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com"/>
@@ -49,7 +47,7 @@
             class="navbar-brand font-weight-bold text-secondary"
             style="font-size: 50px"
         >
-            <img width="120px" src="{{ asset('user/img/logo.svg') }}" alt="logo">
+            <img width="60px" src="{{ asset('user/img/logo_tt.png') }}" alt="logo">
         </a>
         <button
             type="button"
@@ -74,9 +72,9 @@
                     >Lớp 6</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-6') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-6') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-6') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -87,9 +85,9 @@
                     >Lớp 7</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-7') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-7') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-7') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -100,9 +98,9 @@
                     >Lớp 8</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-8') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-8') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-8') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -113,9 +111,9 @@
                     >Lớp 9</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-9') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-9') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-9') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -126,9 +124,9 @@
                     >Lớp 10</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-10') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-10') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-10') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -139,9 +137,9 @@
                     >Lớp 11</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-11') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-11') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-11') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -152,13 +150,11 @@
                     >Lớp 12</a
                     >
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="" class="dropdown-item">Blog Grid</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
-                        <a href="" class="dropdown-item">Blog Detail</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-12') }}" class="dropdown-item">Kiểm tra 15 phút</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-12') }}" class="dropdown-item">Kiểm tra giữa kì</a>
+                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-12') }}" class="dropdown-item">Kiểm tra cuối kì</a>
                     </div>
                 </div>
-                <a href="{{ route('frontend.public.article') }}" class="nav-item nav-link">Chuyên đề</a>
-                <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
             </div>
         </div>
     </nav>
@@ -169,114 +165,35 @@
 
 <!-- Footer Start -->
 <div
-    class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5"
+    class="container-fluid bg-secondary text-white mt-1 py-1 px-sm-3 px-md-5"
 >
-    <div class="row pt-5">
-        <div class="col-lg-3 col-md-6 mb-5">
-            <a
-                href=""
-                class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0"
-                style="font-size: 40px; line-height: 40px"
-            >
-                <img width="100px" src="{{ asset('user/img/logo.svg') }}" alt="logo">
-            </a>
-            <p>
-                Thầy Thắng là một giáo viên tiếng Anh dành cho học sinh cấp 2 và cấp 3. Thầy Thắng không chỉ là một người hướng dẫn mà còn là nguồn động viên lớn cho học sinh.
-            </p>
-            <div class="d-flex justify-content-start mt-4">
-                <a
-                    class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                    style="width: 38px; height: 38px"
-                    href="#"
-                ><i class="fab fa-twitter"></i
-                    ></a>
-                <a
-                    class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                    style="width: 38px; height: 38px"
-                    href="#"
-                ><i class="fab fa-facebook-f"></i
-                    ></a>
-                <a
-                    class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                    style="width: 38px; height: 38px"
-                    href="#"
-                ><i class="fab fa-linkedin-in"></i
-                    ></a>
-                <a
-                    class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                    style="width: 38px; height: 38px"
-                    href="#"
-                ><i class="fab fa-instagram"></i
-                    ></a>
-            </div>
+    <div class="row pt-3">
+        <div class="col-lg-1 col-md-1 mb-5">
         </div>
-        <div class="col-lg-3 col-md-6 mb-5">
+        <div class="col-lg-10 col-md-8 mb-3">
             <h3 class="text-primary mb-4">Liên Hệ</h3>
             <div class="d-flex">
-                <h4 class="fa fa-map-marker-alt text-primary"></h4>
+
                 <div class="pl-3">
-                    <h5 class="text-white">Địa Chỉ</h5>
-                    <p>Kiệt 82/157, Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</p>
+                    <p class="text-white"><i class="fa fa-map-marker-alt text-primary"></i> Địa Chỉ: Kiệt 82/157, Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</p>
                 </div>
             </div>
             <div class="d-flex">
-                <h4 class="fa fa-envelope text-primary"></h4>
+
                 <div class="pl-3">
-                    <h5 class="text-white">Email</h5>
-                    <p>thang.phanlucky@gmail.com</p>
+                    <p><i class="fa fa-envelope text-primary"></i> Email: thang.phanlucky@gmail.com </p>
                 </div>
             </div>
             <div class="d-flex">
-                <h4 class="fa fa-phone-alt text-primary"></h4>
+
                 <div class="pl-3">
-                    <h5 class="text-white">Phone</h5>
-                    <p>034 8371 758</p>
+                    <p><i class="fa fa-phone-alt text-primary"></i> Điện Thoại: 034 8371 758</p>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5">
-            <h3 class="text-primary mb-4">Liên Kết</h3>
-            <div class="d-flex flex-column justify-content-start">
-                <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Classes</a>
-                <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Teachers</a>
-                <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Blog</a>
-                <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5">
-            <h3 class="text-primary mb-4">Newsletter</h3>
-            <form action="">
-                <div class="form-group">
-                    <input
-                        type="text"
-                        class="form-control border-0 py-4"
-                        placeholder="Your Name"
-                        required="required"
-                    />
-                </div>
-                <div class="form-group">
-                    <input
-                        type="email"
-                        class="form-control border-0 py-4"
-                        placeholder="Your Email"
-                        required="required"
-                    />
-                </div>
-                <div>
-                    <button
-                        class="btn btn-primary btn-block border-0 py-3"
-                        type="submit"
-                    >
-                        Submit Now
-                    </button>
-                </div>
-            </form>
         </div>
     </div>
     <div
-        class="container-fluid pt-5"
+        class="container-fluid pt-3"
         style="border-top: 1px solid rgba(23, 162, 184, 0.2) ;"
     >
         <p class="m-0 text-center text-white">

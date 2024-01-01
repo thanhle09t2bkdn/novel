@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Repositories\AudioRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
 use Illuminate\Support\Facades\Log;
@@ -13,16 +14,18 @@ class PublicController extends Controller
 
     private $postRepository;
     private $categoryRepository;
+    private $audioRepository;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
 
-    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository)
+    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, AudioRepository $audioRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->audioRepository = $audioRepository;
     }
 
     /**
@@ -101,5 +104,22 @@ class PublicController extends Controller
             Log::error($exception);
             abort(500);
         }
+    }
+
+
+    public function audios(string $slug)
+    {
+        $audio = $this->audioRepository->where('slug', $slug)->first();
+        $relatedAudios = $this->audioRepository
+            ->where('post_id', $audio->post_id)
+            ->where('id', $audio->id, '!=')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $recentPosts = $this->postRepository
+            ->where('type', Post::POST_TYPE)
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
+        return view('frontend.public.audio', compact('audio', 'relatedAudios', 'recentPosts'));
     }
 }

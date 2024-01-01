@@ -48,7 +48,7 @@
                                 class="d-flex align-items-center bg-light shadow-sm rounded overflow-hidden mx-3"
                             >
                                 <div class="pl-3">
-                                    <h5 class=""><a href="{{ route('frontend.public.audios', $relatedAudio->slug) }}">{{ $relatedAudio->name }}</a></h5>
+                                    <h5 class=""><a href="{{ route('frontend.public.audio', $relatedAudio->slug) }}">{{ $relatedAudio->name }}</a></h5>
                                     <div class="d-flex">
                                         <small class="mr-3"
                                         ><i class="fa fa-user text-primary"></i> Thầy Thắng</small

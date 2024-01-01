@@ -107,7 +107,7 @@ class PublicController extends Controller
     }
 
 
-    public function audios(string $slug)
+    public function audio(string $slug)
     {
         $audio = $this->audioRepository->where('slug', $slug)->first();
         $relatedAudios = $this->audioRepository

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Audios\AudioCreateRequest;
 use App\Http\Requests\Backend\Audios\AudioUpdateRequest;
-use App\Repositories\postRepository;
+use App\Repositories\PostRepository;
 use App\Repositories\AudioRepository;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;

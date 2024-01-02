@@ -8,10 +8,11 @@ use App\Repositories\AudioRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
 use Illuminate\Support\Facades\Log;
+use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
 class PublicController extends Controller
 {
-
+    use SEOToolsTrait;
     private $postRepository;
     private $categoryRepository;
     private $audioRepository;
@@ -35,6 +36,7 @@ class PublicController extends Controller
      */
     public function index()
     {
+        $this->seo()->setTitle('Trang Chủ');
         $books = $this->postRepository->where('type', Post::BOOK_TYPE)->limit(3)->orderBy('created_at', 'desc')->get();
         $posts = $this->postRepository->where('type', Post::POST_TYPE)->limit(3)->orderBy('created_at', 'desc')->get();
         return view('frontend.public.index', compact('books', 'posts'));
@@ -43,6 +45,8 @@ class PublicController extends Controller
     public function single(string $slug)
     {
         $post = $this->postRepository->where('slug', $slug)->first();
+        $this->seo()->setTitle($post->name);
+        $this->seo()->setDescription($post->description);
         $relatedPosts = $this->postRepository
             ->where('type', $post->type)
             ->where('category_id', $post->category_id)
@@ -110,6 +114,7 @@ class PublicController extends Controller
     public function audio(string $slug)
     {
         $audio = $this->audioRepository->where('slug', $slug)->first();
+        $this->seo()->setTitle($audio->name);
         $relatedAudios = $this->audioRepository
             ->where('post_id', $audio->post_id)
             ->where('id', $audio->id, '!=')

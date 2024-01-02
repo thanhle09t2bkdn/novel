@@ -34,7 +34,7 @@
     <link href="{{ asset('user/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet"/>
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('user/css/style.css?v=1') }}" rel="stylesheet"/>
+    <link href="{{ asset('user/css/style.css?v=2') }}" rel="stylesheet"/>
 </head>
 <body>
 <!-- Navbar Start -->

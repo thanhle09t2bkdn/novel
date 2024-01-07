@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="categories">Options</label>
+    <h4>Options</h3>
     @for($i = 0; $i <= 3; $i++)
         <input type="text" name="options[{{ $i }}][name]" class="form-control {{ $errors->has('options'. $i . '.name') ? 'is-invalid' : '' }}"
                id="options.{{ $i }}.name" placeholder="Enter Answer" value="{{ old('options.'. $i . '.name', $item->options[$i]->name) }}">

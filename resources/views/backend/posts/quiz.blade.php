@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <div class="card-body table-responsive p-0">
-                            <form method="POST" action="{{ route('backend.posts.delete') }}" id="form-delete-items">
+                            <form method="POST" action="{{ route('backend.posts.deleteQuiz') }}" id="form-delete-items">
                                 @method('DELETE')
                                 @csrf
                                 <table class="table table-hovercode" id="table-list">

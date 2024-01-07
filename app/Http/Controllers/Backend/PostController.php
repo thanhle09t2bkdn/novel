@@ -273,7 +273,7 @@ class PostController extends Controller
             unset($attributes['options']);
             $item = $this->quizRepository->create($attributes);
             foreach ($options['options'] as $option) {
-                $item->options()->save(new Option(['name' => $option['name'], 'is_answer' => $option['is_answer']] ));
+                $item->options()->save(new Option(['name' => $option['name'], 'is_answer' => isset($option['is_answer']) ? $option['is_answer'] : false]));
             }
 
             $request->session()->flash('success', 'The quiz has been successfully created.');
@@ -356,7 +356,7 @@ class PostController extends Controller
             $item = $this->quizRepository->update($attributes, $id);
             $item->options()->delete();
             foreach ($options['options'] as $option) {
-                $item->options()->save(new Option(['name' => $option['name'], 'is_answer' => $option['is_answer']] ));
+                $item->options()->save(new Option(['name' => $option['name'], 'is_answer' => isset($option['is_answer']) ? $option['is_answer'] : false]));
             }
             $request->session()->flash('success', 'The quiz has been successfully updated.');
 
@@ -368,6 +368,32 @@ class PostController extends Controller
         } catch (Exception $exception) {
             Log::error($exception);
             $request->session()->flash('error', 'An error occurred while updating the post.');
+        }
+
+        return redirect()->route('backend.posts.index');
+    }
+
+
+    /**
+     * Delete multiple items
+     *
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function deleteQuiz(Request $request)
+    {
+        try {
+            $ids = $request->get('id');
+            if (empty($ids)) {
+                $request->session()->flash('error', 'Please choose any posts to delete.');
+            } else {
+                $this->quizRepository->deleteByIds($ids);
+                $request->session()->flash('success', 'The quizzes has been successfully deleted.');
+            }
+        } catch (Exception $exception) {
+            Log::error($exception);
+            $request->session()->flash('error', 'An error occurred while deleting the posts.');
         }
 
         return redirect()->route('backend.posts.index');

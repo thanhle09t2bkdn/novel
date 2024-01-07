@@ -64,7 +64,7 @@
                                                 <strong>Options:</strong>
                                             </p>
                                             @foreach($item->options as $option)
-                                                <p>{{ $option->name }} - {{ $option->is_answer ? 'Answer' : '' }}</p>
+                                                <p>{{ $option->name }}{{ $option->is_answer ? ' - Answer' : '' }}</p>
                                             @endforeach
                                         </div>
                                     </div>

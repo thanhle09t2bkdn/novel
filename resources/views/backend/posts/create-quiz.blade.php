@@ -1,6 +1,7 @@
 @push('after-scripts')
     <script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('admin/js/editor.js') }}"></script>
+    <script src="{{ asset('admin/js/options.js') }}"></script>
 @endpush
 @extends('layouts.backend')
 

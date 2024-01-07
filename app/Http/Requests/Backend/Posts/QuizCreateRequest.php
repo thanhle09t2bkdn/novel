@@ -32,7 +32,7 @@ class QuizCreateRequest extends FormRequest
             'content' => 'required',
             'options' => 'required|array|min:2',
             'options.*.name' => 'required|min:3|max:255',
-            'options.*.is_answer' => 'required|boolean',
+            'options.*.is_answer' => 'nullable|boolean',
         ];
     }
 }

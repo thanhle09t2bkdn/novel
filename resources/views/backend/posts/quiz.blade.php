@@ -91,7 +91,7 @@
                                             <td>{{ $item->name }}</td>
                                             <td class="text-center">{{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}</td>
                                             <td class="text-center">
-                                                <a href="{{ route('backend.posts.show', $item->id) }}" class="btn btn-sm btn-info">
+                                                <a href="{{ route('backend.posts.showQuiz', $item->id) }}" class="btn btn-sm btn-info">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                                 <a href="{{ route('backend.posts.edit', $item->id) }}" class="btn btn-sm btn-warning">

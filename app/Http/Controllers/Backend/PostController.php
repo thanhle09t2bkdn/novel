@@ -289,4 +289,27 @@ class PostController extends Controller
 
         return redirect()->route('backend.posts.quiz', $attributes['post_id']);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Request $request
+     * @param mixed $id
+     *
+     * @return View|RedirectResponse
+     */
+    public function showQuiz(Request $request, $id)
+    {
+        try {
+            $item = $this->quizRepository->getById($id);
+            return view('backend.posts.show-quiz', compact('item'));
+        } catch (ModelNotFoundException $exception) {
+            $request->session()->flash('error', 'Sorry, the page you are looking for could not be found.');
+        } catch (Exception $exception) {
+            Log::error($exception);
+            $request->session()->flash('error', 'An error occurred while showing the post.');
+        }
+
+        return redirect()->route('backend.posts.index');
+    }
 }

@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-sm-6 text-right">
                     <a href="{{ route('backend.posts.quiz', $item->post_id) }}" class="btn btn-default mr-2">Back</a>
-                    <a href="{{ route('backend.posts.edit', $item->id) }}" class="btn btn-info">
+                    <a href="{{ route('backend.posts.editQuiz', $item->id) }}" class="btn btn-info">
                         <i class="fas fa-edit"></i> Edit
                     </a>
                 </div>

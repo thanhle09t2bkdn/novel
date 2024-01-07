@@ -104,9 +104,15 @@
                                                 <a href="{{ route('backend.posts.edit', $item->id) }}" class="btn btn-sm btn-warning">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="{{ route('backend.posts.quiz', $item->id) }}" class="btn btn-sm btn-warning">
-                                                    <i class="fas fa-calculator"></i>
-                                                </a>
+                                                @if($item->type == \App\Models\Post::QUIZ_TYPE)
+                                                    <a href="{{ route('backend.posts.quiz', $item->id) }}" class="btn btn-sm btn-warning">
+                                                        <i class="fas fa-calculator"></i>
+                                                    </a>
+                                                    <a href="{{ route('frontend.public.quiz', $item->slug) }}" class="btn btn-sm btn-warning">
+                                                        <i class="fas fa-book"></i>
+                                                    </a>
+                                                @endif
+
                                             </td>
                                         </tr>
                                     @empty

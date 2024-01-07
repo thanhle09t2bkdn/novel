@@ -143,4 +143,25 @@ class PublicController extends Controller
             ->get();
         return view('frontend.public.post_audio', compact('list', 'recentPosts', 'post'));
     }
+
+    public function quiz(string $slug)
+    {
+        $post = $this->postRepository->where('slug', $slug)->first();
+        $this->seo()->setTitle($post->name);
+        $this->seo()->setDescription($post->description);
+        $relatedPosts = $this->postRepository
+            ->where('type', $post->type)
+            ->where('category_id', $post->category_id)
+            ->where('id', $post->id, '!=')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $recentPosts = $this->postRepository
+            ->where('type', Post::POST_TYPE)
+            ->where('id', $post->id, '!=')
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
+        return view('frontend.public.quiz', compact('post', 'relatedPosts', 'recentPosts'));
+    }
 }

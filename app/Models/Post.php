@@ -22,6 +22,7 @@ class Post extends Model
     const POST_TYPE = 1;
     const PAGE_TYPE = 2;
     const BOOK_TYPE = 3;
+    const QUIZ_TYPE = 4;
 
     /**
      * The attributes that are mass assignable.
@@ -56,6 +57,11 @@ class Post extends Model
         return $this->hasMany(Audio::class);
     }
 
+    public function quizzes()
+    {
+        return $this->hasMany(Quiz::class);
+    }
+
     public function sluggable(): array
     {
         return [
@@ -69,6 +75,7 @@ class Post extends Model
         self::POST_TYPE => 'Post',
         self::PAGE_TYPE => 'Page',
         self::BOOK_TYPE => 'Book',
+        self::QUIZ_TYPE => 'Quiz',
     ];
 
     public function getTypeNameAttribute()

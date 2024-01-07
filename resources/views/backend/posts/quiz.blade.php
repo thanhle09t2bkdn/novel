@@ -5,10 +5,10 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Posts</h1>
+                    <h1 class="m-0 text-dark">Quizzes</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ route('backend.posts.create') }}" class="btn btn-success">
+                    <a href="{{ route('backend.posts.createQuiz', $post->id) }}" class="btn btn-success">
                         <i class="fas fa-plus"></i> Create
                     </a>
                 </div>
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <div class="card-body table-responsive p-0">
-                            <form method="POST" action="{{ route('backend.posts.delete') }}" id="form-delete-items">
+                            <form method="POST" action="{{ route('backend.posts.deleteQuiz') }}" id="form-delete-items">
                                 @method('DELETE')
                                 @csrf
                                 <table class="table table-hovercode" id="table-list">
@@ -78,8 +78,6 @@
                                             <input type="checkbox" id="check-all" onchange="checkAll()">
                                         </th>
                                         <th>Name</th>
-                                        <th>Category</th>
-                                        <th>Description</th>
                                         <th class="text-center">Created at</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -91,28 +89,14 @@
                                                 <input type="checkbox" onchange="checkItem()" value="{{ $item->id }}" name="id[]">
                                             </td>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->category ? $item->category->name : '' }}</td>
-                                            <td>{{ $item->description }}</td>
                                             <td class="text-center">{{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}</td>
                                             <td class="text-center">
-                                                <a href="{{ route('frontend.public.postAudio', $item->slug) }}" target="_blank" class="btn btn-sm btn-primary">
-                                                    <i class="fas fa-file-audio"></i>
-                                                </a>
-                                                <a href="{{ route('backend.posts.show', $item->id) }}" class="btn btn-sm btn-info">
+                                                <a href="{{ route('backend.posts.showQuiz', $item->id) }}" class="btn btn-sm btn-info">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="{{ route('backend.posts.edit', $item->id) }}" class="btn btn-sm btn-warning">
+                                                <a href="{{ route('backend.posts.editQuiz', $item->id) }}" class="btn btn-sm btn-warning">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                @if($item->type == \App\Models\Post::QUIZ_TYPE)
-                                                    <a href="{{ route('backend.posts.quiz', $item->id) }}" class="btn btn-sm btn-warning">
-                                                        <i class="fas fa-calculator"></i>
-                                                    </a>
-                                                    <a href="{{ route('frontend.public.quiz', $item->slug) }}" class="btn btn-sm btn-warning">
-                                                        <i class="fas fa-book"></i>
-                                                    </a>
-                                                @endif
-
                                             </td>
                                         </tr>
                                     @empty

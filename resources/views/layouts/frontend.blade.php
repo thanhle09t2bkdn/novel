@@ -209,6 +209,7 @@
 ><i class="fa fa-angle-double-up"></i
     ></a>
 {{ \TawkTo::widgetCode() }}
+@stack('before-scripts')
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -225,7 +226,7 @@
 
     gtag('config', 'G-EL4ZNNZSSG');
 </script>
-
+@stack('after-scripts')
 <!-- Template Javascript -->
 <script src="{{ asset('user/js/main.js') }}"></script>
 </body>

@@ -24,4 +24,19 @@ class QuizRepository extends BaseRepository
         $this->model = $model;
     }
 
+
+    /**
+     * searchFromParams
+     *
+     * @param $request
+     *
+     * @return mixed
+     */
+    public function searchFromRequest($request)
+    {
+        return $this->search($request->only(array_keys($this->fieldSearchable)))
+            ->orderBy('created_at')
+            ->paginate();
+    }
+
 }

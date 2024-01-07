@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Posts\PostCreateRequest;
 use App\Http\Requests\Backend\Posts\PostUpdateRequest;
 use App\Http\Requests\Backend\Posts\QuizCreateRequest;
+use App\Http\Requests\Backend\Posts\QuizUpdateRequest;
 use App\Models\Option;
 use App\Models\Post;
 use App\Repositories\CategoryRepository;
@@ -308,6 +309,65 @@ class PostController extends Controller
         } catch (Exception $exception) {
             Log::error($exception);
             $request->session()->flash('error', 'An error occurred while showing the post.');
+        }
+
+        return redirect()->route('backend.posts.index');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Request $request
+     * @param string $id
+     *
+     * @return View|RedirectResponse
+     */
+    public function editQuiz(Request $request, string $id)
+    {
+        try {
+            $item = $this->quizRepository->getById($id);
+
+            return view('backend.posts.edit-quiz', compact('item'));
+        } catch (ModelNotFoundException $e) {
+            $request->session()->flash('error', 'Sorry, the page you are looking for could not be found.');
+        } catch (Exception $exception) {
+            Log::error($exception);
+            $request->session()->flash('error', 'An error occurred while showing the post.');
+        }
+
+        return redirect()->route('backend.posts.index');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param PostUpdateRequest $request
+     * @param mixed $id
+     *
+     * @return RedirectResponse
+     */
+    public function updateQuiz(QuizUpdateRequest $request, $id)
+    {
+        try {
+            $attributes = $request->only(array_keys($request->rules()));
+
+            $options = $request->only('options');
+            unset($attributes['options']);
+            $item = $this->quizRepository->update($attributes, $id);
+            $item->options()->delete();
+            foreach ($options['options'] as $option) {
+                $item->options()->save(new Option(['name' => $option['name'], 'is_answer' => $option['is_answer']] ));
+            }
+            $request->session()->flash('success', 'The quiz has been successfully updated.');
+
+            if ($request->get('action') === 'edit') {
+                return redirect()->route('backend.posts.editQuiz', $id);
+            }
+
+            return redirect()->route('backend.posts.showQuiz', $id);
+        } catch (Exception $exception) {
+            Log::error($exception);
+            $request->session()->flash('error', 'An error occurred while updating the post.');
         }
 
         return redirect()->route('backend.posts.index');

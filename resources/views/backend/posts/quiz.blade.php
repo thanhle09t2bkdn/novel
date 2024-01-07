@@ -94,7 +94,7 @@
                                                 <a href="{{ route('backend.posts.showQuiz', $item->id) }}" class="btn btn-sm btn-info">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="{{ route('backend.posts.edit', $item->id) }}" class="btn btn-sm btn-warning">
+                                                <a href="{{ route('backend.posts.editQuiz', $item->id) }}" class="btn btn-sm btn-warning">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                             </td>

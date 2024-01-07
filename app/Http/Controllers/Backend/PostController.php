@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Posts\PostCreateRequest;
 use App\Http\Requests\Backend\Posts\PostUpdateRequest;
+use App\Http\Requests\Backend\Posts\QuizCreateRequest;
+use App\Models\Option;
 use App\Models\Post;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
@@ -252,5 +254,39 @@ class PostController extends Controller
             Log::error($exception);
             abort(500);
         }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     *
+     * @param PostCreateRequest $request
+     * @return RedirectResponse
+     */
+    public function storeQuiz(QuizCreateRequest $request)
+    {
+        try {
+
+            $attributes = $request->only(array_keys($request->rules()));
+            $options = $request->only('options');
+            unset($attributes['options']);
+            $item = $this->quizRepository->create($attributes);
+            foreach ($options['options'] as $option) {
+                $item->options()->save(new Option(['name' => $option['name'], 'is_answer' => $option['is_answer']] ));
+            }
+
+            $request->session()->flash('success', 'The quiz has been successfully created.');
+
+            if ($request->get('action') === 'edit') {
+                return redirect()->route('backend.posts.quiz', $item->post_id);
+            }
+
+            return redirect()->route('backend.posts.quiz', $item->post_id);
+        } catch (Exception $exception) {
+            Log::error($exception);
+            $request->session()->flash('error', 'An error occurred while creating the quiz.');
+        }
+
+        return redirect()->route('backend.posts.quiz', $attributes['post_id']);
     }
 }

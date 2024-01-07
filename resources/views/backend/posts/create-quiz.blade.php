@@ -1,91 +1,65 @@
+@push('after-scripts')
+    <script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('admin/js/editor.js') }}"></script>
+@endpush
 @extends('layouts.backend')
 
 @section('content')
-    <section class="content-header">
+    <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">{{ $post->name }}</h1>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <a href="{{ route('backend.posts.index') }}" class="btn btn-default mr-2">Back</a>
-                    <a href="{{ route('backend.posts.edit', $post->id) }}" class="btn btn-info">
-                        <i class="fas fa-edit"></i> Edit
-                    </a>
+                    <h1 class="m-0 text-dark">Create Quiz</h1>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="content">
+    </div>
+    <div class="content">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row">
                 <div class="col-md-12">
-                    @include('components.alert')
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Post</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p>
-                                                <strong>Name:</strong>
-                                                {{ $post->name }}
-                                            </p>
-                                            <p>
-                                                <strong>Category:</strong>
-                                                {{ $post->category->name }}
-                                            </p>
-                                            <p>
-                                                <strong>Description:</strong>
-                                                {{ $post->description }}
-                                            </p>
-
+                    <form action="{{ route('backend.posts.storeQuiz') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="post_id" value="{{ $post->id }}" />
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card card-default">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Quiz</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                @include('backend.fields.create.name')
+                                            </div>
+                                            <div class="col-md-12">
+                                                @include('backend.fields.create.content')
+                                            </div>
+                                            <div class="col-md-12">
+                                                @include('backend.fields.create.options')
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <p>
-                                                <strong>Created at:</strong>
-                                                {{ date('d-m-Y H:i:s', strtotime($post->created_at)) }}
-                                            </p>
-                                            <p>
-                                                <strong>Updated at:</strong>
-                                                {{ date('d-m-Y H:i:s', strtotime($post->updated_at)) }}
-                                            </p>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <p>
-                                                <strong>Content:</strong>
-                                                {!! $post->content !!}
-                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card card-default">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Action</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                @include('backend.fields.common.action', ['url' => route('backend.posts.quiz', $post->id)])
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Options</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="text-center">
-                                        <img src="{{ $post->image }}" class="w-100" style="max-width: 300px">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 @endsection

@@ -56,6 +56,11 @@ class Post extends Model
         return $this->hasMany(Audio::class);
     }
 
+    public function quizzes()
+    {
+        return $this->hasMany(Quiz::class);
+    }
+
     public function sluggable(): array
     {
         return [

@@ -8,6 +8,7 @@ use App\Http\Requests\Backend\Posts\PostUpdateRequest;
 use App\Models\Post;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
+use App\Repositories\QuizRepository;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -23,19 +24,22 @@ class PostController extends Controller
      *
      * @var postRepository
      * @var categoryRepository
+     * @var QuizRepository
      */
     private $postRepository;
     private $categoryRepository;
+    private $quizRepository;
 
     /**
      * Constructor.
      *
      * @param PostRepository $postRepository
      */
-    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository)
+    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, QuizRepository $quizRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->quizRepository = $quizRepository;
     }
 
     /**
@@ -203,5 +207,50 @@ class PostController extends Controller
         }
 
         return redirect()->route('backend.posts.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Request $request
+     * @param mixed $id
+     *
+     * @return View|RedirectResponse
+     */
+    public function createQuiz(Request $request, $id)
+    {
+        try {
+            $post = $this->postRepository->getById($id);
+            return view('backend.posts.create-quiz', compact('post'));
+        } catch (ModelNotFoundException $exception) {
+            $request->session()->flash('error', 'Sorry, the page you are looking for could not be found.');
+        } catch (Exception $exception) {
+            Log::error($exception);
+            $request->session()->flash('error', 'An error occurred while showing the post.');
+        }
+
+        return redirect()->route('backend.posts.index');
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Request $request
+     * @param mixed $id
+     * @return Renderable|void
+     */
+    public function quiz(Request $request, $id)
+    {
+        try {
+            $request->request->add(['post_id' => $id]);
+            $post = $this->postRepository->getById($id);
+            $list = $this->quizRepository->searchFromRequest($request);
+
+            return view('backend.posts.quiz', compact('list', 'post'));
+        } catch (Exception $exception) {
+            Log::error($exception);
+            abort(500);
+        }
     }
 }

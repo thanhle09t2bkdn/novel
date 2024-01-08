@@ -35,9 +35,6 @@
                                         <div class="row">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    @include('backend.fields.edit.name')
-                                                </div>
-                                                <div class="col-md-12">
                                                     @include('backend.fields.edit.content')
                                                 </div>
                                                 <div class="col-md-12">

@@ -33,9 +33,11 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p>
-                                                <strong>Name:</strong>
-                                                {{ $item->name }}
+                                                <strong>Content:</strong>
+                                                {!! $item->content !!}
                                             </p>
+                                        </div>
+                                        <div class="col-md-6">
                                             <p>
                                                 <strong>Post:</strong>
                                                 {{ $item->post->name }}
@@ -53,12 +55,7 @@
                                                 {{ date('d-m-Y H:i:s', strtotime($item->updated_at)) }}
                                             </p>
                                         </div>
-                                        <div class="col-md-12">
-                                            <p>
-                                                <strong>Content:</strong>
-                                                {!! $item->content !!}
-                                            </p>
-                                        </div>
+
                                         <div class="col-md-6">
                                             <p>
                                                 <strong>Options:</strong>

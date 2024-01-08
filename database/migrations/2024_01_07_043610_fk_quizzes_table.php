@@ -28,7 +28,7 @@ class FkQuizzesTable extends Migration
      */
     public function down()
     {
-        Schema::table('audios', function (Blueprint $table) {
+        Schema::table('quizzes', function (Blueprint $table) {
             $table->dropForeign('quizzes_post_id_foreign');
         });
     }

@@ -47,7 +47,6 @@
                 <div class="mb-5">
                     @foreach($post->quizzes as $quiz)
                     <div class="mt-5">
-                        <span>{{ $quiz->name }}</span>
                         {!! $quiz->content !!}
                         @foreach($quiz->options as $option)
                             <!-- list group -->
@@ -57,7 +56,7 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" data-answer="{{ $option->is_answer }}" name="{{ $quiz->id }}"
                                                id="{{ $option->id }}">
-                                        <label class="form-check-label" for="{{ $option->id }}">
+                                        <label class="form-check-label d-block" for="{{ $option->id }}">
                                             {{ $option->name }}
                                         </label>
                                     </div>

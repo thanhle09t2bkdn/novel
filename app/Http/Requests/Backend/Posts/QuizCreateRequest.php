@@ -27,7 +27,6 @@ class QuizCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:255',
             'post_id' => 'required|exists:App\Models\Post,id',
             'content' => 'required',
             'options' => 'required|array|min:2',

@@ -29,7 +29,7 @@ class QuizUpdateRequest extends FormRequest
         return [
             'content' => 'required',
             'options' => 'required|array|min:2',
-            'options.*.name' => 'required|min:3|max:255',
+            'options.*.name' => 'required|max:255',
             'options.*.is_answer' => 'nullable|boolean',
         ];
     }

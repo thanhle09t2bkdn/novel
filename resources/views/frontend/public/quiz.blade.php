@@ -81,7 +81,7 @@
                             >
                                 Làm Lại
                             </button>
-                            <h4 id="score-title" class="d-none text-danger mt-3">Số câu trả lời đúng <span id="score-id"></span></h4>
+                            <h4 id="score-title" class="d-none text-danger mt-3">Số câu trả lời đúng <span id="score-id"></span>/{{ count($post->quizzes) }}</h4>
                         </div>
                 </div>
 

@@ -59,7 +59,7 @@ class Post extends Model
 
     public function quizzes()
     {
-        return $this->hasMany(Quiz::class);
+        return $this->hasMany(Quiz::class)->orderBy('created_at');
     }
 
     public function sluggable(): array

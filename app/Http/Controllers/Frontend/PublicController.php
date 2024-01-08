@@ -129,18 +129,13 @@ class PublicController extends Controller
     {
         $audio = $this->audioRepository->where('slug', $slug)->first();
         $this->seo()->setTitle($audio->name);
-        $relatedAudios = $this->audioRepository
-            ->where('post_id', $audio->post_id)
-            ->where('id', $audio->id, '!=')
-            ->orderBy('created_at', 'desc')
-            ->get();
         $recentPosts = $this->postRepository
             ->where('draft', false)
             ->where('type', Post::POST_TYPE)
             ->orderBy('created_at', 'desc')
             ->limit(5)
             ->get();
-        return view('frontend.public.audio', compact('audio', 'relatedAudios', 'recentPosts'));
+        return view('frontend.public.audio', compact('audio',  'recentPosts'));
     }
 
     public function postAudio(string $slug)

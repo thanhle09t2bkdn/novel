@@ -1,3 +1,6 @@
+@push('after-scripts')
+    <script src="{{ asset('user/js/disable-right-click.js') }}"></script>
+@endpush
 @extends('layouts.frontend')
 
 @section('content')

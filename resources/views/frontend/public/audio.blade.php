@@ -1,3 +1,6 @@
+@push('after-scripts')
+    <script src="{{ asset('user/js/disable-right-click.js') }}"></script>
+@endpush
 @extends('layouts.frontend')
 
 @section('content')
@@ -33,30 +36,10 @@
                     </div>
                 </div>
                 <div class="mb-5">
-                    <audio controls>
+                    <audio controls controlsList="nodownload">
                         <source src="{{ $audio->link }}" type="audio/mpeg">
                         Your browser does not support the audio element.
                     </audio>
-                </div>
-
-                <!-- Related Post -->
-                <div class="mb-5 mx-n3">
-                    <h2 class="mb-4 ml-3">Audio liên quan</h2>
-                    <div class="owl-carousel post-carousel position-relative">
-                        @foreach($relatedAudios as $relatedAudio)
-                            <div class="d-flex align-items-center bg-light shadow-sm rounded overflow-hidden mx-3">
-                                <div class="pl-3">
-                                    <h5 class=""><a href="{{ route('frontend.public.audio', $relatedAudio->slug) }}">{{ $relatedAudio->name }}</a></h5>
-                                    <div class="d-flex">
-                                        <small class="mr-3"><i class="fa fa-user text-primary"></i> Thầy Thắng</small>
-                                        <small class="mr-3"><i class="fa fa-folder text-primary"></i> {{ $relatedAudio->post->name }}</small>
-                                        <small class="mr-3"><i class="fa fa-comments text-primary"></i> 15</small>                                        >
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
                 </div>
 
             </div>

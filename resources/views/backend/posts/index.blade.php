@@ -79,6 +79,7 @@
                                         </th>
                                         <th>Name</th>
                                         <th>Category</th>
+                                        <th>Status</th>
                                         <th>Description</th>
                                         <th class="text-center">Created at</th>
                                         <th class="text-center">Action</th>
@@ -92,6 +93,7 @@
                                             </td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->category ? $item->category->name : '' }}</td>
+                                            <td>{{ $item->draft ? 'Draft' : 'Published' }}</td>
                                             <td>{{ $item->description }}</td>
                                             <td class="text-center">{{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}</td>
                                             <td class="text-center">

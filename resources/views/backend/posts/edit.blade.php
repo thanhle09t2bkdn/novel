@@ -49,6 +49,9 @@
                                                     @include('backend.fields.edit.type')
                                                 </div>
                                                 <div class="col-md-12">
+                                                    @include('backend.fields.edit.draft')
+                                                </div>
+                                                <div class="col-md-12">
                                                     @include('backend.fields.edit.description')
                                                 </div>
                                                 <div class="col-md-12">

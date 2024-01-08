@@ -32,6 +32,7 @@ class PostCreateRequest extends FormRequest
             'category_id' => 'nullable|exists:App\Models\Category,id',
             'content' => 'required',
             'type' => 'required|integer|in:' . implode(',', array_keys(Post::$typeNames)),
+            'draft' => 'nullable|boolean',
             'description' => 'required',
             'image' => 'nullable|url|max:255',
         ];

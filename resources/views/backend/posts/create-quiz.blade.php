@@ -31,9 +31,6 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                @include('backend.fields.create.name')
-                                            </div>
-                                            <div class="col-md-12">
                                                 @include('backend.fields.create.content')
                                             </div>
                                             <div class="col-md-12">

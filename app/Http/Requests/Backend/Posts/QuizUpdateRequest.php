@@ -27,7 +27,6 @@ class QuizUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:255',
             'content' => 'required',
             'options' => 'required|array|min:2',
             'options.*.name' => 'required|min:3|max:255',

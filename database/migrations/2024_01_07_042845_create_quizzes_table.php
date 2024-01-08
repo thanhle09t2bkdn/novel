@@ -16,7 +16,6 @@ class CreateQuizzesTable extends Migration
         Schema::create('quizzes', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('post_id');
-            $table->string('name')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();
         });

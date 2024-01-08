@@ -4,6 +4,7 @@
 namespace App\Http\Requests\Backend\Posts;
 
 
+use App\Models\Post;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PostUpdateRequest extends FormRequest
@@ -28,10 +29,9 @@ class PostUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:255',
-            'slug' => 'required|min:3|max:255',
-            'content' => 'required',
             'category_id' => 'nullable|exists:App\Models\Category,id',
             'content' => 'required',
+            'type' => 'required|integer|in:' . implode(',', array_keys(Post::$typeNames)),
             'description' => 'required',
             'image' => 'nullable|url|max:255',
         ];

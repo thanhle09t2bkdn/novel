@@ -77,7 +77,7 @@
                                         <th>
                                             <input type="checkbox" id="check-all" onchange="checkAll()">
                                         </th>
-                                        <th>Name</th>
+                                        <th>Content</th>
                                         <th class="text-center">Created at</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -88,7 +88,7 @@
                                             <td>
                                                 <input type="checkbox" onchange="checkItem()" value="{{ $item->id }}" name="id[]">
                                             </td>
-                                            <td>{{ $item->name }}</td>
+                                            <td>{!! $item->content !!}</td>
                                             <td class="text-center">{{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}</td>
                                             <td class="text-center">
                                                 <a href="{{ route('backend.posts.showQuiz', $item->id) }}" class="btn btn-sm btn-info">

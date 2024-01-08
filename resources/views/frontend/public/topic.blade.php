@@ -43,7 +43,7 @@
                                 <p>
                                     {{ $item->description }}
                                 </p>
-                                <a href="{{ route('frontend.public.single', $item->slug) }}" class="btn btn-primary px-4 mx-auto my-2"
+                                <a href="{{ $item->type == \App\Models\Post::QUIZ_TYPE ? route('frontend.public.quiz', $item->slug) : route('frontend.public.single', $item->slug) }}" class="btn btn-primary px-4 mx-auto my-2"
                                 >Chi tiết</a
                                 >
                             </div>

@@ -98,7 +98,6 @@ class PublicController extends Controller
         $category = $this->categoryRepository->where('slug', $slug)->first();
         try {
             $list = $this->postRepository
-                ->where('type', Post::POST_TYPE)
                 ->where('category_id', $category->id)
                 ->orderBy('created_at', 'desc')
                 ->paginate();
@@ -141,7 +140,7 @@ class PublicController extends Controller
             ->orderBy('created_at', 'desc')
             ->limit(5)
             ->get();
-        return view('frontend.public.post_audio', compact('list', 'recentPosts', 'post'));
+        return view('frontend.public.post-audio', compact('list', 'recentPosts', 'post'));
     }
 
     public function quiz(string $slug)

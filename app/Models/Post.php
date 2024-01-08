@@ -34,6 +34,7 @@ class Post extends Model
         'name',
         'slug',
         'type',
+        'draft',
         'description',
         'content',
         'image'

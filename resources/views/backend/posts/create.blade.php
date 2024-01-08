@@ -42,6 +42,9 @@
                                                 @include('backend.fields.create.type')
                                             </div>
                                             <div class="col-md-12">
+                                                @include('backend.fields.create.draft')
+                                            </div>
+                                            <div class="col-md-12">
                                                 @include('backend.fields.create.description')
                                             </div>
                                             <div class="col-md-12">

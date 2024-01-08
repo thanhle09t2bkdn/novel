@@ -170,6 +170,9 @@ class PostController extends Controller
     {
         try {
             $attributes = $request->only(array_keys($request->rules()));
+            if(!isset($attributes['draft'])) {
+                $attributes['draft'] = false;
+            }
             $this->postRepository->update($attributes, $id);
 
             $request->session()->flash('success', 'The post has been successfully updated.');

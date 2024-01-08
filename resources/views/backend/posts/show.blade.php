@@ -41,6 +41,10 @@
                                                 {{ $item->category->name }}
                                             </p>
                                             <p>
+                                                <strong>Status:</strong>
+                                                {{ $item->draft ? 'Draft' : 'Published' }}
+                                            </p>
+                                            <p>
                                                 <strong>Description:</strong>
                                                 {{ $item->description }}
                                             </p>

@@ -13,12 +13,11 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Audio extends Model
+class Tag extends Model
 {
     use Uuids;
     use HasFactory;
     use Sluggable;
-    protected $table = 'audios';
 
 
     /**
@@ -27,10 +26,8 @@ class Audio extends Model
      * @var array
      */
     protected $fillable = [
-        'post_id',
         'name',
         'slug',
-        'link'
     ];
 
     /**
@@ -40,11 +37,6 @@ class Audio extends Model
      */
     protected $hidden = [
     ];
-
-    public function post()
-    {
-        return $this->belongsTo(Post::class);
-    }
 
     public function sluggable(): array
     {

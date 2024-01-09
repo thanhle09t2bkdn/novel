@@ -5,13 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Posts\PostCreateRequest;
 use App\Http\Requests\Backend\Posts\PostUpdateRequest;
-use App\Http\Requests\Backend\Posts\QuizCreateRequest;
-use App\Http\Requests\Backend\Posts\QuizUpdateRequest;
-use App\Models\Option;
 use App\Models\Post;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
-use App\Repositories\QuizRepository;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -27,7 +23,7 @@ class PostController extends Controller
      *
      * @var postRepository
      * @var categoryRepository
-     * @var QuizRepository
+     * @var TagRepository
      */
     private $postRepository;
     private $categoryRepository;
@@ -38,7 +34,7 @@ class PostController extends Controller
      *
      * @param PostRepository $postRepository
      */
-    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, QuizRepository $quizRepository)
+    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, TagRepository $quizRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
@@ -206,193 +202,6 @@ class PostController extends Controller
             } else {
                 $this->postRepository->deleteByIds($ids);
                 $request->session()->flash('success', 'The posts has been successfully deleted.');
-            }
-        } catch (Exception $exception) {
-            Log::error($exception);
-            $request->session()->flash('error', 'An error occurred while deleting the posts.');
-        }
-
-        return redirect()->route('backend.posts.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Request $request
-     * @param mixed $id
-     *
-     * @return View|RedirectResponse
-     */
-    public function createQuiz(Request $request, $id)
-    {
-        try {
-            $post = $this->postRepository->getById($id);
-            return view('backend.posts.create-quiz', compact('post'));
-        } catch (ModelNotFoundException $exception) {
-            $request->session()->flash('error', 'Sorry, the page you are looking for could not be found.');
-        } catch (Exception $exception) {
-            Log::error($exception);
-            $request->session()->flash('error', 'An error occurred while showing the post.');
-        }
-
-        return redirect()->route('backend.posts.index');
-    }
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @param Request $request
-     * @param mixed $id
-     * @return Renderable|void
-     */
-    public function quiz(Request $request, $id)
-    {
-        try {
-            $request->request->add(['post_id' => $id]);
-            $post = $this->postRepository->getById($id);
-            $list = $this->quizRepository->searchFromRequest($request);
-
-            return view('backend.posts.quiz', compact('list', 'post'));
-        } catch (Exception $exception) {
-            Log::error($exception);
-            abort(500);
-        }
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     *
-     * @param PostCreateRequest $request
-     * @return RedirectResponse
-     */
-    public function storeQuiz(QuizCreateRequest $request)
-    {
-        try {
-
-            $attributes = $request->only(array_keys($request->rules()));
-            $options = $request->only('options');
-            unset($attributes['options']);
-            $item = $this->quizRepository->create($attributes);
-            foreach ($options['options'] as $option) {
-                $item->options()->save(new Option(['name' => $option['name'], 'is_answer' => isset($option['is_answer']) ? $option['is_answer'] : false]));
-            }
-
-            $request->session()->flash('success', 'The quiz has been successfully created.');
-
-            if ($request->get('action') === 'edit') {
-                return redirect()->route('backend.posts.quiz', $item->post_id);
-            }
-
-            return redirect()->route('backend.posts.quiz', $item->post_id);
-        } catch (Exception $exception) {
-            Log::error($exception);
-            $request->session()->flash('error', 'An error occurred while creating the quiz.');
-        }
-
-        return redirect()->route('backend.posts.quiz', $attributes['post_id']);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Request $request
-     * @param mixed $id
-     *
-     * @return View|RedirectResponse
-     */
-    public function showQuiz(Request $request, $id)
-    {
-        try {
-            $item = $this->quizRepository->getById($id);
-            return view('backend.posts.show-quiz', compact('item'));
-        } catch (ModelNotFoundException $exception) {
-            $request->session()->flash('error', 'Sorry, the page you are looking for could not be found.');
-        } catch (Exception $exception) {
-            Log::error($exception);
-            $request->session()->flash('error', 'An error occurred while showing the post.');
-        }
-
-        return redirect()->route('backend.posts.index');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Request $request
-     * @param string $id
-     *
-     * @return View|RedirectResponse
-     */
-    public function editQuiz(Request $request, string $id)
-    {
-        try {
-            $item = $this->quizRepository->getById($id);
-
-            return view('backend.posts.edit-quiz', compact('item'));
-        } catch (ModelNotFoundException $e) {
-            $request->session()->flash('error', 'Sorry, the page you are looking for could not be found.');
-        } catch (Exception $exception) {
-            Log::error($exception);
-            $request->session()->flash('error', 'An error occurred while showing the post.');
-        }
-
-        return redirect()->route('backend.posts.index');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param PostUpdateRequest $request
-     * @param mixed $id
-     *
-     * @return RedirectResponse
-     */
-    public function updateQuiz(QuizUpdateRequest $request, $id)
-    {
-        try {
-            $attributes = $request->only(array_keys($request->rules()));
-
-            $options = $request->only('options');
-            unset($attributes['options']);
-            $item = $this->quizRepository->update($attributes, $id);
-            $item->options()->delete();
-            foreach ($options['options'] as $option) {
-                $item->options()->save(new Option(['name' => $option['name'], 'is_answer' => isset($option['is_answer']) ? $option['is_answer'] : false]));
-            }
-            $request->session()->flash('success', 'The quiz has been successfully updated.');
-
-            if ($request->get('action') === 'edit') {
-                return redirect()->route('backend.posts.editQuiz', $id);
-            }
-
-            return redirect()->route('backend.posts.showQuiz', $id);
-        } catch (Exception $exception) {
-            Log::error($exception);
-            $request->session()->flash('error', 'An error occurred while updating the post.');
-        }
-
-        return redirect()->route('backend.posts.index');
-    }
-
-
-    /**
-     * Delete multiple items
-     *
-     * @param Request $request
-     *
-     * @return RedirectResponse
-     */
-    public function deleteQuiz(Request $request)
-    {
-        try {
-            $ids = $request->get('id');
-            if (empty($ids)) {
-                $request->session()->flash('error', 'Please choose any posts to delete.');
-            } else {
-                $this->quizRepository->deleteByIds($ids);
-                $request->session()->flash('success', 'The quizzes has been successfully deleted.');
             }
         } catch (Exception $exception) {
             Log::error($exception);

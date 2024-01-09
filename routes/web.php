@@ -23,8 +23,7 @@ Auth::routes();
 Route::group(['namespace' => 'Frontend', 'prefix' => '', 'as' => 'frontend.', 'middleware' => ['web']], function () {
     require 'web/frontend/public.php';
 });
-Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', 'web', 'roles:' . \App\Models\User::ADMIN_ROLE . ',' . \App\Models\User::TEACHER_ROLE]], function () {
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth', 'web', 'roles:' . \App\Models\User::ADMIN_ROLE]], function () {
     require 'web/backend/categories.php';
     require 'web/backend/posts.php';
-    require 'web/backend/audios.php';
 });

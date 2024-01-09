@@ -36,5 +36,6 @@ class PublicController extends Controller
     public function index()
     {
 //        $this->seo()->setTitle('Trang Chủ');
+        return view('frontend.public.index');
     }
 }

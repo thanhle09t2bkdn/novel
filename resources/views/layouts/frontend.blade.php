@@ -208,7 +208,6 @@
 <a href="#" class="btn btn-primary p-3 back-to-top"
 ><i class="fa fa-angle-double-up"></i
     ></a>
-{{ \TawkTo::widgetCode() }}
 @stack('before-scripts')
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -217,15 +216,7 @@
 <script src="{{ asset('user/lib/owlcarousel/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('user/lib/isotope/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('user/lib/lightbox/js/lightbox.min.js') }}"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EL4ZNNZSSG"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
-    gtag('config', 'G-EL4ZNNZSSG');
-</script>
 @stack('after-scripts')
 <!-- Template Javascript -->
 <script src="{{ asset('user/js/main.js') }}"></script>

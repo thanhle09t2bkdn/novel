@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class FkQuizzesTable extends Migration
+class FkPostTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class FkQuizzesTable extends Migration
      */
     public function up()
     {
-        Schema::table('quizzes', function (Blueprint $table) {
+        Schema::table('post_tag', function (Blueprint $table) {
             $table->foreign('post_id')
                 ->references('id')
                 ->on('posts')
+                ->onDelete('cascade');
+
+            $table->foreign('tag_id')
+                ->references('id')
+                ->on('tags')
                 ->onDelete('cascade');
         });
     }
@@ -28,8 +33,9 @@ class FkQuizzesTable extends Migration
      */
     public function down()
     {
-        Schema::table('quizzes', function (Blueprint $table) {
-            $table->dropForeign('quizzes_post_id_foreign');
+        Schema::table('post_tag', function (Blueprint $table) {
+            $table->dropForeign('post_tag_post_id_foreign');
+            $table->dropForeign('post_tag_tag_id_foreign');
         });
     }
 }

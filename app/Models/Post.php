@@ -50,6 +50,11 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function tags()
+    {
+        return $this->belongstoMany(Tag::class);
+    }
+
 
 
     public function sluggable(): array

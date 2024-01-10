@@ -94,24 +94,26 @@ class PixeliedCommand extends Command
             }
             $page = 1;
             do {
-                $response = $this->commonService->get(['query' => $category['name']], 'https://pixelied.com/_next/data/TG7iDyv39WpuXq9uDpf6L/svg.json');
+                $response = $this->commonService->get(['query' => $category['name'], 'page'=> $page], 'https://pixelied.com/_next/data/TG7iDyv39WpuXq9uDpf6L/svg.json');
                 $responseObject = json_decode($response);
                 foreach ($responseObject->pageProps->svgListData->svgList as $svgObject) {
-                    $post = $this->postRepository->create([
-                        'name' => $svgObject->title,
-                        'image' => $svgObject->svg->destination,
-                        'category_id' => $categoryModel->id
-                    ]);
-                    $tagIds = [];
-                    foreach ($svgObject->tags as $tag) {
-                        $tagModel = $this->tagRepository->getByColumn($tag, 'name');
-                        if (!$tagModel) {
-                            $tagModel = $this->tagRepository->create(['name' => $tag]);
-                        }
-                        $tagIds[] = $tagModel->id;
+                    if (!$this->postRepository->getByColumn($svgObject->svg->destination, 'image')) {
+                        $post = $this->postRepository->create([
+                            'name' => $svgObject->title,
+                            'image' => $svgObject->svg->destination,
+                            'category_id' => $categoryModel->id
+                        ]);
+                        $tagIds = [];
+                        foreach ($svgObject->tags as $tag) {
+                            $tagModel = $this->tagRepository->getByColumn($tag, 'name');
+                            if (!$tagModel) {
+                                $tagModel = $this->tagRepository->create(['name' => $tag]);
+                            }
+                            $tagIds[] = $tagModel->id;
 
+                        }
+                        $post->tags()->attach(array_unique($tagIds));
                     }
-                    $post->tags()->attach(array_unique($tagIds));
                 }
                 $page++;
                 if ($responseObject->pageProps->pagination->totalPages < $page) {

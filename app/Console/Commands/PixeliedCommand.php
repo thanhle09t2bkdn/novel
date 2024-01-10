@@ -31,7 +31,35 @@ class PixeliedCommand extends Command
         [
             'name' => 'Heart',
             'key' => 'heart'
-        ]
+        ],
+        [
+            'name' => 'Sunflower',
+            'key' => 'sunflower'
+        ],
+        [
+            'name' => 'Christmas',
+            'key' => 'christmas'
+        ],
+        [
+            'name' => 'Butterfly',
+            'key' => 'butterfly'
+        ],
+        [
+            'name' => 'Flower',
+            'key' => 'flower'
+        ],
+        [
+            'name' => 'Halloween',
+            'key' => 'halloween'
+        ],
+        [
+            'name' => 'Disney',
+            'key' => 'disney'
+        ],
+        [
+            'name' => 'Football',
+            'key' => 'football'
+        ],
     ];
 
     /**
@@ -39,10 +67,10 @@ class PixeliedCommand extends Command
      *
      * @return void
      */
-    public function __construct(PostRepository $postRepository,
+    public function __construct(PostRepository     $postRepository,
                                 CategoryRepository $categoryRepository,
-                                TagRepository $tagRepository,
-                                CommonService $commonService)
+                                TagRepository      $tagRepository,
+                                CommonService      $commonService)
     {
         parent::__construct();
         $this->postRepository = $postRepository;
@@ -67,7 +95,6 @@ class PixeliedCommand extends Command
             do {
                 $response = $this->commonService->get(['query' => $category['name']], 'https://pixelied.com/_next/data/TG7iDyv39WpuXq9uDpf6L/svg.json');
                 $responseObject = json_decode($response);
-
                 foreach ($responseObject->pageProps->svgListData->svgList as $svgObject) {
                     $post = $this->postRepository->create([
                         'name' => $svgObject->title,
@@ -86,7 +113,9 @@ class PixeliedCommand extends Command
                     $post->tags()->attach($tagIds);
                 }
                 $page++;
-                break;
+                if ($responseObject->pageProps->pagination->totalPages < $page) {
+                    break;
+                }
             } while (true);
 
         }

@@ -35,7 +35,7 @@ class PublicController extends Controller
      */
     public function index()
     {
-//        $this->seo()->setTitle('Trang Chủ');
+        $this->seo()->setTitle('Home');
         $categories = $this->categoryRepository->all();
         return view('frontend.public.index', compact('categories'));
     }

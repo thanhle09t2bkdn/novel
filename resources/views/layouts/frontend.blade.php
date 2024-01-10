@@ -60,16 +60,9 @@
             class="collapse navbar-collapse justify-content-between"
             id="navbarCollapse"
         >
-            <form action="">
-                <div class="input-group">
-                    <input type="text" class="form-control form-control-lg" placeholder="Keyword">
-                    <div class="input-group-append">
-                        <span class="input-group-text bg-transparent text-primary"><i class="fa fa-search"></i></span>
-                    </div>
-                </div>
-            </form>
             <div class="navbar-nav font-weight-bold mx-auto py-0">
-                <a href="{{ route('frontend.public.index') }}" class="nav-item nav-link {{ $route->named('frontend.public.index') ? 'active' : '' }}">Trang Chủ</a>
+                <a href="{{ route('frontend.public.index') }}" class="nav-item nav-link {{ $route->named('frontend.public.index') ? 'active' : '' }}">Home</a>
+                <a href="#" class="nav-item nav-link">Image To SVG</a>
             </div>
         </div>
     </nav>

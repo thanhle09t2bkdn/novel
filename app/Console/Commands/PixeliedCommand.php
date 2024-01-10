@@ -87,6 +87,7 @@ class PixeliedCommand extends Command
     public function handle()
     {
         foreach (self::CATEGORIES as $category) {
+            echo 'START:' . $category['name'] . PHP_EOL;
             $categoryModel = $this->categoryRepository->getByColumn($category['name'], 'name');
             if (!$categoryModel) {
                 $categoryModel = $this->categoryRepository->create(['name' => $category['name'], 'slug' => $category['key']]);
@@ -110,14 +111,14 @@ class PixeliedCommand extends Command
                         $tagIds[] = $tagModel->id;
 
                     }
-                    $post->tags()->attach($tagIds);
+                    $post->tags()->attach(array_unique($tagIds));
                 }
                 $page++;
                 if ($responseObject->pageProps->pagination->totalPages < $page) {
                     break;
                 }
             } while (true);
-
+            echo 'END:' . $category['name'] . PHP_EOL;
         }
         return 0;
     }

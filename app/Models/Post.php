@@ -34,7 +34,8 @@ class Post extends Model
         'draft',
         'description',
         'content',
-        'image'
+        'image',
+        'storage_link',
     ];
 
     /**

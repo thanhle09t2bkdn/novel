@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->unsignedTinyInteger('type')->default(1);
             $table->string('slug');
             $table->string('image');
+            $table->string('storage_link')->nullable();
             $table->string('thumbnail')->nullable();
             $table->text('description')->nullable();
             $table->text('content')->nullable();

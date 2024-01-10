@@ -97,10 +97,11 @@ class PixeliedCommand extends Command
                 $response = $this->commonService->get(['query' => $category['name'], 'page'=> $page], 'https://pixelied.com/_next/data/TG7iDyv39WpuXq9uDpf6L/svg.json');
                 $responseObject = json_decode($response);
                 foreach ($responseObject->pageProps->svgListData->svgList as $svgObject) {
-                    if (!$this->postRepository->getByColumn($svgObject->svg->destination, 'image')) {
+                    $imageLink = 'https://svg-files.pixelied.com/' . $svgObject->svg->destination;
+                    if (!$this->postRepository->getByColumn($imageLink, 'image')) {
                         $post = $this->postRepository->create([
                             'name' => $svgObject->title,
-                            'image' => $svgObject->svg->destination,
+                            'image' => $imageLink,
                             'category_id' => $categoryModel->id
                         ]);
                         $tagIds = [];

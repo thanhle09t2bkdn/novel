@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d819c03393e223dbf2fedea66d02d41d",
+    "content-hash": "be65204e02c532adef79f89d0ac16d47",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -193,6 +193,57 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "caophihung94/php-simple-html-dom-parser",
+            "version": "v1.7.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caophihung94/php-simple-html-dom-parser.git",
+                "reference": "c93cd0caea5f77e7f214b98a691e90340a2e2d45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caophihung94/php-simple-html-dom-parser/zipball/c93cd0caea5f77e7f214b98a691e90340a2e2d45",
+                "reference": "c93cd0caea5f77e7f214b98a691e90340a2e2d45",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HungCP\\PhpSimpleHtmlDom\\HtmlDomParser": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "S.C. Chen",
+                    "email": "me578022@gmail.com"
+                },
+                {
+                    "name": "Cao Phi Hung",
+                    "email": "hungcp94@gmail.com"
+                }
+            ],
+            "description": "PHP Simple HTML DOM Parser with namespace and PHP 7.4 compatible",
+            "homepage": "http://simplehtmldom.sourceforge.net/",
+            "keywords": [
+                "Simple",
+                "dom",
+                "html",
+                "html dom parser"
+            ],
+            "support": {
+                "issues": "https://github.com/caophihung94/php-simple-html-dom-parser/issues",
+                "source": "https://github.com/caophihung94/php-simple-html-dom-parser/tree/v.17.4.1"
+            },
+            "time": "2020-08-18T07:09:03+00:00"
         },
         {
             "name": "cocur/slugify",
@@ -3810,58 +3861,6 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
-        },
-        {
-            "name": "sunra/php-simple-html-dom-parser",
-            "version": "v1.5.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sunra/php-simple-html-dom-parser.git",
-                "reference": "75b9b1cb64502d8f8c04dc11b5906b969af247c6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sunra/php-simple-html-dom-parser/zipball/75b9b1cb64502d8f8c04dc11b5906b969af247c6",
-                "reference": "75b9b1cb64502d8f8c04dc11b5906b969af247c6",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "php": ">=5.3.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Sunra\\PhpSimple\\HtmlDomParser": "Src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sunra",
-                    "email": "sunra@yandex.ru",
-                    "homepage": "https://github.com/sunra"
-                },
-                {
-                    "name": "S.C. Chen",
-                    "homepage": "http://sourceforge.net/projects/simplehtmldom/"
-                }
-            ],
-            "description": "Composer adaptation of: A HTML DOM parser written in PHP5+ let you manipulate HTML in a very easy way! Require PHP 5+. Supports invalid HTML. Find tags on an HTML page with selectors just like jQuery. Extract contents from HTML in a single line.",
-            "homepage": "https://github.com/sunra/php-simple-html-dom-parser",
-            "keywords": [
-                "dom",
-                "html",
-                "parser"
-            ],
-            "support": {
-                "issues": "https://github.com/sunra/php-simple-html-dom-parser/issues",
-                "source": "https://github.com/sunra/php-simple-html-dom-parser/tree/master"
-            },
-            "time": "2016-11-22T22:57:47+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

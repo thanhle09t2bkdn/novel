@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.0",
         "artesaos/seotools": "^1.2",
+        "caophihung94/php-simple-html-dom-parser": "^1.7",
         "cviebrock/eloquent-sluggable": "^8.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -19,7 +20,6 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "maatwebsite/excel": "^3.1",
-        "sunra/php-simple-html-dom-parser": "^1.5",
         "unisharp/laravel-filemanager": "^2.6"
     },
     "require-dev": {

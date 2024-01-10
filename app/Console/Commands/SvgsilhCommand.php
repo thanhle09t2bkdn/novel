@@ -6,8 +6,9 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
 use App\Services\CommonService;
+use HungCP\PhpSimpleHtmlDom\HtmlDomParser;
 use Illuminate\Console\Command;
-use Sunra\PhpSimple\HtmlDomParser;
+use Illuminate\Support\Facades\Http;
 
 class SvgsilhCommand extends Command
 {
@@ -264,14 +265,22 @@ class SvgsilhCommand extends Command
             }
             $page = 1;
             do {
-                $dom = HtmlDomParser::file_get_html('https://svgsilh.com/tag/' . $categoryKey . '-' . $page . '.html');
+                $content = Http::withHeaders([
+                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+                ])->get('https://svgsilh.com/tag/' . $categoryKey . '-' . $page . '.html');
+                $dom = HtmlDomParser::str_get_html($content->body());
 
-                $elems = $dom->find('.card mb-3 .box-shadow .h-100');
-                foreach ($elems as $elem) {
-                    var_dump($elem);
+                $elems = $dom->find('.card-columns .card');
+                foreach ($elems as $objSvg) {
+                    var_dump($objSvg->find('img.card-img-top')[0]->src);
+                    $tags = $objSvg->find('a.text-muted');
+                    foreach ($tags as $tag) {
+//                        var_dump($tag->innertext);
+                    }
                 }
                 break;
             } while (true);
+            break;
             echo 'END:' . $categoryKey . PHP_EOL;
         }
         return 0;

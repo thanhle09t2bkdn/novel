@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
+use App\Repositories\TagRepository;
+use App\Services\CommonService;
 use Illuminate\Console\Command;
 
 class PixeliedCommand extends Command
@@ -23,6 +25,8 @@ class PixeliedCommand extends Command
     protected $description = 'Pixelied';
     private $postRepository;
     private $categoryRepository;
+    private $tagRepository;
+    private $commonService;
     const CATEGORIES = [
         [
             'name' => 'Heart',
@@ -35,11 +39,16 @@ class PixeliedCommand extends Command
      *
      * @return void
      */
-    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository)
+    public function __construct(PostRepository $postRepository,
+                                CategoryRepository $categoryRepository,
+                                TagRepository $tagRepository,
+                                CommonService $commonService)
     {
         parent::__construct();
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->tagRepository = $tagRepository;
+        $this->commonService = $commonService;
     }
 
     /**
@@ -50,7 +59,36 @@ class PixeliedCommand extends Command
     public function handle()
     {
         foreach (self::CATEGORIES as $category) {
-            $categoryModel = $this->categoryRepository->create(['name' => $category['name'], 'slug' => $category['key']]);
+            $categoryModel = $this->categoryRepository->getByColumn($category['name'], 'name');
+            if (!$categoryModel) {
+                $categoryModel = $this->categoryRepository->create(['name' => $category['name'], 'slug' => $category['key']]);
+            }
+            $page = 1;
+            do {
+                $response = $this->commonService->get(['query' => $category['name']], 'https://pixelied.com/_next/data/TG7iDyv39WpuXq9uDpf6L/svg.json');
+                $responseObject = json_decode($response);
+
+                foreach ($responseObject->pageProps->svgListData->svgList as $svgObject) {
+                    $post = $this->postRepository->create([
+                        'name' => $svgObject->title,
+                        'image' => $svgObject->svg->destination,
+                        'category_id' => $categoryModel->id
+                    ]);
+                    $tagIds = [];
+                    foreach ($svgObject->tags as $tag) {
+                        $tagModel = $this->tagRepository->getByColumn($tag, 'name');
+                        if (!$tagModel) {
+                            $tagModel = $this->tagRepository->create(['name' => $tag]);
+                        }
+                        $tagIds[] = $tagModel->id;
+
+                    }
+                    $post->tags()->attach($tagIds);
+                }
+                $page++;
+                break;
+            } while (true);
+
         }
         return 0;
     }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "be65204e02c532adef79f89d0ac16d47",
+    "content-hash": "0d58ef001214835e9693ad9604e8ffbd",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -3205,6 +3205,59 @@
                 }
             ],
             "time": "2022-07-30T15:51:26+00:00"
+        },
+        {
+            "name": "platformcommunity/flysystem-bunnycdn",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PlatformCommunity/flysystem-bunnycdn.git",
+                "reference": "6c5a309aef4a82d4ef62a763f798e823b2eb08a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PlatformCommunity/flysystem-bunnycdn/zipball/6c5a309aef4a82d4ef62a763f798e823b2eb08a0",
+                "reference": "6c5a309aef4a82d4ef62a763f798e823b2eb08a0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.4",
+                "league/flysystem": "^1.0"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.5",
+                "league/flysystem-memory": "^1.0",
+                "mockery/mockery": "^1.3",
+                "phpunit/phpunit": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PlatformCommunity\\Flysystem\\BunnyCDN\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Sinnott",
+                    "email": "alex@platformapp.io"
+                }
+            ],
+            "description": "Flysystem adapter for BunnyCDN",
+            "support": {
+                "issues": "https://github.com/PlatformCommunity/flysystem-bunnycdn/issues",
+                "source": "https://github.com/PlatformCommunity/flysystem-bunnycdn/tree/v1.3.1"
+            },
+            "time": "2022-04-15T10:00:17+00:00"
         },
         {
             "name": "psr/container",

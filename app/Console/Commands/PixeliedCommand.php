@@ -7,6 +7,7 @@ use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
 use App\Services\CommonService;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class PixeliedCommand extends Command
 {
@@ -87,7 +88,7 @@ class PixeliedCommand extends Command
     public function handle()
     {
         foreach (self::CATEGORIES as $category) {
-            echo 'START:' . $category['name'] . PHP_EOL;
+            Log::info('PixeliedCommandSTART:' . $category['name']);
             $categoryModel = $this->categoryRepository->getByColumn($category['name'], 'name');
             if (!$categoryModel) {
                 $categoryModel = $this->categoryRepository->create(['name' => $category['name'], 'slug' => $category['key']]);
@@ -121,8 +122,9 @@ class PixeliedCommand extends Command
                     break;
                 }
             } while (true);
-            echo 'END:' . $category['name'] . PHP_EOL;
+            Log::info('PixeliedCommandEND:' . $category['name']);
         }
+        Log::info('PixeliedCommandEND');
         return 0;
     }
 }

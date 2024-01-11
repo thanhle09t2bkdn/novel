@@ -9,6 +9,7 @@ use App\Services\CommonService;
 use HungCP\PhpSimpleHtmlDom\HtmlDomParser;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class SvgsilhCommand extends Command
 {
@@ -257,7 +258,7 @@ class SvgsilhCommand extends Command
     public function handle()
     {
         foreach (self::CATEGORIES as $categoryKey) {
-            echo 'START:' . $categoryKey . PHP_EOL;
+            Log::info('SvgsilhCommandSTART:' . $categoryKey);
             $categoryName = ucfirst($categoryKey);
             $categoryModel = $this->categoryRepository->getByColumn($categoryName, 'name');
             if (!$categoryModel) {
@@ -298,8 +299,9 @@ class SvgsilhCommand extends Command
                 }
                 $page++;
             } while (true);
-            echo 'END:' . $categoryKey . PHP_EOL;
+            Log::info('SvgsilhCommandEND:' . $categoryKey);
         }
+        Log::info('SvgsilhCommandEND');
         return 0;
     }
 }

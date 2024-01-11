@@ -297,7 +297,6 @@ class SvgsilhCommand extends Command
                     break;
                 }
             } while (true);
-            break;
             echo 'END:' . $categoryKey . PHP_EOL;
         }
         return 0;

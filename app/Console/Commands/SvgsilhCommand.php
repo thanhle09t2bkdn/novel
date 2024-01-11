@@ -271,14 +271,31 @@ class SvgsilhCommand extends Command
                 $dom = HtmlDomParser::str_get_html($content->body());
 
                 $elems = $dom->find('.card-columns .card');
-                foreach ($elems as $objSvg) {
-                    var_dump($objSvg->find('img.card-img-top')[0]->src);
-                    $tags = $objSvg->find('a.text-muted');
-                    foreach ($tags as $tag) {
-//                        var_dump($tag->innertext);
+                foreach ($elems as $svgDom) {
+                    $svgObject = $svgDom->find('img.card-img-top', 0);
+                    $imageLink = 'https://svgsilh.com' . $svgObject->src;
+                    if (!$this->postRepository->getByColumn($imageLink, 'image')) {
+                        $post = $this->postRepository->create([
+                            'name' => $svgObject->getAttribute('alt'),
+                            'image' => $imageLink,
+                            'category_id' => $categoryModel->id
+                        ]);
+                        $tagIds = [];
+                        $tags = $svgDom->find('a.text-muted');
+                        foreach ($tags as $tag) {
+                            $tagModel = $this->tagRepository->getByColumn($tag->innertext, 'name');
+                            if (!$tagModel) {
+                                $tagModel = $this->tagRepository->create(['name' => $tag->innertext]);
+                            }
+                            $tagIds[] = $tagModel->id;
+
+                        }
+                        $post->tags()->attach(array_unique($tagIds));
                     }
                 }
-                break;
+                if(count($elems) < 20) {
+                    break;
+                }
             } while (true);
             break;
             echo 'END:' . $categoryKey . PHP_EOL;

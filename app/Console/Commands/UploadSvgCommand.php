@@ -46,8 +46,7 @@ class UploadSvgCommand extends Command
         do {
             $posts = $this->postRepository
                 ->where('storage_link', null, '=')
-                ->limit(100)
-                ->get();
+                ->paginate(100);
             foreach ($posts as $post) {
                 try {
                     $content = Http::withHeaders([
@@ -63,7 +62,6 @@ class UploadSvgCommand extends Command
                 }
 
             }
-            break;
         } while (count($posts));
         Log::info('END:Upload file');
 

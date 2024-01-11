@@ -6,6 +6,7 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
 use App\Services\CommonService;
+use GuzzleHttp\Exception\ConnectException;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
@@ -95,32 +96,39 @@ class PixeliedCommand extends Command
             }
             $page = 1;
             do {
-                $response = $this->commonService->get(['query' => $category['name'], 'page'=> $page], 'https://pixelied.com/_next/data/TG7iDyv39WpuXq9uDpf6L/svg.json');
-                $responseObject = json_decode($response);
-                foreach ($responseObject->pageProps->svgListData->svgList as $svgObject) {
-                    $imageLink = 'https://svg-files.pixelied.com/' . $svgObject->svg->destination;
-                    if (!$this->postRepository->getByColumn($imageLink, 'image')) {
-                        $post = $this->postRepository->create([
-                            'name' => $svgObject->title,
-                            'image' => $imageLink,
-                            'category_id' => $categoryModel->id
-                        ]);
-                        $tagIds = [];
-                        foreach ($svgObject->tags as $tag) {
-                            $tagModel = $this->tagRepository->getByColumn($tag, 'name');
-                            if (!$tagModel) {
-                                $tagModel = $this->tagRepository->create(['name' => $tag]);
-                            }
-                            $tagIds[] = $tagModel->id;
+                try {
+                    $response = $this->commonService->get(['query' => $category['name'], 'page'=> $page], 'https://pixelied.com/_next/data/TG7iDyv39WpuXq9uDpf6L/svg.json');
+                    $responseObject = json_decode($response);
+                    foreach ($responseObject->pageProps->svgListData->svgList as $svgObject) {
+                        $imageLink = 'https://svg-files.pixelied.com/' . $svgObject->svg->destination;
+                        if (!$this->postRepository->getByColumn($imageLink, 'image')) {
+                            $post = $this->postRepository->create([
+                                'name' => $svgObject->title,
+                                'image' => $imageLink,
+                                'category_id' => $categoryModel->id
+                            ]);
+                            $tagIds = [];
+                            foreach ($svgObject->tags as $tag) {
+                                $tagModel = $this->tagRepository->getByColumn($tag, 'name');
+                                if (!$tagModel) {
+                                    $tagModel = $this->tagRepository->create(['name' => $tag]);
+                                }
+                                $tagIds[] = $tagModel->id;
 
+                            }
+                            $post->tags()->attach(array_unique($tagIds));
                         }
-                        $post->tags()->attach(array_unique($tagIds));
                     }
+                    $page++;
+                    if ($responseObject->pageProps->pagination->totalPages < $page) {
+                        break;
+                    }
+                } catch (\Exception $e) {
+                    Log::error('Error:', [$e->getMessage()]);
+                    $page++;
+                    continue;
                 }
-                $page++;
-                if ($responseObject->pageProps->pagination->totalPages < $page) {
-                    break;
-                }
+
             } while (true);
             Log::info('PixeliedCommandEND:' . $category['name']);
         }

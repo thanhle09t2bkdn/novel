@@ -49,13 +49,19 @@ class UploadSvgCommand extends Command
                 ->limit(100)
                 ->get();
             foreach ($posts as $post) {
-                $content = Http::withHeaders([
-                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
-                ])->get($post->image);
-                $svgName = $post->slug . '.svg';
-                Storage::disk('bunnycdn')->put('svg/' . $svgName, $content->body());
-                $post->storage_link = $svgName;
-                $post->save();
+                try {
+                    $content = Http::withHeaders([
+                        'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+                    ])->get($post->image);
+                    $svgName = $post->slug . '.svg';
+                    Storage::disk('bunnycdn')->put('svg/' . $svgName, $content->body());
+                    $post->storage_link = $svgName;
+                    $post->save();
+                } catch (\Exception $e) {
+                    Log::error('Error:', [$e->getMessage()]);
+                    continue;
+                }
+
             }
             break;
         } while (count($posts));

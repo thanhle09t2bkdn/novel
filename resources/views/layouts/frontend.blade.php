@@ -9,6 +9,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta name="googlebot" content="index,follow,max-image-preview:large">
     {!! SEO::generate(true) !!}
 
 
@@ -61,99 +63,8 @@
             id="navbarCollapse"
         >
             <div class="navbar-nav font-weight-bold mx-auto py-0">
-                <a href="{{ route('frontend.public.index') }}" class="nav-item nav-link {{ $route->named('frontend.public.index') ? 'active' : '' }}">Trang Chủ</a>
-                <a href="{{ route('frontend.public.book') }}" class="nav-item nav-link">Sách</a>
-                <div class="nav-item dropdown">
-                    <a
-                        href="#"
-                        class="nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                    >Lớp 6</a
-                    >
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-6') }}" class="dropdown-item">Kiểm tra 15 phút</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-6') }}" class="dropdown-item">Kiểm tra giữa kì</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-6') }}" class="dropdown-item">Kiểm tra cuối kì</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a
-                        href="#"
-                        class="nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                    >Lớp 7</a
-                    >
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-7') }}" class="dropdown-item">Kiểm tra 15 phút</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-7') }}" class="dropdown-item">Kiểm tra giữa kì</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-7') }}" class="dropdown-item">Kiểm tra cuối kì</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a
-                        href="#"
-                        class="nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                    >Lớp 8</a
-                    >
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-8') }}" class="dropdown-item">Kiểm tra 15 phút</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-8') }}" class="dropdown-item">Kiểm tra giữa kì</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-8') }}" class="dropdown-item">Kiểm tra cuối kì</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a
-                        href="#"
-                        class="nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                    >Lớp 9</a
-                    >
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-9') }}" class="dropdown-item">Kiểm tra 15 phút</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-9') }}" class="dropdown-item">Kiểm tra giữa kì</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-9') }}" class="dropdown-item">Kiểm tra cuối kì</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a
-                        href="#"
-                        class="nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                    >Lớp 10</a
-                    >
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-10') }}" class="dropdown-item">Kiểm tra 15 phút</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-10') }}" class="dropdown-item">Kiểm tra giữa kì</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-10') }}" class="dropdown-item">Kiểm tra cuối kì</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a
-                        href="#"
-                        class="nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                    >Lớp 11</a
-                    >
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-11') }}" class="dropdown-item">Kiểm tra 15 phút</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-11') }}" class="dropdown-item">Kiểm tra giữa kì</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-11') }}" class="dropdown-item">Kiểm tra cuối kì</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a
-                        href="#"
-                        class="nav-link dropdown-toggle"
-                        data-toggle="dropdown"
-                    >Lớp 12</a
-                    >
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-15-phut-lop-12') }}" class="dropdown-item">Kiểm tra 15 phút</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-giua-ki-lop-12') }}" class="dropdown-item">Kiểm tra giữa kì</a>
-                        <a href="{{ route('frontend.public.topic', 'kiem-tra-cuoi-ki-lop-12') }}" class="dropdown-item">Kiểm tra cuối kì</a>
-                    </div>
-                </div>
+                <a href="{{ route('frontend.public.index') }}" class="nav-item nav-link {{ $route->named('frontend.public.index') ? 'active' : '' }}">Home</a>
+                <a href="#" class="nav-item nav-link">Image To SVG</a>
             </div>
         </div>
     </nav>
@@ -208,7 +119,6 @@
 <a href="#" class="btn btn-primary p-3 back-to-top"
 ><i class="fa fa-angle-double-up"></i
     ></a>
-{{ \TawkTo::widgetCode() }}
 @stack('before-scripts')
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -217,15 +127,7 @@
 <script src="{{ asset('user/lib/owlcarousel/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('user/lib/isotope/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('user/lib/lightbox/js/lightbox.min.js') }}"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EL4ZNNZSSG"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
-    gtag('config', 'G-EL4ZNNZSSG');
-</script>
 @stack('after-scripts')
 <!-- Template Javascript -->
 <script src="{{ asset('user/js/main.js') }}"></script>

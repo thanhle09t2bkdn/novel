@@ -19,10 +19,7 @@ class Post extends Model
     use HasFactory;
     use Sluggable;
 
-    const POST_TYPE = 1;
-    const PAGE_TYPE = 2;
-    const BOOK_TYPE = 3;
-    const QUIZ_TYPE = 4;
+    const SVG_TYPE = 1;
 
     /**
      * The attributes that are mass assignable.
@@ -37,7 +34,8 @@ class Post extends Model
         'draft',
         'description',
         'content',
-        'image'
+        'image',
+        'storage_link',
     ];
 
     /**
@@ -53,15 +51,12 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function audios()
+    public function tags()
     {
-        return $this->hasMany(Audio::class);
+        return $this->belongstoMany(Tag::class);
     }
 
-    public function quizzes()
-    {
-        return $this->hasMany(Quiz::class)->orderBy('created_at');
-    }
+
 
     public function sluggable(): array
     {
@@ -73,10 +68,7 @@ class Post extends Model
     }
 
     public static $typeNames = [
-        self::POST_TYPE => 'Post',
-        self::PAGE_TYPE => 'Page',
-        self::BOOK_TYPE => 'Book',
-        self::QUIZ_TYPE => 'Quiz',
+        self::SVG_TYPE => 'SVG',
     ];
 
     public function getTypeNameAttribute()

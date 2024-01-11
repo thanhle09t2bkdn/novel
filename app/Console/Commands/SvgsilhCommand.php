@@ -296,6 +296,7 @@ class SvgsilhCommand extends Command
                 if(count($elems) < 20) {
                     break;
                 }
+                $page++;
             } while (true);
             echo 'END:' . $categoryKey . PHP_EOL;
         }

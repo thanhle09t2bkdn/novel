@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
 class UploadSvgCommand extends Command
@@ -38,8 +39,10 @@ class UploadSvgCommand extends Command
      */
     public function handle()
     {
-        Storage::disk('bunnycdn')->put('svg/index.html', '<html>Hello World</html>');
-
+        $content = Http::withHeaders([
+            'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+        ])->get('https://svgsilh.com/svg/2167964.svg');
+        Storage::disk('bunnycdn')->put('svg/abc.svg', $content->body());
         return 0;
     }
 }

@@ -266,38 +266,45 @@ class SvgsilhCommand extends Command
             }
             $page = 1;
             do {
-                $content = Http::withHeaders([
-                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
-                ])->get('https://svgsilh.com/tag/' . $categoryKey . '-' . $page . '.html');
-                $dom = HtmlDomParser::str_get_html($content->body());
+                try {
+                    $content = Http::withHeaders([
+                        'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+                    ])->get('https://svgsilh.com/tag/' . $categoryKey . '-' . $page . '.html');
+                    $dom = HtmlDomParser::str_get_html($content->body());
 
-                $elems = $dom->find('.card-columns .card');
-                foreach ($elems as $svgDom) {
-                    $svgObject = $svgDom->find('img.card-img-top', 0);
-                    $imageLink = 'https://svgsilh.com' . $svgObject->src;
-                    if (!$this->postRepository->getByColumn($imageLink, 'image')) {
-                        $post = $this->postRepository->create([
-                            'name' => $svgObject->getAttribute('alt'),
-                            'image' => $imageLink,
-                            'category_id' => $categoryModel->id
-                        ]);
-                        $tagIds = [];
-                        $tags = $svgDom->find('a.text-muted');
-                        foreach ($tags as $tag) {
-                            $tagModel = $this->tagRepository->getByColumn($tag->innertext, 'name');
-                            if (!$tagModel) {
-                                $tagModel = $this->tagRepository->create(['name' => $tag->innertext]);
+                    $elems = $dom->find('.card-columns .card');
+                    foreach ($elems as $svgDom) {
+                        $svgObject = $svgDom->find('img.card-img-top', 0);
+                        $imageLink = 'https://svgsilh.com' . $svgObject->src;
+                        if (!$this->postRepository->getByColumn($imageLink, 'image')) {
+                            $post = $this->postRepository->create([
+                                'name' => $svgObject->getAttribute('alt'),
+                                'image' => $imageLink,
+                                'category_id' => $categoryModel->id
+                            ]);
+                            $tagIds = [];
+                            $tags = $svgDom->find('a.text-muted');
+                            foreach ($tags as $tag) {
+                                $tagModel = $this->tagRepository->getByColumn($tag->innertext, 'name');
+                                if (!$tagModel) {
+                                    $tagModel = $this->tagRepository->create(['name' => $tag->innertext]);
+                                }
+                                $tagIds[] = $tagModel->id;
+
                             }
-                            $tagIds[] = $tagModel->id;
-
+                            $post->tags()->attach(array_unique($tagIds));
                         }
-                        $post->tags()->attach(array_unique($tagIds));
                     }
+                    if(count($elems) < 20) {
+                        break;
+                    }
+                    $page++;
+                }catch (\Exception $e) {
+                    Log::error('Error:', [$e->getMessage()]);
+                    $page++;
+                    continue;
                 }
-                if(count($elems) < 20) {
-                    break;
-                }
-                $page++;
+
             } while (true);
             Log::info('SvgsilhCommandEND:' . $categoryKey);
         }

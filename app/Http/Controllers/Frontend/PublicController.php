@@ -87,4 +87,13 @@ class PublicController extends Controller
             ->get();
         return view('frontend.public.svg', compact('post', 'relatedPosts'));
     }
+
+    public function search(Request $request)
+    {
+
+        $this->seo()->setTitle('Search');
+        $searchName = $request->get('name');
+        $list = $this->postRepository->searchName($searchName)->paginate();
+        return view('frontend.public.search', compact('searchName', 'list'));
+    }
 }

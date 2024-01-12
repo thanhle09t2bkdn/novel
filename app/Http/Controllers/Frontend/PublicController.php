@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Post;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
+use App\Repositories\TagRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
 class PublicController extends Controller
@@ -16,6 +15,7 @@ class PublicController extends Controller
 
     private $postRepository;
     private $categoryRepository;
+    private $tagRepository;
 
     /**
      * Create a new controller instance.
@@ -23,10 +23,11 @@ class PublicController extends Controller
      * @return void
      */
 
-    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository)
+    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, TagRepository $tagRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->tagRepository = $tagRepository;
     }
 
     /**
@@ -50,9 +51,21 @@ class PublicController extends Controller
     {
         $category = $this->categoryRepository->getByColumn($slug, 'slug');
         $this->seo()->setTitle($category->name);
-        $request->request->add(['category_id' => $category->id]);
-        $list = $this->postRepository->searchFromRequest($request);
+        $list = $this->postRepository->where('category_id', $category->id)->paginate();
         return view('frontend.public.category', compact('category', 'list'));
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function tag(string $slug, Request $request)
+    {
+        $tag = $this->tagRepository->getByColumn($slug, 'slug');
+        $this->seo()->setTitle($tag->name);
+        $list = $tag->posts()->paginate();
+        return view('frontend.public.tag', compact('tag', 'list'));
     }
 
 

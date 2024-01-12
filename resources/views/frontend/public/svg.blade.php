@@ -9,7 +9,8 @@
         >
             <h3 class="font-weight-bold text-white">Free SVG Files</h3>
             <div class="d-inline-flex text-white">
-                <p class="m-0">Find stunning free SVG images and incorporate them into your projects. Instantly create jaw-dropping vectors, designs, and more with Pixelied!</p>
+                <p class="m-0">Find stunning free SVG images and incorporate them into your projects. Instantly create
+                    jaw-dropping vectors, designs, and more with Pixelied!</p>
             </div>
             <form method="get" action="">
                 <div class="input-group">
@@ -43,24 +44,27 @@
                         title="{{ $post->category->name }}"
                     />
                     <div class="row">
-                        @foreach($post->tags as $tag)
-                            <a href="{{ route('frontend.public.category', $tag->slug) }}" class="btn btn-secondary">
-                                {{ $tag->name }} <span class="badge bg-secondary">4</span>
-                            </a>
-                        @endforeach
-
+                        <h3>Tag</h3>
+                        <p>
+                            @foreach($post->tags as $tag)
+                                <a href="{{ route('frontend.public.category', $tag->slug) }}" class="btn btn-secondary">
+                                    {{ $tag->name }} <span class="badge bg-secondary">4</span>
+                                </a>
+                            @endforeach
+                        </p>
                     </div>
                 </div>
 
                 <!-- Related Post -->
                 <div class="mb-5 mx-n3">
-                    <h2 class="mb-4 ml-3">Related SVG</h2>
+                    <h2 class="mb-4 ">Related SVG</h2>
                     <div class="row">
                         @forelse ($relatedPosts as $item)
                             <div class="col-md-2 mb-4">
                                 <div class="card border-0 shadow-sm mb-2">
                                     <a href="{{ route('frontend.public.svg', $item->slug) }}">
-                                        <img class="svg-bg mb-2" width="200" height="200" src="{{ $item->image }}" title="{{ $item->name }}" alt="{{ $item->name }}" />
+                                        <img class="svg-bg mb-2" width="200" height="200" src="{{ $item->image }}"
+                                             title="{{ $item->name }}" alt="{{ $item->name }}"/>
                                     </a>
                                 </div>
                             </div>

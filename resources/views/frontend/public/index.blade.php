@@ -33,9 +33,11 @@
             </div>
             <div class="row">
                 @foreach($categories as $category)
-                    <a href="{{ route('frontend.public.category', $category->slug) }}" class="btn btn-secondary">
-                        {{ $category->name }} <span class="badge bg-secondary">4</span>
-                    </a>
+                    <p>
+                        <a href="{{ route('frontend.public.category', $category->slug) }}" class="btn btn-secondary">
+                            {{ $category->name }} <span class="badge bg-secondary">4</span>
+                        </a>
+                    </p>
                 @endforeach
 
             </div>

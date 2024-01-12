@@ -15,6 +15,7 @@ class PostRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'id' => ['column' => 'posts.id', 'operator' => '='],
+        'category_id' => ['column' => 'posts.category_id', 'operator' => '='],
         'name' => ['column' => 'posts.name', 'operator' => 'like'],
     ];
 

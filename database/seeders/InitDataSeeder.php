@@ -16,7 +16,7 @@ class InitDataSeeder extends Seeder
     public function run()
     {
 //        Artisan::call('command:pixelied');
-        Artisan::call('command:svgsilh');
+//        Artisan::call('command:svgsilh');
 //        Artisan::call('command:upload-svg');
     }
 }

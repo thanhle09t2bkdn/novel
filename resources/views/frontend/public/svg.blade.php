@@ -63,7 +63,7 @@
                             <div class="col-md-2 mb-4">
                                 <div class="card border-0 shadow-sm mb-2">
                                     <a href="{{ route('frontend.public.svg', $item->slug) }}">
-                                        <img class="svg-bg mb-2" width="200" height="200" src="{{ $item->image }}"
+                                        <img class="svg-bg" width="auto" height="100" src="{{ $item->image }}"
                                              title="{{ $item->name }}" alt="{{ $item->name }}"/>
                                     </a>
                                 </div>

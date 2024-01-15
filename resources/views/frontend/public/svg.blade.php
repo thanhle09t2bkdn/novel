@@ -12,9 +12,9 @@
                 <p class="m-0">Find stunning free SVG images and incorporate them into your projects. Instantly create
                     jaw-dropping vectors, designs, and more with Pixelied!</p>
             </div>
-            <form method="get" action="">
+            <form method="get" action="{{ route('frontend.public.search') }}">
                 <div class="input-group">
-                    <input name="search" type="text" class="form-control form-control-lg" placeholder="Search SVG">
+                    <input name="name" type="text" class="form-control form-control-lg" placeholder="Search SVG">
                     <div class="input-group-append">
                         <span class="input-group-text bg-transparent text-primary"><i class="fa fa-search"></i></span>
                     </div>
@@ -44,11 +44,11 @@
                         title="{{ $post->category->name }}"
                     />
                     <div class="row">
-                        <h3>Tag</h3>
+                        <h3>Tag </h3>
                         <p>
                             @foreach($post->tags as $tag)
                                 <a href="{{ route('frontend.public.tag', $tag->slug) }}" class="btn btn-secondary">
-                                    {{ $tag->name }} <span class="badge bg-secondary">4</span>
+                                    {{ $tag->name }}
                                 </a>
                             @endforeach
                         </p>

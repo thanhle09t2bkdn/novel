@@ -1,6 +1,6 @@
 (function ($) {
     "use strict";
-    
+
     // Dropdown on mouse hover
     $(document).ready(function () {
         function toggleNavbarMethod() {
@@ -16,9 +16,14 @@
         }
         toggleNavbarMethod();
         $(window).resize(toggleNavbarMethod);
+        $('#download-file').click(function (e){
+            e.preventDefault();
+            alert($(this).attr('href'));
+            window.location.href = $(this).attr('href');
+        })
     });
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
@@ -97,6 +102,6 @@
             }
         }
     });
-    
+
 })(jQuery);
 

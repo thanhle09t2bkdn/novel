@@ -13,9 +13,9 @@
             </div>
             <form method="get" action="{{ route('frontend.public.search') }}">
                 <div class="input-group">
-                    <input name="name" type="text" class="form-control form-control-lg" placeholder="Search SVG">
+                    <input required name="name" type="text" class="form-control form-control-lg" placeholder="Search SVG">
                     <div class="input-group-append">
-                        <span class="input-group-text bg-transparent text-primary"><i class="fa fa-search"></i></span>
+                        <input type="submit" class="input-group-text bg-transparent text-primary">
                     </div>
                 </div>
             </form>

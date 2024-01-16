@@ -46,7 +46,7 @@
                     <div class="row">
                         <h3>Tag </h3>
                         <p>
-                            @foreach($post->tags as $tag)
+                            @foreach($tags as $tag)
                                 <a href="{{ route('frontend.public.tag', $tag->slug) }}" class="btn btn-secondary">
                                     {{ $tag->name }}
                                 </a>

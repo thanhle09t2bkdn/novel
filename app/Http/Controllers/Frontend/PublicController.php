@@ -64,7 +64,7 @@ class PublicController extends Controller
     {
         $tag = $this->tagRepository->getByColumn($slug, 'slug');
         $this->seo()->setTitle($tag->name);
-        $list = $tag->posts()->paginate();
+        $list = $tag->posts()->paginate(18);
         return view('frontend.public.tag', compact('tag', 'list'));
     }
 
@@ -78,6 +78,12 @@ class PublicController extends Controller
     {
         $post = $this->postRepository->getByColumn($slug, 'slug');
         $this->seo()->setTitle($post->name);
+        $tags = $post->tags;
+        $tagKeywords = [];
+        foreach ($tags as $tag) {
+            $tagKeywords[] = $tag->name;
+        }
+        $this->seo()->metatags()->addKeyword($tagKeywords);
         $relatedPosts = $this->postRepository
             ->where('type', $post->type)
             ->where('category_id', $post->category_id)
@@ -85,7 +91,7 @@ class PublicController extends Controller
             ->orderBy('created_at', 'desc')
             ->limit(30)
             ->get();
-        return view('frontend.public.svg', compact('post', 'relatedPosts'));
+        return view('frontend.public.svg', compact('post', 'relatedPosts', 'tags'));
     }
 
     public function search(Request $request)

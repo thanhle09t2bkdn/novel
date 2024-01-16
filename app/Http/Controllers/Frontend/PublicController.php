@@ -102,4 +102,10 @@ class PublicController extends Controller
         $list = $this->postRepository->searchName($searchName)->paginate();
         return view('frontend.public.search', compact('searchName', 'list'));
     }
+
+    public function download(Request $request)
+    {
+        $filePath = 'https://svg-files.pixelied.com/f879da63-de3f-4fc1-a00a-abfe9ac7acd2/pixelied-heart.svg';
+        return response()->download($filePath);
+    }
 }

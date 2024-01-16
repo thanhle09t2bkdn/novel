@@ -32,16 +32,19 @@
                         <p class="mr-3">
                             <i class="fa fa-folder text-primary"></i> {{ $post->category->name }}
                         </p>
-                        <p class="mr-3">Created At: {{ date('d-m-Y H:i:s', strtotime($post->created_at)) }}</p>
+                        <p class="mr-3">Created At: {{ date('m-d-Y H:i:s', strtotime($post->created_at)) }}</p>
                     </div>
                 </div>
                 <div class="mb-5">
+                    <a href="{{ $post->image }}" download="1300249.svg" class="btn btn-secondary right">
+                        Download
+                    </a>
                     <img
                         class="img-fluid mb-4 svg-bg"
                         src="{{ $post->image }}"
                         width="400px" height="400px"
-                        alt="{{ $post->category->name }}"
-                        title="{{ $post->category->name }}"
+                        alt="{{ $post->name }}"
+                        title="{{ $post->name }}"
                     />
                     <a rel="license" target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="https://licensebuttons.net/p/zero/1.0/80x15.png" style="border-style: none;" alt="CC0"></a>
                     <div class="row">

@@ -46,9 +46,8 @@
         <a
             href="{{ route('frontend.public.index') }}"
             class="navbar-brand font-weight-bold text-secondary"
-            style="font-size: 50px"
         >
-            <img width="60px" src="{{ asset('user/img/logo_tt.png') }}" alt="logo">
+            SVG Collection
         </a>
         <button
             type="button"
@@ -64,7 +63,6 @@
         >
             <div class="navbar-nav font-weight-bold mx-auto py-0">
                 <a href="{{ route('frontend.public.index') }}" class="nav-item nav-link {{ $route->named('frontend.public.index') ? 'active' : '' }}">Home</a>
-                <a href="#" class="nav-item nav-link">Image To SVG</a>
             </div>
         </div>
     </nav>
@@ -81,25 +79,7 @@
         <div class="col-lg-1 col-md-1 mb-5">
         </div>
         <div class="col-lg-10 col-md-8 mb-3">
-            <h3 class="text-primary mb-4">Liên Hệ</h3>
-            <div class="d-flex">
 
-                <div class="pl-3">
-                    <p class="text-white"><i class="fa fa-map-marker-alt text-primary"></i> Địa Chỉ: Kiệt 82/157, Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</p>
-                </div>
-            </div>
-            <div class="d-flex">
-
-                <div class="pl-3">
-                    <p><i class="fa fa-envelope text-primary"></i> Email: thang.phanlucky@gmail.com </p>
-                </div>
-            </div>
-            <div class="d-flex">
-
-                <div class="pl-3">
-                    <p><i class="fa fa-phone-alt text-primary"></i> Điện Thoại: 034 8371 758</p>
-                </div>
-            </div>
         </div>
     </div>
     <div
@@ -108,7 +88,7 @@
     >
         <p class="m-0 text-center text-white">
             &copy;
-            <a class="text-primary font-weight-bold" href="#">Tiếng Anh Thầy Thắng</a>.
+            <a class="text-primary font-weight-bold" href="#">SVG Collection</a>.
             All Rights Reserved.
         </p>
     </div>

@@ -23,7 +23,7 @@
     </div>
     <!-- Header End -->
     <!-- Class Start -->
-    <div class="container-fluid pt-5">
+    <div class="container-fluid pt-2">
         <div class="container">
             <div class="text-center pb-2">
                 <p class="section-title px-5">

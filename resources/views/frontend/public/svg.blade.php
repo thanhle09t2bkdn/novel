@@ -70,8 +70,8 @@
                                         <img class="svg-bg" width="auto" height="100" src="{{ $item->image }}"
                                              title="{{ $item->name }}" alt="{{ $item->name }}"/>
                                     </a>
-                                    <a rel="license" target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="https://licensebuttons.net/p/zero/1.0/80x15.png" style="border-style: none;" alt="CC0"></a>
                                 </div>
+                                <a rel="license" target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="https://licensebuttons.net/p/zero/1.0/80x15.png" style="border-style: none;" alt="CC0"></a>
                             </div>
                         @empty
                             <h3>This category didn't have any svg</h3>

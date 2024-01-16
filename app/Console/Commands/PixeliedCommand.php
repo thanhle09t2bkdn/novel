@@ -6,7 +6,6 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
 use App\Services\CommonService;
-use GuzzleHttp\Exception\ConnectException;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 

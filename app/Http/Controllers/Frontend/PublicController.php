@@ -8,6 +8,7 @@ use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
+use Illuminate\Support\Facades\Storage;
 
 class PublicController extends Controller
 {
@@ -103,9 +104,10 @@ class PublicController extends Controller
         return view('frontend.public.search', compact('searchName', 'list'));
     }
 
-    public function download(Request $request)
+    public function download($id, $storageLink)
     {
-        $filePath = 'https://svg-files.pixelied.com/f879da63-de3f-4fc1-a00a-abfe9ac7acd2/pixelied-heart.svg';
-        return response()->download($filePath);
+        $post = $this->postRepository->getById($id);
+        return response(file_get_contents( env('SVG_HOST') . '/svg/' . $post->storage_link));
+
     }
 }

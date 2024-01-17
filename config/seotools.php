@@ -11,7 +11,7 @@ return [
         'defaults' => [
             'title' => "Free SVG Vectors and Icons", // set false to total remove
             'titleBefore' => false, // Put defaults.title before page title, like 'Free SVG Vectors and Icons - Dashboard'
-            'description' => 'Free Vectors and Icons in SVG format. ✅ Download free mono or multi color vectors for commercial use. Search in 500.000+ Free SVG Vectors and Icons.', // set false to total remove
+            'description' => 'Unlock endless creativity! Explore our site for 500,000+ free SVG files. Click, download, and elevate your projects effortlessly with our vast collection.', // set false to total remove
             'separator' => ' - ',
             'keywords' => [],
             'canonical' => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
@@ -37,7 +37,7 @@ return [
          */
         'defaults' => [
             'title' => 'Free SVG Vectors and Icons', // set false to total remove
-            'description' => 'Free Vectors and Icons in SVG format. ✅ Download free mono or multi color vectors for commercial use. Search in 500.000+ Free SVG Vectors and Icons.', // set false to total remove
+            'description' => 'Unlock endless creativity! Explore our site for 500,000+ free SVG files. Click, download, and elevate your projects effortlessly with our vast collection.', // set false to total remove
             'url' => false, // Set null for using Url::current(), set false to total remove
             'type' => false,
             'site_name' => false,
@@ -59,7 +59,7 @@ return [
          */
         'defaults' => [
             'title' => 'Free SVG Vectors and Icons', // set false to total remove
-            'description' => 'Free Vectors and Icons in SVG format. ✅ Download free mono or multi color vectors for commercial use. Search in 500.000+ Free SVG Vectors and Icons.', // set false to total remove
+            'description' => 'Unlock endless creativity! Explore our site for 500,000+ free SVG files. Click, download, and elevate your projects effortlessly with our vast collection.', // set false to total remove
             'url' => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'type' => 'WebPage',
             'images' => [],

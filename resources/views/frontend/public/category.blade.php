@@ -9,8 +9,7 @@
         >
             <h3 class="font-weight-bold text-white">Free SVG Files</h3>
             <div class="d-inline-flex text-white">
-                <p class="m-0">Find stunning free SVG images and incorporate them into your projects. Instantly create
-                    jaw-dropping vectors, designs, and more with SVG Collection!</p>
+                <p class="mb-2">Free SVG downloads for seamless project enhancement. Click, download, create effortlessly!</p>
             </div>
             <form method="get" action="{{ route('frontend.public.search') }}">
                 <div class="input-group">

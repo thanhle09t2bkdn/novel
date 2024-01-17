@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="mb-5">
-                    <a href="{{ $post->image }}" id="download-file" class="btn btn-secondary right">
+                    <a href="{{ route('frontend.public.download', [$post->id, $post->storage_link]) }}"  download="{{ $post->storage_link }}" class="btn btn-secondary">
                         Download
                     </a>
                     <img

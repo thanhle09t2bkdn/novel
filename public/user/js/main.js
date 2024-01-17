@@ -16,11 +16,6 @@
         }
         toggleNavbarMethod();
         $(window).resize(toggleNavbarMethod);
-        $('#download-file').click(function (e){
-            e.preventDefault();
-            alert($(this).attr('href'));
-            window.location.href = $(this).attr('href');
-        })
     });
 
 

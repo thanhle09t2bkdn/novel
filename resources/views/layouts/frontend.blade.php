@@ -30,9 +30,6 @@
     <!-- Flaticon Font -->
     <link href="{{ asset('user/lib/flaticon/font/flaticon.css') }}" rel="stylesheet"/>
 
-    <!-- Libraries Stylesheet -->
-    <link href="{{ asset('user/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('user/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet"/>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('user/css/style.css?v=2') }}" rel="stylesheet"/>
@@ -104,10 +101,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('user/lib/easing/easing.min.js') }}"></script>
-<script src="{{ asset('user/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('user/lib/isotope/isotope.pkgd.min.js') }}"></script>
-<script src="{{ asset('user/lib/lightbox/js/lightbox.min.js') }}"></script>
-
 @stack('after-scripts')
 <!-- Template Javascript -->
 <script src="{{ asset('user/js/main.js') }}"></script>

@@ -30,7 +30,9 @@
                     <h3 class="mb-3">{{ $post->name }}</h3>
                     <div class="d-flex">
                         <p class="mr-3">
-                            <i class="fa fa-folder text-primary"></i> {{ $post->category->name }}
+                            <a href="{{ route('frontend.public.category', $post->category->slug) }}">
+                                <i class="fa fa-folder text-primary"></i> {{ $post->category->name }}
+                            </a>
                         </p>
                         <p class="mr-3">Created At: {{ date('m-d-Y H:i:s', strtotime($post->created_at)) }}</p>
                     </div>

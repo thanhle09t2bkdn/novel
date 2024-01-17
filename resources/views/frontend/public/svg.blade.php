@@ -16,7 +16,7 @@
                 <div class="input-group">
                     <input name="name" type="text" class="form-control form-control-lg" placeholder="Search SVG">
                     <div class="input-group-append">
-                        <span class="input-group-text bg-transparent text-primary"><i class="fa fa-search"></i></span>
+                        <button type="submit" class="btn-secondary">Search</button>
                     </div>
                 </div>
             </form>
@@ -38,9 +38,9 @@
                     </div>
                 </div>
                 <div class="mb-5">
-                    <a href="{{ route('frontend.public.download', [$post->id, $post->storage_link]) }}"  download="{{ $post->storage_link }}" class="btn btn-secondary">
-                        Download
-                    </a>
+                    <p class="text-right"><a href="{{ route('frontend.public.download', [$post->id, $post->storage_link]) }}"  download="{{ $post->storage_link }}" class="btn btn-secondary">
+                            Download
+                        </a></p>
                     <img
                         class="img-fluid mb-4 svg-bg"
                         src="{{ $post->image }}"
@@ -48,9 +48,11 @@
                         alt="{{ $post->name }}"
                         title="{{ $post->name }}"
                     />
-                    <a rel="license" target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="https://licensebuttons.net/p/zero/1.0/80x15.png" style="border-style: none;" alt="CC0"></a>
+                    <p>
+                        <a rel="license" target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="https://licensebuttons.net/p/zero/1.0/80x15.png" style="border-style: none;" alt="CC0"></a>
+                    </p>
                     <div class="row">
-                        <h3>Tag </h3>
+                        <h3 class="mr-4">Tag:</h3>
                         <p>
                             @foreach($tags as $tag)
                                 <a href="{{ route('frontend.public.tag', $tag->slug) }}" class="btn btn-secondary">
@@ -87,12 +89,6 @@
                 <!-- Single Image -->
                 <div class="mb-5">
                     <img src="{{ asset('user/img/blog-1.jpg') }}" alt="" class="img-fluid rounded"/>
-                </div>
-
-                <!-- Recent Post -->
-                <div class="mb-5">
-                    <h2 class="mb-4">Bài đăng gần đây</h2>
-
                 </div>
             </div>
         </div>

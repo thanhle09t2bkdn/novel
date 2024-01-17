@@ -5,17 +5,18 @@
     <div class="container-fluid bg-primary mb-5">
         <div
             class="d-flex flex-column align-items-center justify-content-center"
-            style="min-height: 300px"
+            style="min-height: 150px"
         >
-            <h3 class="display-3 font-weight-bold text-white">Free SVG Files</h3>
+            <h3 class="font-weight-bold text-white">Free SVG Files</h3>
             <div class="d-inline-flex text-white">
-                <p class="m-0">Find stunning free SVG images and incorporate them into your projects. Instantly create jaw-dropping vectors, designs, and more with Pixelied!</p>
+                <p class="m-0">Find stunning free SVG images and incorporate them into your projects. Instantly create
+                    jaw-dropping vectors, designs, and more with Pixelied!</p>
             </div>
             <form method="get" action="{{ route('frontend.public.search') }}">
                 <div class="input-group">
                     <input name="name" type="text" class="form-control form-control-lg" placeholder="Search SVG">
                     <div class="input-group-append">
-                        <span class="input-group-text bg-transparent text-primary"><i class="fa fa-search"></i></span>
+                        <button type="submit" class="btn-secondary">Search</button>
                     </div>
                 </div>
             </form>

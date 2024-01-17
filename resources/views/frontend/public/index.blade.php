@@ -10,7 +10,7 @@
             <h3 class="font-weight-bold text-white">Free SVG Files</h3>
             <div class="d-inline-flex text-white">
                 <p class="m-0">Find stunning free SVG images and incorporate them into your projects. Instantly create
-                    jaw-dropping vectors, designs, and more with Pixelied!</p>
+                    jaw-dropping vectors, designs, and more with SVG Collection!</p>
             </div>
             <form method="get" action="{{ route('frontend.public.search') }}">
                 <div class="input-group">
@@ -24,7 +24,7 @@
     </div>
     <!-- Header End -->
     <!-- Class Start -->
-    <div class="container-fluid pt-2">
+    <div class="container-fluid pt-2 min-vh-100">
         <div class="container">
             <div class="text-center pb-2">
                 <p class="section-title px-5">

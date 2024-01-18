@@ -48,6 +48,21 @@
                     </nav>
                 </div>
             </div>
+            <div class="row">
+                <!-- 160x600_1 -->
+                @if(env('APP_ENV', 'local') == 'prod')
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '2cee9c2f07e233305943a3eff99e715c',
+                            'format' : 'iframe',
+                            'height' : 600,
+                            'width' : 160,
+                            'params' : {}
+                        };
+                        document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/2cee9c2f07e233305943a3eff99e715c/invoke.js"></scr' + 'ipt>');
+                    </script>
+                @endif
+            </div>
         </div>
     </div>
 

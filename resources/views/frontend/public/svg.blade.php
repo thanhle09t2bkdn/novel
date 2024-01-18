@@ -85,11 +85,41 @@
             </div>
 
             <div class="col-lg-4 mt-5 mt-lg-0">
-                <!-- Single Image -->
+                <!-- Single Image 320x50_1 -->
                 <div class="mb-5">
-                    <img src="{{ asset('user/img/blog-1.jpg') }}" alt="" class="img-fluid rounded"/>
+                    @if(env('APP_ENV', 'local') == 'prod')
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : '0c05f2bfd0f6644462fbb5a52d737cd6',
+                                'format' : 'iframe',
+                                'height' : 50,
+                                'width' : 320,
+                                'params' : {}
+                            };
+                            document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/0c05f2bfd0f6644462fbb5a52d737cd6/invoke.js"></scr' + 'ipt>');
+                        </script>
+                    @endif
                 </div>
             </div>
+
+            <div class="col-lg-4 mt-5 mt-lg-0">
+                <!-- Single Image 300x250_1 -->
+                <div class="mb-5">
+                    @if(env('APP_ENV', 'local') == 'prod')
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : 'b0b8c5d8f16e9f03451a9d81bcbc8ca0',
+                                'format' : 'iframe',
+                                'height' : 250,
+                                'width' : 300,
+                                'params' : {}
+                            };
+                            document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/b0b8c5d8f16e9f03451a9d81bcbc8ca0/invoke.js"></scr' + 'ipt>');
+                        </script>
+                    @endif
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection

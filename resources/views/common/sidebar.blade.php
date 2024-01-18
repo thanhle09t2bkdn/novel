@@ -9,7 +9,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Tiếng Anh Thầy Thắng</div>
+        <div class="sidebar-brand-text mx-3">SVG Collection</div>
     </a>
 
     <!-- Divider -->
@@ -28,14 +28,9 @@
                 <span>Categories</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ $route->named('backend.posts*') ? 'active' : '' }}" href="{{ route('backend.posts.index') }}">
+            <a class="nav-link {{ $route->named('backend.advertisements*') ? 'active' : '' }}" href="{{ route('backend.advertisements.index') }}">
                 <i class="fas fa-fw fa-chart-bar"></i>
-                <span>Posts</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ $route->named('backend.audios*') ? 'active' : '' }}" href="{{ route('backend.audios.index') }}">
-                <i class="fas fa-fw fa-chart-bar"></i>
-                <span>Audios</span></a>
+                <span>Advertisements</span></a>
         </li>
     @endif
     <!-- Divider -->

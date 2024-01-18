@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\AdvertisementRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
@@ -18,6 +19,7 @@ class PublicController extends Controller
     private $postRepository;
     private $categoryRepository;
     private $tagRepository;
+    private $advertisementRepository;
 
     /**
      * Create a new controller instance.
@@ -25,11 +27,15 @@ class PublicController extends Controller
      * @return void
      */
 
-    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, TagRepository $tagRepository)
+    public function __construct(PostRepository $postRepository,
+                                CategoryRepository $categoryRepository,
+                                AdvertisementRepository $advertisementRepository,
+                                TagRepository $tagRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
+        $this->advertisementRepository = $advertisementRepository;
     }
 
     /**
@@ -41,7 +47,8 @@ class PublicController extends Controller
     {
         $this->seo()->setTitle('Home');
         $categories = $this->categoryRepository->all();
-        return view('frontend.public.index', compact('categories'));
+        $banner728x90 = $this->advertisementRepository->getByColumn('728x90_1', 'name');
+        return view('frontend.public.index', compact('categories', 'banner728x90'));
     }
 
     /**
@@ -54,7 +61,8 @@ class PublicController extends Controller
         $category = $this->categoryRepository->getByColumn($slug, 'slug');
         $this->seo()->setTitle($category->name);
         $list = $this->postRepository->where('category_id', $category->id)->paginate();
-        return view('frontend.public.category', compact('category', 'list'));
+        $banner160x600 = $this->advertisementRepository->getByColumn('160x600_1', 'name');
+        return view('frontend.public.category', compact('category', 'list', 'banner160x600'));
     }
 
     /**
@@ -67,7 +75,8 @@ class PublicController extends Controller
         $tag = $this->tagRepository->getByColumn($slug, 'slug');
         $this->seo()->setTitle($tag->name);
         $list = $tag->posts()->paginate(18);
-        return view('frontend.public.tag', compact('tag', 'list'));
+        $banner160x300 = $this->advertisementRepository->getByColumn('160x300_1', 'name');
+        return view('frontend.public.tag', compact('tag', 'list', 'banner160x300'));
     }
 
 
@@ -93,7 +102,9 @@ class PublicController extends Controller
             ->orderBy('created_at', 'desc')
             ->limit(30)
             ->get();
-        return view('frontend.public.svg', compact('post', 'relatedPosts', 'tags'));
+        $banner300x250 = $this->advertisementRepository->getByColumn('300x250_1', 'name');
+        $banner320x50 = $this->advertisementRepository->getByColumn('320x50_1', 'name');
+        return view('frontend.public.svg', compact('post', 'relatedPosts', 'tags', 'banner300x250', 'banner320x50'));
     }
 
     public function search(Request $request)
@@ -102,7 +113,8 @@ class PublicController extends Controller
         $this->seo()->setTitle('Search');
         $searchName = $request->get('name');
         $list = $this->postRepository->searchName($searchName)->paginate();
-        return view('frontend.public.search', compact('searchName', 'list'));
+        $banner468x60 = $this->advertisementRepository->getByColumn('468x60_1', 'name');
+        return view('frontend.public.search', compact('searchName', 'list', 'banner468x60'));
     }
 
     public function download($id, $storageLink = '')

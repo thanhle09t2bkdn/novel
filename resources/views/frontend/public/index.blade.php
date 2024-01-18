@@ -44,16 +44,7 @@
             <div class="row">
                 <!-- Banner 728x90 -->
                 @if(env('APP_ENV', 'local') == 'prod')
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : '0eb6d15eb7cffb0f34fcc665fc431153',
-                            'format' : 'iframe',
-                            'height' : 90,
-                            'width' : 728,
-                            'params' : {}
-                        };
-                        document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/0eb6d15eb7cffb0f34fcc665fc431153/invoke.js"></scr' + 'ipt>');
-                    </script>
+                    {!! $banner728x90->data !!}
                 @endif
             </div>
         </div>

@@ -100,9 +100,7 @@
                         </script>
                     @endif
                 </div>
-            </div>
 
-            <div class="col-lg-4 mt-5 mt-lg-0">
                 <!-- Single Image 300x250_1 -->
                 <div class="mb-5">
                     @if(env('APP_ENV', 'local') == 'prod')

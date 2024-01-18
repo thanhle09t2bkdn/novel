@@ -8,6 +8,7 @@ use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
 class PublicController extends Controller
@@ -104,9 +105,15 @@ class PublicController extends Controller
         return view('frontend.public.search', compact('searchName', 'list'));
     }
 
-    public function download($id, $storageLink)
+    public function download($id, $storageLink = '')
     {
         $post = $this->postRepository->getById($id);
+        if(!$storageLink) {
+            $content = Http::withHeaders([
+                'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+            ])->get($post->image);
+            return response($content->body());
+        }
         return response(file_get_contents( env('SVG_HOST') . '/svg/' . $post->storage_link));
 
     }

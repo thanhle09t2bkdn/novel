@@ -177,6 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        \Laravelium\Sitemap\SitemapServiceProvider::class
 
     ],
 

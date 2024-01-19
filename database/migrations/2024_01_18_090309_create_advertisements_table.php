@@ -17,7 +17,7 @@ class CreateAdvertisementsTable extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('slug');
-            $table->string('data');
+            $table->text('data');
             $table->timestamps();
         });
     }

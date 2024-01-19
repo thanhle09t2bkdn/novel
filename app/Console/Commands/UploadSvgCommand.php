@@ -23,6 +23,7 @@ class UploadSvgCommand extends Command
      * @var string
      */
     protected $description = 'Upload SVG';
+    private $postRepository;
 
     /**
      * Create a new command instance.

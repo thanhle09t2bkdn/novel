@@ -56,7 +56,7 @@ class SiteMapCommand extends Command
         foreach ($categories as $category) {
             $sitemap->add(route('frontend.public.category', [$category->slug]), $category->created_at, '0.6', 'daily');
         }
-        $posts = $this->postRepository->all();
+        $posts = $this->postRepository->orderBy('created_at')->all();
         foreach ($posts as $post) {
             $sitemap->add(route('frontend.public.svg', [$post->slug]), $post->created_at, '0.6', 'daily');
         }

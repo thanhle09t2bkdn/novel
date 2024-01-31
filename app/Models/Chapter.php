@@ -13,13 +13,12 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Chapter extends Model
 {
     use Uuids;
     use HasFactory;
     use Sluggable;
 
-    const NOVEL_TYPE = 1;
 
     /**
      * The attributes that are mass assignable.
@@ -27,17 +26,12 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'category_id',
+        'post_id',
         'name',
         'slug',
         'view_number',
-        'total_item',
-        'type',
         'description',
-        'short_description',
         'content',
-        'image',
-        'storage_link',
     ];
 
     /**
@@ -48,20 +42,12 @@ class Post extends Model
     protected $hidden = [
     ];
 
-    public function category()
+    public function post()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Post::class);
     }
 
-    public function tags()
-    {
-        return $this->belongstoMany(Tag::class);
-    }
 
-    public function chapters()
-    {
-        return $this->hasMany(Chapter::class);
-    }
 
     public function sluggable(): array
     {
@@ -70,17 +56,5 @@ class Post extends Model
                 'source' => 'name'
             ]
         ];
-    }
-
-    public static $typeNames = [
-        self::NOVEL_TYPE => 'Novel',
-    ];
-
-    public function getTypeNameAttribute()
-    {
-        if (!isset($this->type)) {
-            return null;
-        }
-        return self::$typeNames[$this->type];
     }
 }

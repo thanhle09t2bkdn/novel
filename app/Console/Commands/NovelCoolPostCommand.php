@@ -18,14 +18,14 @@ class NovelCoolPostCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'command:novel-cool';
+    protected $signature = 'command:novel-cool-post';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Novel Cool';
+    protected $description = 'Novel Cool Post';
     private $postRepository;
     private $categoryRepository;
     private $tagRepository;

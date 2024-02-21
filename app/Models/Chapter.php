@@ -32,6 +32,7 @@ class Chapter extends Model
         'view_number',
         'description',
         'content',
+        'link',
     ];
 
     /**

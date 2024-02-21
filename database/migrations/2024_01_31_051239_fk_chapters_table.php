@@ -16,7 +16,7 @@ class FkChaptersTable extends Migration
         Schema::table('chapters', function (Blueprint $table) {
             $table->foreign('post_id')
                 ->references('id')
-                ->on('chapters')
+                ->on('posts')
                 ->onDelete('cascade');
         });
     }

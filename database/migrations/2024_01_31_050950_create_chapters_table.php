@@ -21,6 +21,7 @@ class CreateChaptersTable extends Migration
             $table->unsignedBigInteger('view_number')->default(0);
             $table->text('description')->nullable();
             $table->mediumText('content')->nullable();
+            $table->string('link');
             $table->timestamps();
         });
     }

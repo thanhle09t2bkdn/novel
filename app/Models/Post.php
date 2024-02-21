@@ -32,12 +32,14 @@ class Post extends Model
         'slug',
         'view_number',
         'total_item',
+        'rate',
         'type',
         'description',
         'short_description',
         'content',
         'image',
         'storage_link',
+        'link',
     ];
 
     /**

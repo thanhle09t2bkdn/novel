@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->unsignedBigInteger('view_number')->default(0);
             $table->unsignedBigInteger('item_total')->default(0);
+            $table->unsignedFloat('rate')->default(0);
             $table->string('image');
             $table->string('link')->nullable();
             $table->string('storage_link')->nullable();

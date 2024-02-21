@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
-use App\Services\CommonService;
 use HungCP\PhpSimpleHtmlDom\HtmlDomParser;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
@@ -30,7 +29,6 @@ class NovelCoolPostCommand extends Command
     private $postRepository;
     private $categoryRepository;
     private $tagRepository;
-    private $commonService;
 
     /**
      * Create a new command instance.
@@ -39,14 +37,12 @@ class NovelCoolPostCommand extends Command
      */
     public function __construct(PostRepository     $postRepository,
                                 CategoryRepository $categoryRepository,
-                                TagRepository      $tagRepository,
-                                CommonService      $commonService)
+                                TagRepository      $tagRepository)
     {
         parent::__construct();
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
-        $this->commonService = $commonService;
     }
 
     /**

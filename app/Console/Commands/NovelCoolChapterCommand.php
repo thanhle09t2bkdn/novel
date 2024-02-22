@@ -2,15 +2,12 @@
 
 namespace App\Console\Commands;
 
-use App\Repositories\CategoryRepository;
 use App\Repositories\ChapterRepository;
 use App\Repositories\PostRepository;
-use App\Repositories\TagRepository;
 use HungCP\PhpSimpleHtmlDom\HtmlDomParser;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
 
 class NovelCoolChapterCommand extends Command
 {
@@ -75,7 +72,6 @@ class NovelCoolChapterCommand extends Command
             } catch (\Exception $e) {
                 Log::error('Error:', [$e->getMessage()]);
             }
-            break;
         }
         Log::info('NovelCoolCommandEND:');
         return 0;

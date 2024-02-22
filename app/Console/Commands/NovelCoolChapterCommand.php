@@ -72,6 +72,7 @@ class NovelCoolChapterCommand extends Command
             } catch (\Exception $e) {
                 Log::error('Error:', [$e->getMessage()]);
             }
+            break;
         }
         Log::info('NovelCoolCommandEND:');
         return 0;

@@ -62,7 +62,9 @@ class NovelCoolChapterDetailCommand extends Command
                 $dom = HtmlDomParser::str_get_html($content->body());
 
                 $contentObject =  $dom->find('.overflow-hidden', 0);
+                $authorObject =  $dom->find('.hover-underline', 0);
                 $chapter->content = $contentObject->text();
+                $chapter->author = $authorObject->title;
                 $chapter->save();
             } catch (\Exception $e) {
                 Log::error('Error:', [$e->getMessage()]);

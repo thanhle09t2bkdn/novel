@@ -100,7 +100,7 @@ class PublicController extends Controller
             ->where('category_id', $post->category_id)
             ->where('id', $post->id, '!=')
             ->orderBy('created_at', 'desc')
-            ->limit(30)
+            ->limit(16)
             ->get();
         $banner300x250 = $this->advertisementRepository->getByColumn('300x250_1', 'name');
         $banner320x50 = $this->advertisementRepository->getByColumn('320x50_1', 'name');

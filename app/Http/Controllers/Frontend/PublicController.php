@@ -120,6 +120,14 @@ class PublicController extends Controller
     public function chapter(string $slug)
     {
         $chapter = $this->chapterRepository->getByColumn($slug, 'slug');
+        $nextChapter = $this->chapterRepository
+            ->where('id', $chapter->id, '>')
+            ->where('post_id', $chapter->post_id)
+            ->orderBy('id', 'asc')->first();
+        $previousChapter = $this->chapterRepository
+            ->where('id', $chapter->id, '<')
+            ->where('post_id', $chapter->post_id)
+            ->orderBy('id', 'asc')->first();
         $this->seo()->setTitle($chapter->name);
         return view('frontend.public.chapter', compact('chapter'));
     }

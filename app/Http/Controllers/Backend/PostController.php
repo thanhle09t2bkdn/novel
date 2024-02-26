@@ -23,7 +23,6 @@ class PostController extends Controller
      *
      * @var postRepository
      * @var categoryRepository
-     * @var TagRepository
      */
     private $postRepository;
     private $categoryRepository;

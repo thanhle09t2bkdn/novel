@@ -8,14 +8,12 @@
 
 namespace App\Models;
 
-use App\Traits\Uuids;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Chapter extends Model
 {
-    use Uuids;
     use HasFactory;
     use Sluggable;
 
@@ -28,6 +26,7 @@ class Chapter extends Model
     protected $fillable = [
         'post_id',
         'name',
+        'author',
         'slug',
         'view_number',
         'description',

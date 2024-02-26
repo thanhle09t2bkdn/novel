@@ -14,9 +14,10 @@ class CreateChaptersTable extends Migration
     public function up()
     {
         Schema::create('chapters', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->uuid('post_id');
             $table->string('name');
+            $table->string('author')->nullable();
             $table->string('slug');
             $table->unsignedBigInteger('view_number')->default(0);
             $table->text('description')->nullable();

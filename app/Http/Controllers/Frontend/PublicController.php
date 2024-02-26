@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Repositories\AdvertisementRepository;
 use App\Repositories\CategoryRepository;
+use App\Repositories\ChapterRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class PublicController extends Controller
     private $categoryRepository;
     private $tagRepository;
     private $advertisementRepository;
+    private $chapterRepository;
 
     /**
      * Create a new controller instance.
@@ -30,12 +32,14 @@ class PublicController extends Controller
     public function __construct(PostRepository $postRepository,
                                 CategoryRepository $categoryRepository,
                                 AdvertisementRepository $advertisementRepository,
+                                ChapterRepository $chapterRepository,
                                 TagRepository $tagRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
         $this->advertisementRepository = $advertisementRepository;
+        $this->chapterRepository = $chapterRepository;
     }
 
     /**
@@ -89,6 +93,7 @@ class PublicController extends Controller
     {
         $post = $this->postRepository->getByColumn($slug, 'slug');
         $this->seo()->setTitle($post->name);
+        $this->seo()->setDescription($post->short_description);
         $tags = $post->tags;
         $tagKeywords = [];
         foreach ($tags as $tag) {
@@ -105,6 +110,18 @@ class PublicController extends Controller
         $banner300x250 = $this->advertisementRepository->getByColumn('300x250_1', 'name');
         $banner320x50 = $this->advertisementRepository->getByColumn('320x50_1', 'name');
         return view('frontend.public.svg', compact('post', 'relatedPosts', 'tags', 'banner300x250', 'banner320x50'));
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function chapter(string $slug)
+    {
+        $chapter = $this->chapterRepository->getByColumn($slug, 'slug');
+        $this->seo()->setTitle($chapter->name);
+        return view('frontend.public.chapter', compact('chapter'));
     }
 
     public function search(Request $request)

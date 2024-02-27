@@ -59,7 +59,8 @@ class NovelCoolChapterCommand extends Command
                 $dom = HtmlDomParser::str_get_html($content->body());
 
                 $elems = $dom->find('.chp-item');
-                foreach ($elems as $svgDom) {
+                $newElems = array_reverse($elems);
+                foreach ($newElems as $svgDom) {
                     $viewNumberObject = $svgDom->find('.chapter-item-views span', 0);
                     $linkObject = $svgDom->find('a', 0);
                     $this->chapterRepository->create([

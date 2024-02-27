@@ -16,13 +16,26 @@
     </section>
     <div class="text-center">
         <div class="">
-            <a class="btn btn-accent"
-               href="#" title="">Chapter Previous</a>
+            @if($previousChapter)
+                <a class="btn btn-accent"
+                   href="{{ route('frontend.public.chapter', $previousChapter->slug) }}"
+                   title="{{ $previousChapter->name }}">Chapter Previous</a>
+            @else
+                <a class="btn btn-accent disabled"
+                   href="#">Chapter Previous</a>
+            @endif
             <a class="btn btn-success" href="#">
-                        list
+                list
             </a>
-            <a class="btn btn-accent"
-               href="#" title="">Chapter Next</a>
+            @if($nextChapter)
+                <a class="btn btn-accent"
+                   href="{{ route('frontend.public.chapter', $nextChapter->slug) }}" title="{{ $nextChapter->name }}">Chapter
+                    Next</a>
+            @else
+                <a class="btn btn-accent disabled"
+                   href="#">Chapter Next</a>
+            @endif
+
         </div>
     </div>
     <section class="padding-medium">

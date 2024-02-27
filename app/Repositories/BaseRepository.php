@@ -329,6 +329,7 @@ abstract class BaseRepository implements RepositoryContract
         $this->wheres = [];
         $this->whereIns = [];
         $this->scopes = [];
+        $this->orderBys = [];
         $this->take = null;
         return $this;
     }

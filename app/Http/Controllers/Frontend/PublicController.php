@@ -8,6 +8,8 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\ChapterRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
+use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 use Illuminate\Support\Facades\Http;
@@ -29,11 +31,11 @@ class PublicController extends Controller
      * @return void
      */
 
-    public function __construct(PostRepository $postRepository,
-                                CategoryRepository $categoryRepository,
+    public function __construct(PostRepository          $postRepository,
+                                CategoryRepository      $categoryRepository,
                                 AdvertisementRepository $advertisementRepository,
-                                ChapterRepository $chapterRepository,
-                                TagRepository $tagRepository)
+                                ChapterRepository       $chapterRepository,
+                                TagRepository           $tagRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
@@ -120,16 +122,28 @@ class PublicController extends Controller
     public function chapter(string $slug)
     {
         $chapter = $this->chapterRepository->getByColumn($slug, 'slug');
-        $nextChapter = $this->chapterRepository
-            ->where('id', $chapter->id, '>')
-            ->where('post_id', $chapter->post_id)
-            ->orderBy('id', 'asc')->first();
-        $previousChapter = $this->chapterRepository
-            ->where('id', $chapter->id, '<')
-            ->where('post_id', $chapter->post_id)
-            ->orderBy('id', 'asc')->first();
+        if(!$chapter) {
+            throw (new ModelNotFoundException)->setModel(get_class($this->chapterRepository->makeModel()));
+        }
+        try {
+            $nextChapter = $this->chapterRepository
+                ->where('id', $chapter->id, '>')
+                ->where('post_id', $chapter->post_id)
+                ->orderBy('id', 'asc')->first();
+        } catch (ModelNotFoundException $exception) {
+            $nextChapter = null;
+        }
+        $this->chapterRepository->unsetClauses();
+        try {
+            $previousChapter = $this->chapterRepository
+                ->where('id', $chapter->id, '<')
+                ->where('post_id', $chapter->post_id)
+                ->orderBy('id', 'desc')->first();
+        } catch (ModelNotFoundException $exception) {
+            $previousChapter = null;
+        }
         $this->seo()->setTitle($chapter->name);
-        return view('frontend.public.chapter', compact('chapter'));
+        return view('frontend.public.chapter', compact('chapter', 'nextChapter', 'previousChapter'));
     }
 
     public function search(Request $request)
@@ -145,13 +159,13 @@ class PublicController extends Controller
     public function download($id, $storageLink = '')
     {
         $post = $this->postRepository->getById($id);
-        if(!$storageLink) {
+        if (!$storageLink) {
             $content = Http::withHeaders([
                 'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
             ])->get($post->image);
             return response($content->body());
         }
-        return response(file_get_contents( env('SVG_HOST') . '/svg/' . $post->storage_link));
+        return response(file_get_contents(env('SVG_HOST') . '/svg/' . $post->storage_link));
 
     }
 }

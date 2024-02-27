@@ -98,6 +98,11 @@ class PublicController extends Controller
             ->where('post_id', $post->id)
             ->orderBy('id')
             ->paginate();
+
+        $latestChapters = $this->chapterRepository
+            ->where('post_id', $post->id)
+            ->orderBy('id', 'desc')
+            ->limit(10)->get();
         $this->seo()->setTitle($post->name);
         $this->seo()->setDescription($post->short_description);
         $tags = $post->tags;
@@ -115,7 +120,7 @@ class PublicController extends Controller
             ->get();
         $banner300x250 = $this->advertisementRepository->getByColumn('300x250_1', 'name');
         $banner320x50 = $this->advertisementRepository->getByColumn('320x50_1', 'name');
-        return view('frontend.public.svg', compact('post', 'relatedPosts', 'tags', 'banner300x250', 'banner320x50', 'chapters'));
+        return view('frontend.public.svg', compact('post', 'relatedPosts', 'tags', 'banner300x250', 'banner320x50', 'chapters', 'latestChapters'));
     }
 
     /**

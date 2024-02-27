@@ -24,11 +24,17 @@
                     <div class="col-md-3">
                         <div class="product-item">
                             <figure class="product-style">
-                                <img src="{{ $item->image }}" title="{{ $item->name }}" alt="{{ $item->name }}" class="product-item">
+                                <a href="{{ route('frontend.public.svg', $item->slug) }}">
+                                    <img src="{{ $item->image }}" title="{{ $item->name }}" alt="{{ $item->name }}" class="product-item">
+                                </a>
+
                                 <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
                             </figure>
                             <figcaption>
-                                <h3>{{ $item->name }}</h3>
+                                <a href="{{ route('frontend.public.svg', $item->slug) }}">
+                                    <h3>{{ $item->name }}</h3>
+                                </a>
+
                                 <p>{{ $item->short_description }}</p>
                             </figcaption>
                         </div>

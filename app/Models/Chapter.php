@@ -26,7 +26,6 @@ class Chapter extends Model
     protected $fillable = [
         'post_id',
         'name',
-        'author',
         'slug',
         'view_number',
         'description',

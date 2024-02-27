@@ -94,6 +94,9 @@ class PublicController extends Controller
     public function svg(string $slug)
     {
         $post = $this->postRepository->getByColumn($slug, 'slug');
+        if(!$post) {
+            throw (new ModelNotFoundException)->setModel(get_class($this->postRepository->makeModel()));
+        }
         $chapters = $this->chapterRepository
             ->where('post_id', $post->id)
             ->orderBy('id')

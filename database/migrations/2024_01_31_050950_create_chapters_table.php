@@ -17,7 +17,6 @@ class CreateChaptersTable extends Migration
             $table->id();
             $table->uuid('post_id');
             $table->string('name');
-            $table->string('author')->nullable();
             $table->string('slug');
             $table->unsignedBigInteger('view_number')->default(0);
             $table->text('description')->nullable();

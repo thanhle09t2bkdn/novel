@@ -14,6 +14,40 @@
                     <div class="product-detail">
                         <span>Fiction</span>
                         <h1>{{ $post->name }}</h1>
+                        <div class="story-detail__bottom mb-3">
+                            <div class="row">
+                                <div class="col-12 col-md-12 col-lg-3 story-detail__bottom--info">
+                                    <p class="mb-1">
+                                        <strong>Author:</strong>
+                                        <a href="#" class="text-decoration-none text-dark hover-title">{{ $post->author }}</a>
+                                    </p>
+                                    <div class="d-flex align-items-center mb-1 flex-wrap">
+                                        <strong class="me-1">Thể loại:</strong>
+                                        <div class="d-flex align-items-center flex-warp">
+                                            <a href="category.html" class="text-decoration-none text-dark hover-title  me-1 " style="width: max-content;">Ngôn Tình ,
+                                            </a>
+
+
+                                            <a href="category.html" class="text-decoration-none text-dark hover-title  me-1 " style="width: max-content;">Cổ Đại ,
+                                            </a>
+
+
+                                            <a href="category.html" class="text-decoration-none text-dark hover-title  me-1 " style="width: max-content;">Ngược ,
+                                            </a>
+
+
+                                            <a href="category.html" class="text-decoration-none text-dark hover-title " style="width: max-content;">Khác </a>
+                                        </div>
+                                    </div>
+
+                                    <p class="mb-1">
+                                        <strong>Trạng thái:</strong>
+                                        <span class="text-info">Full</span>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
                         <div class="rating-container d-flex align-items-center text-warning mb-4">
                             <svg width="32" height="32">
                                 <use xlink:href="#star-solid"></use>

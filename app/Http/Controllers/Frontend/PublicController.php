@@ -52,9 +52,13 @@ class PublicController extends Controller
     public function index()
     {
         $this->seo()->setTitle('Home');
-        $categories = $this->categoryRepository->all();
+        $tags = $this->tagRepository->orderBy('name')->get();
+        $slidePosts = $this->postRepository->orderBy('view_number', 'desc')->limit(8)->get();
+        $bestPost = $this->postRepository->orderBy('view_number', 'desc')->first();
+        $latestPosts = $this->postRepository->orderBy('created_at', 'desc')->limit(8)->get();
+        $popularPosts = $this->postRepository->orderBy('view_number', 'desc')->limit(8)->get();
         $banner728x90 = $this->advertisementRepository->getByColumn('728x90_1', 'name');
-        return view('frontend.public.index', compact('categories', 'banner728x90'));
+        return view('frontend.public.index', compact('tags', 'popularPosts', 'latestPosts', 'bestPost', 'slidePosts', 'banner728x90'));
     }
 
     /**

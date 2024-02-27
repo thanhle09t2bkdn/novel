@@ -51,7 +51,7 @@
                         <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
                             <button class="nav-link active text-uppercase px-5 py-3" id="nav-home-tab"
                                     data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab"
-                                    aria-controls="nav-home" aria-selected="true">Description</button>
+                                    aria-controls="nav-home" aria-selected="true">Chapters</button>
                             <button class="nav-link text-uppercase px-5 py-3" id="nav-information-tab"
                                     data-bs-toggle="tab" data-bs-target="#nav-information" type="button" role="tab"
                                     aria-controls="nav-information" aria-selected="false">Additional information</button>
@@ -66,29 +66,21 @@
                     <div class="tab-content py-5" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                              aria-labelledby="nav-home-tab">
-                            <h5>Product Description</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat
-                                mattis eros.
-                                Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere
-                                a, pede. Donec
-                                nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean
-                                dignissim
-                                pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec
-                                consectetuer ligula
-                                vulputate sem tristique cursus.
                             <ul>
-                                <li>Donec nec justo eget felis facilisis fermentum.</li>
-                                <li>Suspendisse urna viverra non, semper suscipit pede.</li>
-                                <li>Aliquam porttitor mauris sit amet orci.</li>
-                            </ul> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat
-                            mattis
-                            eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit,
-                            posuere a, pede.
-                            Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci.
-                            Aenean dignissim
-                            pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer
-                            ligula
-                            vulputate sem tristique cursus. </p>
+                                @forelse ($chapters as $chapter)
+                                    <li>
+                                        <a href="{{ route('frontend.public.chapter', $chapter->slug) }}" title="{{ $chapter->name }}" class="text-decoration-none text-dark hover-title">{{ $chapter->name }}</a>
+                                    </li>
+                                @empty
+                                    <h3>This story didn't have any chapter</h3>
+                                @endforelse
+                            </ul>
+                            <div class="row">
+
+                                <nav aria-label="Page navigation" class="mt-5">
+                                    {{ $chapters->withQueryString()->links() }}
+                                </nav>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="nav-information" role="tabpanel"
                              aria-labelledby="nav-information-tab">

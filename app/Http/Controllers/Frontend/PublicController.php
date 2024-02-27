@@ -94,6 +94,10 @@ class PublicController extends Controller
     public function svg(string $slug)
     {
         $post = $this->postRepository->getByColumn($slug, 'slug');
+        $chapters = $this->chapterRepository
+            ->where('post_id', $post->id)
+            ->orderBy('id')
+            ->paginate();
         $this->seo()->setTitle($post->name);
         $this->seo()->setDescription($post->short_description);
         $tags = $post->tags;
@@ -111,7 +115,7 @@ class PublicController extends Controller
             ->get();
         $banner300x250 = $this->advertisementRepository->getByColumn('300x250_1', 'name');
         $banner320x50 = $this->advertisementRepository->getByColumn('320x50_1', 'name');
-        return view('frontend.public.svg', compact('post', 'relatedPosts', 'tags', 'banner300x250', 'banner320x50'));
+        return view('frontend.public.svg', compact('post', 'relatedPosts', 'tags', 'banner300x250', 'banner320x50', 'chapters'));
     }
 
     /**

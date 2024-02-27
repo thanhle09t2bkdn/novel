@@ -52,13 +52,12 @@ class PublicController extends Controller
     public function index()
     {
         $this->seo()->setTitle('Home');
-        $tags = $this->tagRepository->orderBy('name')->get();
         $slidePosts = $this->postRepository->orderBy('view_number', 'desc')->limit(8)->get();
         $bestPost = $this->postRepository->orderBy('view_number', 'desc')->first();
         $latestPosts = $this->postRepository->orderBy('created_at', 'desc')->limit(8)->get();
         $popularPosts = $this->postRepository->orderBy('view_number', 'desc')->limit(8)->get();
         $banner728x90 = $this->advertisementRepository->getByColumn('728x90_1', 'name');
-        return view('frontend.public.index', compact('tags', 'popularPosts', 'latestPosts', 'bestPost', 'slidePosts', 'banner728x90'));
+        return view('frontend.public.index', compact('popularPosts', 'latestPosts', 'bestPost', 'slidePosts', 'banner728x90'));
     }
 
     /**
@@ -84,7 +83,7 @@ class PublicController extends Controller
     {
         $tag = $this->tagRepository->getByColumn($slug, 'slug');
         $this->seo()->setTitle($tag->name);
-        $list = $tag->posts()->paginate(18);
+        $list = $tag->posts()->paginate(20);
         $banner160x300 = $this->advertisementRepository->getByColumn('160x300_1', 'name');
         return view('frontend.public.tag', compact('tag', 'list', 'banner160x300'));
     }
@@ -98,7 +97,7 @@ class PublicController extends Controller
     public function svg(string $slug)
     {
         $post = $this->postRepository->getByColumn($slug, 'slug');
-        if(!$post) {
+        if (!$post) {
             throw (new ModelNotFoundException)->setModel(get_class($this->postRepository->makeModel()));
         }
         $chapters = $this->chapterRepository
@@ -138,7 +137,7 @@ class PublicController extends Controller
     public function chapter(string $slug)
     {
         $chapter = $this->chapterRepository->getByColumn($slug, 'slug');
-        if(!$chapter) {
+        if (!$chapter) {
             throw (new ModelNotFoundException)->setModel(get_class($this->chapterRepository->makeModel()));
         }
         try {
@@ -183,5 +182,12 @@ class PublicController extends Controller
         }
         return response(file_get_contents(env('SVG_HOST') . '/svg/' . $post->storage_link));
 
+    }
+
+    public function tags()
+    {
+        $this->seo()->setTitle('Tag');
+        $tags = $this->tagRepository->orderBy('name')->get();
+        return view('frontend.public.tags', compact('tags'));
     }
 }

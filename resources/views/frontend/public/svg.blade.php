@@ -12,7 +12,6 @@
 
                 <div class="col-md-9 pl-5">
                     <div class="product-detail">
-                        <span>Fiction</span>
                         <h1>{{ $post->name }}</h1>
                         <div class="story-detail__bottom mb-3">
                             <div class="row">

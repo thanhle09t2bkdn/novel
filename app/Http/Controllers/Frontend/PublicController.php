@@ -117,13 +117,16 @@ class PublicController extends Controller
             $tagKeywords[] = $tag->name;
         }
         $this->seo()->metatags()->addKeyword($tagKeywords);
-        $relatedPosts = $this->postRepository
-            ->where('type', $post->type)
-            ->where('category_id', $post->category_id)
-            ->where('id', $post->id, '!=')
-            ->orderBy('created_at', 'desc')
-            ->limit(16)
-            ->get();
+        $relatedPosts = [];
+        if (count($post->tags)) {
+            $relatedPosts = $this->postRepository
+                ->findTagId($post->tags[0]->id)
+                ->where('posts.id', '!=', $post->id)
+                ->orderBy('view_number', 'desc')
+                ->limit(8)
+                ->get();
+        }
+
         $banner300x250 = $this->advertisementRepository->getByColumn('300x250_1', 'name');
         $banner320x50 = $this->advertisementRepository->getByColumn('320x50_1', 'name');
         return view('frontend.public.svg', compact('post', 'relatedPosts', 'tags', 'banner300x250', 'banner320x50', 'chapters', 'latestChapters'));

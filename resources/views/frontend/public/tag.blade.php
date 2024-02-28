@@ -8,7 +8,7 @@
                     <div class="colored">
                         <h1 class="page-title">{{ $tag->name }}</h1>
                         <div class="breadcum-items">
-                            <span class="item"><a href="#">Home /</a></span>
+                            <span class="item"><a href="{{ route('frontend.public.index') }}">Home /</a></span>
                             <span class="item colored">{{ $tag->name }}</span>
                         </div>
                     </div>

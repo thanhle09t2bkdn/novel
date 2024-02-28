@@ -219,7 +219,7 @@
                                 @foreach($latestChapters as $chapter)
                                     <tr>
                                         <td><a href="{{ route('frontend.public.chapter', $chapter->slug) }}"
-                                               title="{{ $chapter->name }}"
+                                               title="{{ $chapter->post_name }}"
                                                class="text-decoration-none text-dark hover-title"><img src="{{ $chapter->post_image }}" alt="{{ $chapter->post_name }}" class="product-item">{{ $chapter->post_name }}</a></td>
                                         <td><a href="{{ route('frontend.public.chapter', $chapter->slug) }}"
                                                title="{{ $chapter->name }}"

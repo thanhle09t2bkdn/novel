@@ -70,7 +70,7 @@ class PublicController extends Controller
     {
         $category = $this->categoryRepository->getByColumn($slug, 'slug');
         $this->seo()->setTitle($category->name);
-        $list = $this->postRepository->where('category_id', $category->id)->paginate();
+        $list = $this->postRepository->where('category_id', $category->id)->paginate()->onEachSide(1);
         $banner160x600 = $this->advertisementRepository->getByColumn('160x600_1', 'name');
         return view('frontend.public.category', compact('category', 'list', 'banner160x600'));
     }
@@ -84,7 +84,7 @@ class PublicController extends Controller
     {
         $tag = $this->tagRepository->getByColumn($slug, 'slug');
         $this->seo()->setTitle($tag->name);
-        $list = $tag->posts()->paginate(20);
+        $list = $tag->posts()->paginate(20)->onEachSide(1);
         $banner160x300 = $this->advertisementRepository->getByColumn('160x300_1', 'name');
         return view('frontend.public.tag', compact('tag', 'list', 'banner160x300'));
     }
@@ -104,7 +104,8 @@ class PublicController extends Controller
         $chapters = $this->chapterRepository
             ->where('post_id', $post->id)
             ->orderBy('id')
-            ->paginate();
+            ->paginate()
+            ->onEachSide(1);
 
         $latestChapters = $this->chapterRepository
             ->where('post_id', $post->id)
@@ -170,7 +171,7 @@ class PublicController extends Controller
 
         $this->seo()->setTitle('Search');
         $searchName = $request->get('name');
-        $list = $this->postRepository->searchName($searchName)->paginate();
+        $list = $this->postRepository->searchName($searchName)->paginate()->onEachSide(1);
         $banner468x60 = $this->advertisementRepository->getByColumn('468x60_1', 'name');
         return view('frontend.public.search', compact('searchName', 'list', 'banner468x60'));
     }
@@ -199,28 +200,28 @@ class PublicController extends Controller
     public function latest(Request $request)
     {
         $this->seo()->setTitle('Latest Novel');
-        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate();
+        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate()->onEachSide(1);
         return view('frontend.public.latest', compact('list'));
     }
 
     public function hot(Request $request)
     {
         $this->seo()->setTitle('Hot Novel');
-        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate();
+        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate()->onEachSide(1);
         return view('frontend.public.hot', compact('list'));
     }
 
     public function completed(Request $request)
     {
         $this->seo()->setTitle('Completed Novel');
-        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate();
+        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate()->onEachSide(1);
         return view('frontend.public.completed', compact('list'));
     }
 
     public function popular(Request $request)
     {
         $this->seo()->setTitle('Most Popular Novel');
-        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate();
+        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate()->onEachSide(1);
         return view('frontend.public.popular', compact('list'));
     }
 }

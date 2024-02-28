@@ -189,8 +189,37 @@ class PublicController extends Controller
 
     public function tags()
     {
-        $this->seo()->setTitle('Tag');
+        $this->seo()->setTitle('Genre List');
         $tags = $this->tagRepository->orderBy('name')->get();
         return view('frontend.public.tags', compact('tags'));
+    }
+
+
+    public function latest(Request $request)
+    {
+        $this->seo()->setTitle('Latest Novel');
+        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate();
+        return view('frontend.public.latest', compact('list'));
+    }
+
+    public function hot(Request $request)
+    {
+        $this->seo()->setTitle('Hot Novel');
+        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate();
+        return view('frontend.public.hot', compact('list'));
+    }
+
+    public function completed(Request $request)
+    {
+        $this->seo()->setTitle('Completed Novel');
+        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate();
+        return view('frontend.public.completed', compact('list'));
+    }
+
+    public function popular(Request $request)
+    {
+        $this->seo()->setTitle('Most Popular Novel');
+        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate();
+        return view('frontend.public.popular', compact('list'));
     }
 }

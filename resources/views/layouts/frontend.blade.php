@@ -71,29 +71,12 @@
                     <nav id="navbar">
                         <div class="main-menu stellarnav">
                             <ul class="menu-list">
-                                <li class="menu-item active"><a href="{{ route('frontend.public.index') }}">Home</a></li>
-                                <li class="menu-item has-sub">
-                                    <a href="#pages" class="nav-link">Pages</a>
-
-                                    <ul>
-                                        <li class="active"><a href="index.html">Home</a></li>
-                                        <li><a href="about.html">About <span class="badge bg-dark">PRO</span></a></li>
-                                        <li><a href="styles.html">Styles <span class="badge bg-dark">PRO</span></a></li>
-                                        <li><a href="blog.html">Blog <span class="badge bg-dark">PRO</span></a></li>
-                                        <li><a href="single-post.html">Post Single <span
-                                                    class="badge bg-dark">PRO</span></a></li>
-                                        <li><a href="shop.html">Our Store <span class="badge bg-dark">PRO</span></a>
-                                        </li>
-                                        <li><a href="single-product.html">Product Single <span
-                                                    class="badge bg-dark">PRO</span></a></li>
-                                        <li><a href="contact.html">Contact <span class="badge bg-dark">PRO</span></a>
-                                        </li>
-                                        <li><a href="thank-you.html">Thank You <span
-                                                    class="badge bg-dark">PRO</span></a></li>
-                                    </ul>
-
-                                </li>
-                                <li class="menu-item"><a href="{{ route('frontend.public.tags') }}" class="nav-link">Genre</a></li>
+                                <li class="menu-item {{ $route->named('frontend.public.index') ? 'active' : '' }}"><a href="{{ route('frontend.public.index') }}">Home</a></li>
+                                <li class="menu-item {{ $route->named('frontend.public.latest') ? 'active' : '' }}"><a href="{{ route('frontend.public.latest') }}" class="nav-link">Latest Novel</a></li>
+                                <li class="menu-item {{ $route->named('frontend.public.hot') ? 'active' : '' }}"><a href="{{ route('frontend.public.hot') }}" class="nav-link">Hot Novel</a></li>
+                                <li class="menu-item {{ $route->named('frontend.public.completed') ? 'active' : '' }}"><a href="{{ route('frontend.public.completed') }}" class="nav-link">Completed Novel</a></li>
+                                <li class="menu-item {{ $route->named('frontend.public.popular') ? 'active' : '' }}"><a href="{{ route('frontend.public.popular') }}" class="nav-link">Most Popular</a></li>
+                                <li class="menu-item {{ $route->named('frontend.public.tags') ? 'active' : '' }}"><a href="{{ route('frontend.public.tags') }}" class="nav-link">Genre</a></li>
                             </ul>
 
                             <div class="hamburger">

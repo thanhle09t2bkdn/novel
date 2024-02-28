@@ -156,7 +156,7 @@
                                     </figcaption>
                                 </div>
                             @empty
-                                <h3>This category didn't have any svg</h3>
+                                <h3>This category didn't have any novel</h3>
                             @endforelse
 
                         </div><!--grid-->

@@ -224,7 +224,7 @@
                                         <td><a href="{{ route('frontend.public.chapter', $chapter->slug) }}"
                                                title="{{ $chapter->name }}"
                                                class="text-decoration-none text-dark hover-title">{{ $chapter->name }}</a></td>
-                                        <td>{{ $chapter->created_at }}</td>
+                                        <td>{{ (new Carbon\Carbon($chapter->created_at))->diffForHumans() }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

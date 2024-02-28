@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 @empty
-                    <h3>This tag didn't have any novel</h3>
+                    <h3>Not Found</h3>
                 @endforelse
 
 

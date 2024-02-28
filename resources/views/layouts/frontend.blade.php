@@ -61,7 +61,7 @@
 
                 <div class="col-md-2">
                     <div class="main-logo">
-                        <a href="index.html"><img src="images/main-logo.png" alt="logo"></a>
+                        <a href="{{ route('frontend.public.index') }}"><img src="https://demo.templatesjungle.com/booksaw/images/main-logo.png" alt="logo"></a>
                     </div>
 
                 </div>

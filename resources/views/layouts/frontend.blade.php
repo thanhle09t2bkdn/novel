@@ -12,7 +12,12 @@
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="googlebot" content="index,follow,max-image-preview:large">
     {!! SEO::generate(true) !!}
-
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('frontend/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('frontend/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('frontend/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('frontend/favicon/site.webmanifest') }}">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -61,7 +66,7 @@
 
                 <div class="col-md-2">
                     <div class="main-logo">
-                        <a href="{{ route('frontend.public.index') }}"><img src="https://demo.templatesjungle.com/booksaw/images/main-logo.png" alt="logo"></a>
+                        <a href="{{ route('frontend.public.index') }}"><img src="{{ asset('frontend/images/logo.svg') }}" alt="logo"></a>
                     </div>
 
                 </div>

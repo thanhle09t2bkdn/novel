@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://svgcollection.com/sitemap.xml
+Sitemap:

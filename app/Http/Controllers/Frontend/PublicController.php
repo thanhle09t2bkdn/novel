@@ -57,7 +57,8 @@ class PublicController extends Controller
         $latestPosts = $this->postRepository->orderBy('created_at', 'desc')->limit(8)->get();
         $popularPosts = $this->postRepository->orderBy('view_number', 'desc')->limit(8)->get();
         $banner728x90 = $this->advertisementRepository->getByColumn('728x90_1', 'name');
-        return view('frontend.public.index', compact('popularPosts', 'latestPosts', 'bestPost', 'slidePosts', 'banner728x90'));
+        $latestChapters = $this->chapterRepository->latestChapters()->limit(20)->get();
+        return view('frontend.public.index', compact('popularPosts', 'latestPosts', 'bestPost', 'slidePosts', 'banner728x90', 'latestChapters'));
     }
 
     /**

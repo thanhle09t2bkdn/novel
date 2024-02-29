@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Repositories\ChapterRepository;
 use App\Repositories\PostRepository;
+use App\Repositories\TagRepository;
 use HungCP\PhpSimpleHtmlDom\HtmlDomParser;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
@@ -26,6 +27,7 @@ class NovelCoolChapterCommand extends Command
     protected $description = 'Novel Cool Chapter';
     private $postRepository;
     private $chapterRepository;
+    private $tagRepository;
 
     /**
      * Create a new command instance.
@@ -33,11 +35,13 @@ class NovelCoolChapterCommand extends Command
      * @return void
      */
     public function __construct(PostRepository    $postRepository,
+                                TagRepository $tagRepository,
                                 ChapterRepository $chapterRepository)
     {
         parent::__construct();
         $this->postRepository = $postRepository;
         $this->chapterRepository = $chapterRepository;
+        $this->tagRepository = $tagRepository;
     }
 
     /**
@@ -72,6 +76,18 @@ class NovelCoolChapterCommand extends Command
                         'post_id' => $post->id,
                     ]);
                 }
+
+                $tagIds = [];
+                $tags = $dom->find('.bk-cate-item a');
+                foreach ($tags as $tag) {
+                    $tagModel = $this->tagRepository->getByColumn($tag->innertext, 'name');
+                    if (!$tagModel) {
+                        $tagModel = $this->tagRepository->create(['name' => $tag->innertext]);
+                    }
+                    $tagIds[] = $tagModel->id;
+
+                }
+                $post->tags()->attach(array_unique($tagIds));
             } catch (\Exception $e) {
                 Log::error('Error:', [$e->getMessage()]);
             }

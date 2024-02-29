@@ -83,17 +83,6 @@ class NovelCoolPostCommand extends Command
                             'link' => $linkObject->href,
                             'rate' => $rateObject->innertext,
                         ]);
-                        $tagIds = [];
-                        $tags = $svgDom->find('.book-tag');
-                        foreach ($tags as $tag) {
-                            $tagModel = $this->tagRepository->getByColumn($tag->innertext, 'name');
-                            if (!$tagModel) {
-                                $tagModel = $this->tagRepository->create(['name' => $tag->innertext]);
-                            }
-                            $tagIds[] = $tagModel->id;
-
-                        }
-                        $post->tags()->attach(array_unique($tagIds));
                     }
                 }
             } catch (\Exception $e) {

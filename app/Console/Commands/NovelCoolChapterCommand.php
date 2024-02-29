@@ -61,7 +61,7 @@ class NovelCoolChapterCommand extends Command
                     'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
                 ])->get($post->link);
                 $dom = HtmlDomParser::str_get_html($content->body());
-                $authorObject =  $dom->find('.hover-underline', 0);
+                $authorObject =  $dom->find('.bookinfo-author .hover-underline', 0);
                 $post->author = $authorObject->title;
                 $post->save();
                 $elems = $dom->find('.chp-item');

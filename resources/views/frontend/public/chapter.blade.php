@@ -1,3 +1,6 @@
+@push('after-scripts')
+    <script src="{{ asset('frontend/js/chapter-detail.js') }}"></script>
+@endpush
 @extends('layouts.frontend')
 
 @section('content')

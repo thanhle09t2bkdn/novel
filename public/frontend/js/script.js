@@ -1,153 +1,144 @@
-(function($) {
+(function ($) {
 
-  "use strict";
+    "use strict";
 
-  const tabs = document.querySelectorAll('[data-tab-target]')
-  const tabContents = document.querySelectorAll('[data-tab-content]')
+    const tabs = document.querySelectorAll('[data-tab-target]')
+    const tabContents = document.querySelectorAll('[data-tab-content]')
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = document.querySelector(tab.dataset.tabTarget)
-      tabContents.forEach(tabContent => {
-        tabContent.classList.remove('active')
-      })
-      tabs.forEach(tab => {
-        tab.classList.remove('active')
-      })
-      tab.classList.add('active')
-      target.classList.add('active')
-    })
-  });
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = document.querySelector(tab.dataset.tabTarget)
+            tabContents.forEach(tabContent => {
+                tabContent.classList.remove('active')
+            })
+            tabs.forEach(tab => {
+                tab.classList.remove('active')
+            })
+            tab.classList.add('active')
+            target.classList.add('active')
+        })
+    });
 
-  // Responsive Navigation with Button
+    // Responsive Navigation with Button
 
-  const hamburger = document.querySelector(".hamburger");
-  const navMenu = document.querySelector(".menu-list");
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".menu-list");
 
-  hamburger.addEventListener("click", mobileMenu);
+    hamburger.addEventListener("click", mobileMenu);
 
-  function mobileMenu() {
-      hamburger.classList.toggle("active");
-      navMenu.classList.toggle("responsive");
-  }
-
-  const navLink = document.querySelectorAll(".nav-link");
-
-  navLink.forEach(n => n.addEventListener("click", closeMenu));
-
-  function closeMenu() {
-      hamburger.classList.remove("active");
-      navMenu.classList.remove("responsive");
-  }
-
-  var initScrollNav = function() {
-    var scroll = $(window).scrollTop();
-
-    if (scroll >= 200) {
-      $('#header').addClass("fixed-top");
-    }else{
-      $('#header').removeClass("fixed-top");
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("responsive");
     }
-  }
 
-  $(window).scroll(function() {
-    initScrollNav();
-  });
+    const navLink = document.querySelectorAll(".nav-link");
 
-  $(document).ready(function(){
-    initScrollNav();
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
 
-    Chocolat(document.querySelectorAll('.image-link'), {
-        imageSize: 'contain',
-        loop: true,
-    })
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("responsive");
+    }
 
-    $('#header-wrap').on('click', '.search-toggle', function(e) {
-      var selector = $(this).data('selector');
+    var initScrollNav = function () {
+        var scroll = $(window).scrollTop();
 
-      $(selector).toggleClass('show').find('.search-input').focus();
-      $(this).toggleClass('active');
+        if (scroll >= 200) {
+            $('#header').addClass("fixed-top");
+        } else {
+            $('#header').removeClass("fixed-top");
+        }
+    }
 
-      e.preventDefault();
+    $(window).scroll(function () {
+        initScrollNav();
     });
 
+    $(document).ready(function () {
+        initScrollNav();
 
-    // close when click off of container
-    $(document).on('click touchstart', function (e){
-      if (!$(e.target).is('.search-toggle, .search-toggle *, #header-wrap, #header-wrap *')) {
-        $('.search-toggle').removeClass('active');
-        $('#header-wrap').removeClass('show');
-      }
-    });
+        Chocolat(document.querySelectorAll('.image-link'), {
+            imageSize: 'contain',
+            loop: true,
+        })
 
-    $('.main-slider').slick({
-        autoplay: false,
-        autoplaySpeed: 4000,
-        fade: true,
-        dots: true,
-        prevArrow: $('.prev'),
-        nextArrow: $('.next'),
-    });
+        $('#header-wrap').on('click', '.search-toggle', function (e) {
+            var selector = $(this).data('selector');
 
-    $('.product-grid').slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: false,
-        autoplaySpeed: 2000,
-        dots: true,
-        arrows: false,
-        responsive: [
-          {
-            breakpoint: 1400,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1
+            $(selector).toggleClass('show').find('.search-input').focus();
+            $(this).toggleClass('active');
+
+            e.preventDefault();
+        });
+
+
+        // close when click off of container
+        $(document).on('click touchstart', function (e) {
+            if (!$(e.target).is('.search-toggle, .search-toggle *, #header-wrap, #header-wrap *')) {
+                $('.search-toggle').removeClass('active');
+                $('#header-wrap').removeClass('show');
             }
-          },
-          {
-            breakpoint: 999,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 660,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-          // You can unslick at a given breakpoint now by adding:
-          // settings: "unslick"
-          // instead of a settings object
-        ]
-    });
+        });
 
-    AOS.init({
-      duration: 1200,
-      once: true,
-    })
+        $('.main-slider').slick({
+            autoplay: false,
+            autoplaySpeed: 4000,
+            fade: true,
+            dots: true,
+            prevArrow: $('.prev'),
+            nextArrow: $('.next'),
+        });
 
-    jQuery('.stellarnav').stellarNav({
-      theme: 'plain',
-      closingDelay: 250,
-      // mobileMode: false,
-    });
+        $('.product-grid').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: false,
+            autoplaySpeed: 2000,
+            dots: true,
+            arrows: false,
+            responsive: [
+                {
+                    breakpoint: 1400,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 999,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 660,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
 
-  }); // End of a document
+        AOS.init({
+            duration: 1200,
+            once: true,
+        })
+
+        jQuery('.stellarnav').stellarNav({
+            theme: 'plain',
+            closingDelay: 250,
+            // mobileMode: false,
+        });
+
+    }); // End of a document
     $('.my-rating').starRating({
         strokeColor: '#894A00',
         readOnly: true,
         starSize: 35
-    });
-    $(document).keydown(function(e){
-        if (e.which == 37) {
-            window.location.replace($('#previous-btn').attr('href'));
-            return false;
-        } else if (e.which == 39) {
-            window.location.replace($('#next-btn').attr('href'));
-            return false;
-        }
     });
 })(jQuery);

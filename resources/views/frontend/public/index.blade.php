@@ -105,7 +105,7 @@
                     <div class="row">
 
                         <div class="col-md-6">
-                            <figure class="products-thumb">
+                            <figure class="products-thumb text-center">
                                 <img src="{{ $bestPost->image }}" alt="{{ $bestPost->name }}" class="single-image">
                             </figure>
                         </div>

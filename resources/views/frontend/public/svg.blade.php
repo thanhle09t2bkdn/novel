@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-3">
+                <div class="col-md-3 text-center">
                     <a href="#" class="product-image"><img src="{{ $post->image }}" title="{{ $post->name }}"
                                                            alt="{{ $post->name }}"></a>
                 </div>
@@ -29,9 +29,10 @@
                                         <strong class="me-1">Genre:</strong>
                                         <div class="d-flex align-items-center flex-warp">
                                             @foreach($tags as $tag)
-                                                <a class="btn btn-secondary btn-sm" href="{{ route('frontend.public.tag', $tag->slug) }}">
+                                                <span class="badge bg-primary"><a href="{{ route('frontend.public.tag', $tag->slug) }}">
                                                     {{ $tag->name }}
-                                                </a>
+                                                </a></span>
+
                                             @endforeach
                                         </div>
                                     </div>

@@ -117,7 +117,7 @@
                                 <div class="products-content">
                                     <div class="author-name">By {{ $bestPost->author }}</div>
                                     <h3 class="item-title">{{ $bestPost->name }}</h3>
-                                    <p>{{ $bestPost->description }}</p>
+                                    <p>{{ $bestPost->short_description }}</p>
                                     <div class="btn-wrap">
                                         <a href="{{ route('frontend.public.svg', $bestPost->slug) }}" class="btn-accent-arrow">shop it now <i
                                                 class="icon icon-ns-arrow-right"></i></a>

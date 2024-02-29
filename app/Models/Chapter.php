@@ -31,6 +31,7 @@ class Chapter extends Model
         'description',
         'content',
         'link',
+        'video_link',
     ];
 
     /**

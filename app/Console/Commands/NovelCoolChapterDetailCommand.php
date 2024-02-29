@@ -62,7 +62,9 @@ class NovelCoolChapterDetailCommand extends Command
                 $dom = HtmlDomParser::str_get_html($content->body());
 
                 $contentObject =  $dom->find('.overflow-hidden', 0);
-                $chapter->content = $contentObject->text();
+                $replaceTitle = str_replace($chapter->name, '', $contentObject->text());
+                $replaceReport = str_replace('Chapter end Report', '', $replaceTitle);
+                $chapter->content = $replaceReport;
                 $chapter->save();
             } catch (\Exception $e) {
                 Log::error('Error:', [$e->getMessage()]);

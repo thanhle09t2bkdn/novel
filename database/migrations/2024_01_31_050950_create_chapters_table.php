@@ -22,6 +22,7 @@ class CreateChaptersTable extends Migration
             $table->text('description')->nullable();
             $table->mediumText('content')->nullable();
             $table->string('link');
+            $table->string('video_link')->nullable();
             $table->timestamps();
         });
     }

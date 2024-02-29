@@ -24,8 +24,8 @@
                 <a class="btn btn-accent disabled"
                    href="#">Chapter Previous</a>
             @endif
-            <a class="btn btn-success" href="#">
-                list
+            <a class="btn btn-success" href="{{ route('frontend.public.svg', $nextChapter->post->slug) }}">
+                Chapter List
             </a>
             @if($nextChapter)
                 <a class="btn btn-accent"

@@ -20,7 +20,7 @@
 
                 <div class="col-md-12">
 
-                    <div class="post-content">
+                    <div class="post-content mb-4">
                         @foreach($tags as $tag)
                             <a href="{{ route('frontend.public.tag', $tag->slug) }}" class="btn btn-secondary">
                                 {{ $tag->name }}

@@ -26,7 +26,7 @@
                                             @foreach($tags as $tag)
                                                 <a href="{{ route('frontend.public.tag', $tag->slug) }}">
                                                     {{ $tag->name }}
-                                                </a>,
+                                                </a><span>, </span>
                                             @endforeach
                                         </div>
                                     </div>

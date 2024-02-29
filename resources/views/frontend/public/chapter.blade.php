@@ -55,5 +55,29 @@
 
         </div>
     </section>
+    <div class="text-center mb-4">
+        <div class="">
+            @if($previousChapter)
+                <a class="btn btn-accent" id="previous-btn"
+                   href="{{ route('frontend.public.chapter', $previousChapter->slug) }}"
+                   title="{{ $previousChapter->name }}">Chapter Previous</a>
+            @else
+                <a class="btn btn-accent disabled" id="previous-btn"
+                   href="#">Chapter Previous</a>
+            @endif
+            <a class="btn btn-success" href="{{ route('frontend.public.svg', $chapter->post->slug) }}">
+                Chapter List
+            </a>
+            @if($nextChapter)
+                <a class="btn btn-accent" id="next-btn"
+                   href="{{ route('frontend.public.chapter', $nextChapter->slug) }}" title="{{ $nextChapter->name }}">Chapter
+                    Next</a>
+            @else
+                <a class="btn btn-accent disabled" id="next-btn"
+                   href="#">Chapter Next</a>
+            @endif
+
+        </div>
+    </div>
 
 @endsection

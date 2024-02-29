@@ -70,7 +70,7 @@ class NovelCoolChapterCommand extends Command
                     $viewNumberObject = $svgDom->find('.chapter-item-views span', 0);
                     $linkObject = $svgDom->find('a', 0);
                     $this->chapterRepository->create([
-                        'name' => $linkObject->title,
+                        'name' => trim($linkObject->title),
                         'view_number' => str_replace(',', '', $viewNumberObject->innertext),
                         'link' => $linkObject->href,
                         'post_id' => $post->id,
@@ -80,9 +80,9 @@ class NovelCoolChapterCommand extends Command
                 $tagIds = [];
                 $tags = $dom->find('.bk-cate-item a');
                 foreach ($tags as $tag) {
-                    $tagModel = $this->tagRepository->getByColumn($tag->innertext, 'name');
+                    $tagModel = $this->tagRepository->getByColumn(trim($tag->text()), 'name');
                     if (!$tagModel) {
-                        $tagModel = $this->tagRepository->create(['name' => $tag->innertext]);
+                        $tagModel = $this->tagRepository->create(['name' => trim($tag->text())]);
                     }
                     $tagIds[] = $tagModel->id;
 

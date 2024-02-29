@@ -73,8 +73,8 @@ class NovelCoolPostCommand extends Command
                         $viewNumberObject = $svgDom->find('.book-data-num', 0);
                         $rateObject = $svgDom->find('.book-rate-num', 0);
                         $linkObject = $svgDom->find('.book-info a', 0);
-                        $post = $this->postRepository->create([
-                            'name' => $nameObject->innertext,
+                        $this->postRepository->create([
+                            'name' => trim($nameObject->innertext),
                             'image' => $imageObject->src,
                             'description' => $descriptionObject->innertext,
                             'short_description' => Str::limit($descriptionObject->innertext, 100) . '...',

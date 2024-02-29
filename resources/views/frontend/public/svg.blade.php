@@ -16,10 +16,12 @@
                         <div class="story-detail__bottom mb-3">
                             <div class="row">
                                 <div class="col-12 col-md-12 col-lg-3">
-                                    <div class="rating-container d-flex align-items-center text-warning mb-4">
+                                    <div class="rating-container">
                                         <div class="my-rating" data-rating="{{ $post->rate }}"></div>
+                                        <p><strong>{{ $post->view_number }}</strong> Views</p>
                                     </div>
-                                    <p class="mb-1">
+
+                                    <p>
                                         <strong>Author:</strong>
                                         <span>{{ $post->author }}</span>
                                     </p>
@@ -27,9 +29,9 @@
                                         <strong class="me-1">Genre:</strong>
                                         <div class="d-flex align-items-center flex-warp">
                                             @foreach($tags as $tag)
-                                                <a href="{{ route('frontend.public.tag', $tag->slug) }}">
+                                                <a class="btn btn-secondary btn-sm" href="{{ route('frontend.public.tag', $tag->slug) }}">
                                                     {{ $tag->name }}
-                                                </a><span>, </span>
+                                                </a>
                                             @endforeach
                                         </div>
                                     </div>

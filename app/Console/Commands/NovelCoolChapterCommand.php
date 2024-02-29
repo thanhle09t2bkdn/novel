@@ -62,9 +62,10 @@ class NovelCoolChapterCommand extends Command
                 ])->get($post->link);
                 $dom = HtmlDomParser::str_get_html($content->body());
                 $authorObject =  $dom->find('.bookinfo-author .hover-underline', 0);
-                $rateObject =  $dom->find('.bk-data-val', 0);
+                $dataVals =  $dom->find('.bk-data-val');
+                $post->rate = trim($dataVals[1]->text());
+                $post->view_number = str_replace(',', '', trim($dataVals[2]->text()));
                 $post->author = $authorObject->title;
-                $post->rate = $rateObject->title;
                 $post->save();
                 $elems = $dom->find('.chp-item');
                 $newElems = array_reverse($elems);

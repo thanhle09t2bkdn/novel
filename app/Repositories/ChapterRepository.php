@@ -34,7 +34,7 @@ class ChapterRepository extends BaseRepository
                 'posts.name as post_name',
                 'posts.image as post_image'
             ])
-            ->orderBy('created_at', 'desc');
+            ->orderBy('chapters.created_at', 'desc');
         return $query;
     }
 

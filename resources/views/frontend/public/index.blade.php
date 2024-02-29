@@ -210,7 +210,7 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Novel Name</th>
+                                    <th scope="col" class="pl-2">Novel Name</th>
                                     <th scope="col">Chapter</th>
                                     <th scope="col">Posted At</th>
                                 </tr>
@@ -218,10 +218,10 @@
                                 <tbody>
                                 @foreach($latestChapters as $chapter)
                                     <tr>
-                                        <td><a href="{{ route('frontend.public.chapter', $chapter->slug) }}"
+                                        <td class="pl-2"><a href="{{ route('frontend.public.chapter', $chapter->slug) }}"
                                                title="{{ $chapter->post_name }}"
-                                               class="text-decoration-none text-dark hover-title"><img src="{{ $chapter->post_image }}" alt="{{ $chapter->post_name }}" class="product-item">{{ $chapter->post_name }}</a></td>
-                                        <td><a href="{{ route('frontend.public.chapter', $chapter->slug) }}"
+                                               class="text-decoration-none text-dark hover-title">{{ $chapter->post_name }}</a></td>
+                                        <td><a class="hover-title text-decoration-none text-info" href="{{ route('frontend.public.chapter', $chapter->slug) }}"
                                                title="{{ $chapter->name }}"
                                                class="text-decoration-none text-dark hover-title">{{ $chapter->name }}</a></td>
                                         <td>{{ (new Carbon\Carbon($chapter->created_at))->diffForHumans() }}</td>

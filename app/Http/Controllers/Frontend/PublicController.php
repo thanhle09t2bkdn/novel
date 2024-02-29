@@ -207,7 +207,7 @@ class PublicController extends Controller
     public function hot(Request $request)
     {
         $this->seo()->setTitle('Hot Novel');
-        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate()->onEachSide(1);
+        $list = $this->postRepository->orderBy('view_number', 'desc')->paginate()->onEachSide(1);
         return view('frontend.public.hot', compact('list'));
     }
 

@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/normalize.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/icomoon/icomoon.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/vendor.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/star-rating-svg.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style.css?v=1.0') }}">
 </head>
 <body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
@@ -148,6 +149,7 @@
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
 <script src="{{ asset('frontend/js/plugins.js') }}"></script>
+<script src="{{ asset('frontend/js/jquery.star-rating-svg.min.js') }}"></script>
 
 @stack('after-scripts')
 <script src="{{ asset('frontend/js/script.js') }}"></script>

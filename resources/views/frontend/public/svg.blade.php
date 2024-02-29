@@ -16,6 +16,9 @@
                         <div class="story-detail__bottom mb-3">
                             <div class="row">
                                 <div class="col-12 col-md-12 col-lg-3">
+                                    <div class="rating-container d-flex align-items-center text-warning mb-4">
+                                        <div class="my-rating" data-rating="{{ $post->rate }}"></div>
+                                    </div>
                                     <p class="mb-1">
                                         <strong>Author:</strong>
                                         <span>{{ $post->author }}</span>
@@ -33,23 +36,6 @@
                                 </div>
 
                             </div>
-                        </div>
-                        <div class="rating-container d-flex align-items-center text-warning mb-4">
-                            <svg width="32" height="32">
-                                <use xlink:href="#star-solid"></use>
-                            </svg>
-                            <svg width="32" height="32">
-                                <use xlink:href="#star-solid"></use>
-                            </svg>
-                            <svg width="32" height="32">
-                                <use xlink:href="#star-solid"></use>
-                            </svg>
-                            <svg width="32" height="32">
-                                <use xlink:href="#star-outline"></use>
-                            </svg>
-                            <svg width="32" height="32">
-                                <use xlink:href="#star-outline"></use>
-                            </svg>
                         </div>
 
                         <p>

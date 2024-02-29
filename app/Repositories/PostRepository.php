@@ -28,8 +28,8 @@ class PostRepository extends BaseRepository
     public function searchName($name)
     {
         $query = DB::table('posts')
-            ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
-            ->join('tags', 'tags.id', '=', 'post_tag.tag_id')
+            ->leftJoin('post_tag', 'post_tag.post_id', '=', 'posts.id')
+            ->leftJoin('tags', 'tags.id', '=', 'post_tag.tag_id')
             ->select([
                 'posts.*',
             ])

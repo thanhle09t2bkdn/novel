@@ -141,4 +141,13 @@
         readOnly: true,
         starSize: 35
     });
+    $(document).keydown(function(e){
+        if (e.which == 37) {
+            window.location.replace($('#previous-btn').attr('href'));
+            return false;
+        } else if (e.which == 39) {
+            window.location.replace($('#next-btn').attr('href'));
+            return false;
+        }
+    });
 })(jQuery);

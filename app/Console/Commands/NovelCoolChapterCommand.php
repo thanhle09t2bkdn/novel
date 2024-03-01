@@ -35,7 +35,7 @@ class NovelCoolChapterCommand extends Command
      * @return void
      */
     public function __construct(PostRepository    $postRepository,
-                                TagRepository $tagRepository,
+                                TagRepository     $tagRepository,
                                 ChapterRepository $chapterRepository)
     {
         parent::__construct();
@@ -53,20 +53,20 @@ class NovelCoolChapterCommand extends Command
     {
 
         Log::info('NovelCoolCommandSTART:');
-        do{
+        do {
             $posts = $this->postRepository
                 ->where('author', null, '=')
                 ->orderBy('name', 'desc')
                 ->paginate(200);
             foreach ($posts as $post) {
-                Log::info('NovelCoolCommandEND: post ' . $post->name . PHP_EOL);
+                Log::info('NovelCoolCommandEND: post ' . $post->link . PHP_EOL);
                 try {
                     $content = Http::withHeaders([
                         'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
                     ])->get($post->link);
                     $dom = HtmlDomParser::str_get_html($content->body());
-                    $authorObject =  $dom->find('.bookinfo-author .hover-underline', 0);
-                    $dataVals =  $dom->find('.bk-data-val');
+                    $authorObject = $dom->find('.bookinfo-author .hover-underline', 0);
+                    $dataVals = $dom->find('.bk-data-val');
                     $post->rate = trim($dataVals[1]->text());
                     $post->view_number = str_replace(',', '', trim($dataVals[2]->text()));
                     $post->author = $authorObject->title;
@@ -99,7 +99,7 @@ class NovelCoolChapterCommand extends Command
                     Log::error('Error:', [$e->getMessage()]);
                 }
             }
-        }while(count($posts));
+        } while (count($posts));
 
         Log::info('NovelCoolCommandEND:');
         return 0;

@@ -59,6 +59,7 @@
                                 <div class="col-md-3">
                                     <div class="product-item">
                                         <figure class="product-style">
+                                            <span class="badge bg-primary position-absolute z-3 mt-2">⭐ {{ $post->rate }}</span>
                                             <a href="{{ route('frontend.public.svg', $post->slug) }}" title="{{ $post->name }}">
                                                 <img src="{{ $post->image }}" alt="{{ $post->name }}" class="product-item">
                                             </a>
@@ -154,6 +155,7 @@
                                 <div class="col-md-3">
                                     <div class="product-item">
                                         <figure class="product-style">
+                                            <span class="badge bg-primary position-absolute z-3 mt-2">⭐ {{ $post->rate }}</span>
                                             <a href="{{ route('frontend.public.svg', $post->slug) }}"
                                                title="{{ $post->name }}">
                                                 <img src="{{ $post->image }}" alt="{{ $post->name }}"

@@ -13,7 +13,7 @@
                 <div class="col-md-9 pl-5">
                     <div class="product-detail">
                         <h1>{{ $post->name }}</h1>
-                        <div class="story-detail__bottom mb-3">
+                        <div class="story-detail__bottom mb-1">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="rating-container">
@@ -25,16 +25,16 @@
                                         <strong>Author:</strong>
                                         <span>{{ $post->author }}</span>
                                     </p>
-                                    <div class="d-flex align-items-center mb-1 flex-wrap">
+                                    <div>
                                         <strong class="me-1">Genre:</strong>
-                                        <div class="d-flex align-items-center flex-warp">
+                                        <p>
                                             @foreach($tags as $tag)
                                                 <span class="badge bg-primary"><a href="{{ route('frontend.public.tag', $tag->slug) }}">
                                                     {{ $tag->name }}
                                                 </a></span>
 
                                             @endforeach
-                                        </div>
+                                        </p>
                                     </div>
                                 </div>
 
@@ -53,7 +53,7 @@
         </div>
     </section>
 
-    <section class="product-tabs mt-5">
+    <section class="product-tabs">
         <div class="container">
             <div class="row">
                 <div class="tabs-listing">

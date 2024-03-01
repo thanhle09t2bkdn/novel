@@ -53,7 +53,9 @@ class NovelCoolChapterCommand extends Command
     {
 
         Log::info('NovelCoolCommandSTART:');
-        $posts = $this->postRepository->orderBy('name', 'desc')->get();
+        $posts = $this->postRepository
+            ->where('author', null, '=')
+            ->orderBy('name', 'desc')->get();
         foreach ($posts as $post) {
             Log::info('NovelCoolCommandEND: post ' . $post->name . PHP_EOL);
             try {
@@ -94,7 +96,6 @@ class NovelCoolChapterCommand extends Command
             } catch (\Exception $e) {
                 Log::error('Error:', [$e->getMessage()]);
             }
-            break;
         }
         Log::info('NovelCoolCommandEND:');
         return 0;

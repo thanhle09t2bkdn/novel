@@ -55,7 +55,7 @@ class NovelCoolChapterDetailCommand extends Command
         do {
             $chapters = $this->chapterRepository
                 ->where('content', null, '=')
-                ->orderBy('name', 'asc')
+                ->orderBy('id')
                 ->paginate(200);
             foreach ($chapters as $chapter) {
                 Log::info('NovelCoolCommandEND: post detail ' . $chapter->name . PHP_EOL);

@@ -15,7 +15,7 @@
                         @foreach($slidePosts as $post)
                             <div class="slider-item">
                                 <div class="banner-content">
-                                    <h2>{{ $post->name }}</h2>
+                                    <h1>{{ $post->name }}</h1>
                                     <p>{{ $post->short_description }}</p>
                                     <div class="btn-wrap">
                                         <a href="{{ route('frontend.public.svg', $post->slug) }}"

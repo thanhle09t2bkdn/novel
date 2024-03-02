@@ -25,18 +25,29 @@ class PostRepository extends BaseRepository
         $this->model = $model;
     }
 
-    public function searchName($name) {
+    public function searchName($name)
+    {
         $query = DB::table('posts')
-            ->join('categories', 'categories.id', '=', 'posts.category_id')
+            ->leftJoin('post_tag', 'post_tag.post_id', '=', 'posts.id')
+            ->leftJoin('tags', 'tags.id', '=', 'post_tag.tag_id')
+            ->select([
+                'posts.*',
+            ])
+            ->orWhere('posts.name', 'like', "%$name%")
+            ->orWhere('tags.name', 'like', "%$name%")
+            ->groupBy(['posts.id']);
+        return $query;
+    }
+
+    public function findTagId($id)
+    {
+        $query = DB::table('posts')
             ->join('post_tag', 'post_tag.post_id', '=', 'posts.id')
             ->join('tags', 'tags.id', '=', 'post_tag.tag_id')
             ->select([
                 'posts.*',
             ])
-            ->orWhere('posts.name', 'like', "%$name%")
-            ->orWhere('categories.name', 'like', "%$name%")
-            ->orWhere('tags.name', 'like', "%$name%")
-            ->groupBy(['posts.id']);
+            ->where('tags.id', '=', $id);
         return $query;
     }
 

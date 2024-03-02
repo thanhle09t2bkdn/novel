@@ -15,7 +15,6 @@ class AddIndexCategoriesTable extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             $table->index('name');
-            $table->index('item_total');
             $table->index('image');
             $table->index('slug');
             $table->index('created_at');

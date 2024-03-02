@@ -1,7 +1,7 @@
 @php
     $route = request()->route();
 @endphp
-<!doctype html>
+    <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -12,106 +12,146 @@
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="googlebot" content="index,follow,max-image-preview:large">
     {!! SEO::generate(true) !!}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('frontend/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('frontend/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('frontend/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('frontend/favicon/site.webmanifest') }}">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com"/>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap"
-        rel="stylesheet"
-    />
-
-    <!-- Font Awesome -->
-    <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-        rel="stylesheet"
-    />
-
-    <!-- Flaticon Font -->
-    <link href="{{ asset('user/lib/flaticon/font/flaticon.css') }}" rel="stylesheet"/>
-
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('user/css/style.css?v=2') }}" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/normalize.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/icomoon/icomoon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/vendor.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/star-rating-svg.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style.css?v=1.0') }}">
 </head>
-<body>
-<!-- Navbar Start -->
-<div class="container-fluid bg-light position-relative shadow">
-    <nav
-        class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5"
-    >
-        <a
-            href="{{ route('frontend.public.index') }}"
-            class="navbar-brand font-weight-bold text-secondary"
-        >
-            SVG Collection
-        </a>
-        <button
-            type="button"
-            class="navbar-toggler"
-            data-toggle="collapse"
-            data-target="#navbarCollapse"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-            class="collapse navbar-collapse justify-content-between"
-            id="navbarCollapse"
-        >
-            <div class="navbar-nav font-weight-bold mx-auto py-0">
-                <a href="{{ route('frontend.public.index') }}" class="nav-item nav-link {{ $route->named('frontend.public.index') ? 'active' : '' }}">Home</a>
+<body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
+
+<div id="header-wrap">
+
+    <div class="top-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                    <div class="right-element">
+                        <a href="#" class="user-account for-buy"><i
+                                class="icon icon-user"></i><span>Account</span></a>
+
+                        <div class="action-menu">
+
+                            <div class="search-bar">
+                                <a href="#" class="search-button search-toggle" data-selector="#header-wrap">
+                                    <i class="icon icon-search"></i>
+                                </a>
+                                <form role="search" method="get" action="{{ route('frontend.public.search') }}" class="search-box">
+                                    <input name="name" required class="search-field text search-input" placeholder="Search"
+                                           type="search">
+                                </form>
+                            </div>
+                        </div>
+
+                    </div><!--top-right-->
+                </div>
+
             </div>
         </div>
-    </nav>
-</div>
-<!-- Navbar End -->
+    </div><!--top-content-->
+
+    <header id="header">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <div class="main-logo">
+                        <a href="{{ route('frontend.public.index') }}"><img src="{{ asset('frontend/images/logo.svg') }}" alt="logo"></a>
+                    </div>
+
+                </div>
+
+                <div class="col-md-10">
+
+                    <nav id="navbar">
+                        <div class="main-menu stellarnav">
+                            <ul class="menu-list">
+                                <li class="menu-item {{ $route->named('frontend.public.index') ? 'active' : '' }}"><a href="{{ route('frontend.public.index') }}">Home</a></li>
+                                <li class="menu-item {{ $route->named('frontend.public.latest') ? 'active' : '' }}"><a href="{{ route('frontend.public.latest') }}" class="nav-link">Latest Novel</a></li>
+                                <li class="menu-item {{ $route->named('frontend.public.hot') ? 'active' : '' }}"><a href="{{ route('frontend.public.hot') }}" class="nav-link">Hot Novel</a></li>
+                                <li class="menu-item {{ $route->named('frontend.public.completed') ? 'active' : '' }}"><a href="{{ route('frontend.public.completed') }}" class="nav-link">Completed Novel</a></li>
+                                <li class="menu-item {{ $route->named('frontend.public.popular') ? 'active' : '' }}"><a href="{{ route('frontend.public.popular') }}" class="nav-link">Most Popular</a></li>
+                                <li class="menu-item {{ $route->named('frontend.public.tags') ? 'active' : '' }}"><a href="{{ route('frontend.public.tags') }}" class="nav-link">Genre</a></li>
+                            </ul>
+
+                            <div class="hamburger">
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                            </div>
+
+                        </div>
+                    </nav>
+
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+</div><!--header-wrap-->
 
 @yield('content')
 
-<!-- Footer Start -->
-<div
-    class="container-fluid bg-secondary text-white mt-1 py-1 px-sm-3 px-md-5"
->
-    <div class="row pt-3">
-        <div class="col-lg-1 col-md-1 mb-5">
-        </div>
-        <div class="col-lg-10 col-md-8 mb-3">
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 
+                <div class="copyright">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <p>© 2022 All rights reserved. <a
+                                    href="" target="_blank">T0ny</a></p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="social-links align-right">
+                                <ul>
+                                    <li>
+                                        <a href="#"><i class="icon icon-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon icon-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon icon-youtube-play"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon icon-behance-square"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!--grid-->
+
+            </div><!--footer-bottom-content-->
         </div>
     </div>
-    <div
-        class="container-fluid pt-3"
-        style="border-top: 1px solid rgba(23, 162, 184, 0.2) ;"
-    >
-        <p class="m-0 text-center text-white">
-            &copy;
-            <a class="text-primary font-weight-bold" href="#">SVG Collection</a>.
-            All Rights Reserved.
-        </p>
-    </div>
-</div>
-<!-- Footer End -->
-
-<!-- Back to Top -->
-<a href="#" class="btn btn-primary p-3 back-to-top"
-><i class="fa fa-angle-double-up"></i
-    ></a>
+</footer>
 @stack('before-scripts')
-<!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<script src="{{ asset('user/lib/easing/easing.min.js') }}"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RZX1PBCE5"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+<script src="{{ asset('frontend/js/jquery-1.11.0.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+<script src="{{ asset('frontend/js/plugins.js') }}"></script>
+<script src="{{ asset('frontend/js/jquery.star-rating-svg.min.js') }}"></script>
 
-    gtag('config', 'G-6RZX1PBCE5');
-</script>
 @stack('after-scripts')
-<!-- Template Javascript -->
-<script src="{{ asset('user/js/main.js') }}"></script>
+<script src="{{ asset('frontend/js/script.js') }}"></script>
 </body>
 </html>

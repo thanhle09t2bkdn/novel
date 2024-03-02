@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Tag;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 
@@ -15,8 +14,9 @@ class InitDataSeeder extends Seeder
      */
     public function run()
     {
-//        Artisan::call('command:pixelied');
-//        Artisan::call('command:svgsilh');
-//        Artisan::call('command:upload-svg');
+        Artisan::call('command:novel-cool-post');
+//        Artisan::call('command:novel-cool-latest-post');
+//        Artisan::call('command:novel-cool-chapter');
+//        Artisan::call('command:novel-cool-chapter-detail');
     }
 }

@@ -1,60 +1,59 @@
 @extends('layouts.frontend')
 
 @section('content')
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary mb-5">
-        <div
-            class="d-flex flex-column align-items-center justify-content-center"
-            style="min-height: 150px"
-        >
-            <h3 class="font-weight-bold text-white">Free SVG Files</h3>
-            <div class="d-inline-flex text-white">
-                <p class="mb-2">Free SVG downloads for seamless project enhancement. Click, download, create effortlessly!</p>
-            </div>
-            <form method="get" action="{{ route('frontend.public.search') }}">
-                <div class="input-group">
-                    <input name="name" type="text" class="form-control form-control-lg" placeholder="Search SVG">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn-secondary">Search</button>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="colored">
+                        <h1 class="page-title">{{ $tag->name }}</h1>
+                        <div class="breadcum-items">
+                            <span class="item"><a href="{{ route('frontend.public.index') }}">Home /</a></span>
+                            <span class="item colored">{{ $tag->name }}</span>
+                        </div>
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
-    <!-- Header End -->
-    <div class="container-fluid pt-2">
-        <div class="container">
-            <div class="text-center pb-2">
-                <h1 class="mb-4">{{ $tag->name }} tag</h1>
             </div>
-            <div class="row pb-3">
+        </div>
+    </div><!--site-banner-->
+
+    <section class="padding-medium">
+        <div class="container">
+            <div class="row">
                 @forelse ($list as $item)
-                    <div class="col-md-2 mb-4">
-                        <div class="card border-0 shadow-sm mb-2">
-                            <a href="{{ route('frontend.public.svg', $item->slug) }}">
-                                <img class="svg-bg" width="auto" height="100"  src="{{ $item->image }}" title="{{ $item->name }}" alt="{{ $item->name }}" />
-                            </a>
+                    <div class="col-md-3">
+                        <div class="product-item">
+                            <figure class="product-style">
+                                <a href="{{ route('frontend.public.svg', $item->slug) }}">
+                                    <img src="{{ $item->image }}" title="{{ $item->name }}" alt="{{ $item->name }}" class="product-item">
+                                </a>
+
+                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+                            </figure>
+                            <figcaption>
+                                <a href="{{ route('frontend.public.svg', $item->slug) }}">
+                                    <h3>{{ $item->name }}</h3>
+                                </a>
+
+                                <p>{{ $item->short_description }}</p>
+                            </figcaption>
                         </div>
-                        <a rel="license" target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="https://licensebuttons.net/p/zero/1.0/80x15.png" style="border-style: none;" alt="CC0"></a>
                     </div>
                 @empty
                     <h3>This tag didn't have any svg</h3>
                 @endforelse
+
+
             </div>
+
             <div class="row">
-                <div class="col-sm-12">
-                    <nav aria-label="Page navigation">
-                        {{ $list->withQueryString()->links() }}
-                    </nav>
-                </div>
+
+                <nav aria-label="Page navigation" class="mt-5">
+                    {{ $list->withQueryString()->links() }}
+                </nav>
             </div>
-            <div class="row">
-                <!-- 160x300_1 -->
-                @if(env('APP_ENV', 'local') == 'prod')
-                    {!! $banner160x300->data !!}
-                @endif
-            </div>
+
         </div>
-    </div>
+    </section>
 
 @endsection

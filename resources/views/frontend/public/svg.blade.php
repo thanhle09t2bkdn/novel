@@ -1,107 +1,158 @@
 @extends('layouts.frontend')
 
 @section('content')
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary mb-5">
-        <div
-            class="d-flex flex-column align-items-center justify-content-center"
-            style="min-height: 150px"
-        >
-            <h3 class="font-weight-bold text-white">Free SVG Files</h3>
-            <div class="d-inline-flex text-white">
-                <p class="mb-2">Free SVG downloads for seamless project enhancement. Click, download, create effortlessly!</p>
-            </div>
-            <form method="get" action="{{ route('frontend.public.search') }}">
-                <div class="input-group">
-                    <input name="name" type="text" class="form-control form-control-lg" placeholder="Search SVG">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn-secondary">Search</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- Detail Start -->
-    <div class="container py-1">
-        <div class="row pt-1">
-            <div class="col-lg-8">
-                <div class="d-flex flex-column text-left mb-3">
-                    <h3 class="mb-3">{{ $post->name }}</h3>
-                    <div class="d-flex">
-                        <p class="mr-3">
-                            <a href="{{ route('frontend.public.category', $post->category->slug) }}">
-                                <i class="fa fa-folder text-primary"></i> {{ $post->category->name }}
-                            </a>
-                        </p>
-                        <p class="mr-3">Created At: {{ date('m-d-Y H:i:s', strtotime($post->created_at)) }}</p>
-                    </div>
-                </div>
-                <div class="mb-5">
-                    <p class="text-right"><a href="{{ route('frontend.public.download', [$post->id, $post->storage_link]) }}"  download="{{ $post->slug . '.svg' }}" class="btn btn-secondary">
-                            Download
-                        </a></p>
-                    <img
-                        class="img-fluid mb-4 svg-bg"
-                        src="{{ $post->image }}"
-                        width="400px" height="400px"
-                        alt="{{ $post->name }}"
-                        title="{{ $post->name }}"
-                    />
-                    <p>
-                        <a rel="license" target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="https://licensebuttons.net/p/zero/1.0/80x15.png" style="border-style: none;" alt="CC0"></a>
-                    </p>
-                    <div class="row">
-                        <h3 class="mr-4">Tag:</h3>
-                        <p>
-                            @foreach($tags as $tag)
-                                <a href="{{ route('frontend.public.tag', $tag->slug) }}" class="btn btn-secondary">
-                                    {{ $tag->name }}
-                                </a>
-                            @endforeach
-                        </p>
-                    </div>
+    <section class="bg-sand padding-medium">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-3 text-center">
+                    <a href="#" class="product-image"><img src="{{ $post->image }}" title="{{ $post->name }}"
+                                                           alt="{{ $post->name }}"></a>
                 </div>
 
-                <!-- Related Post -->
-                <div class="mb-5 mx-n3">
-                    <h2 class="mb-4 ">Related SVG</h2>
-                    <div class="row">
-                        @forelse ($relatedPosts as $item)
-                            <div class="col-md-2 mb-4">
-                                <div class="card border-0 shadow-sm mb-2">
-                                    <a href="{{ route('frontend.public.svg', $item->slug) }}">
-                                        <img class="svg-bg" width="auto" height="100" src="{{ $item->image }}"
-                                             title="{{ $item->name }}" alt="{{ $item->name }}"/>
-                                    </a>
+                <div class="col-md-9 pl-5">
+                    <div class="product-detail">
+                        <h1>{{ $post->name }}</h1>
+                        <div class="story-detail__bottom mb-1">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="rating-container">
+                                        <div class="my-rating" data-rating="{{ $post->rate }}"></div>
+                                        <p><strong>{{ $post->view_number }}</strong> Views</p>
+                                    </div>
+
+                                    <p>
+                                        <strong>Author:</strong>
+                                        <span>{{ $post->author }}</span>
+                                    </p>
+                                    <div>
+                                        <strong class="me-1">Genre:</strong>
+                                        <p>
+                                            @foreach($tags as $tag)
+                                                <span class="badge bg-primary"><a href="{{ route('frontend.public.tag', $tag->slug) }}">
+                                                    {{ $tag->name }}
+                                                </a></span>
+
+                                            @endforeach
+                                        </p>
+                                    </div>
                                 </div>
-                                <a rel="license" target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="https://licensebuttons.net/p/zero/1.0/80x15.png" style="border-style: none;" alt="CC0"></a>
+
                             </div>
-                        @empty
-                            <h3>This category didn't have any svg</h3>
-                        @endforelse
+                        </div>
+
+                        <p>
+                            {{ $post->description }}
+                        </p>
+
+
                     </div>
                 </div>
 
             </div>
+        </div>
+    </section>
 
-            <div class="col-lg-4 mt-5 mt-lg-0">
-                <!-- Single Image 320x50_1 -->
-                <div class="mb-5">
-                    @if(env('APP_ENV', 'local') == 'prod')
-                        @if(env('APP_ENV', 'local') == 'prod')
-                            {!! $banner320x50->data !!}
-                        @endif
-                    @endif
-                </div>
+    <section class="product-tabs">
+        <div class="container">
+            <div class="row">
+                <div class="tabs-listing">
+                    <nav>
+                        <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+                            <button class="nav-link active text-uppercase px-5 py-3" id="nav-home-tab"
+                                    data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab"
+                                    aria-controls="nav-home" aria-selected="true">Chapters
+                            </button>
+                            <button class="nav-link text-uppercase px-5 py-3" id="nav-information-tab"
+                                    data-bs-toggle="tab" data-bs-target="#nav-information" type="button" role="tab"
+                                    aria-controls="nav-information" aria-selected="false">Latest Chapter
+                            </button>
+                        </div>
+                    </nav>
+                    <div class="tab-content py-5" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                             aria-labelledby="nav-home-tab">
+                            <ul>
+                                @forelse ($chapters as $chapter)
+                                    <li>
+                                        <a href="{{ route('frontend.public.chapter', $chapter->slug) }}"
+                                           title="{{ $chapter->name }}"
+                                           class="text-decoration-none text-dark hover-title">{{ $chapter->name }}</a>
+                                    </li>
+                                @empty
+                                    <h3>This story didn't have any chapter</h3>
+                                @endforelse
+                            </ul>
+                            <div class="row">
 
-                <!-- Single Image 300x250_1 -->
-                <div class="mb-5">
-                    @if(env('APP_ENV', 'local') == 'prod')
-                        {!! $banner300x250->data !!}
-                    @endif
+                                <nav aria-label="Page navigation" class="mt-5">
+                                    {{ $chapters->withQueryString()->links() }}
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-information" role="tabpanel"
+                             aria-labelledby="nav-information-tab">
+                            <ul>
+                                @forelse ($latestChapters as $chapter)
+                                    <li>
+                                        <a href="{{ route('frontend.public.chapter', $chapter->slug) }}"
+                                           title="{{ $chapter->name }}"
+                                           class="text-decoration-none text-dark hover-title">{{ $chapter->name }}</a>
+                                    </li>
+                                @empty
+                                    <h3>This story didn't have any latest chapter</h3>
+                                @endforelse
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
+    </section>
+
+    <section id="related-products" class="bookshelf pb-5 mb-5">
+        <div class="container">
+            <div class="section-header align-center">
+                <div class="title">
+                    <span>Related Products</span>
+                </div>
+                <h2 class="section-title">You may also like</h2>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="inner-content">
+                    <div class="product-list" data-aos="fade-up">
+                        <div class="grid product-grid">
+                            @forelse ($relatedPosts as $item)
+                                <div class="product-item">
+                                    <figure class="product-style">
+                                        <a href="{{ route('frontend.public.svg', $item->slug) }}">
+                                            <img src="{{ $item->image }}" title="{{ $item->name }}"
+                                                 alt="{{ $item->name }}" class="product-item">
+                                        </a>
+                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
+                                            Cart
+                                        </button>
+                                    </figure>
+                                    <figcaption>
+                                        <a href="{{ route('frontend.public.svg', $item->slug) }}">
+                                            <h3>{{ $item->name }}</h3>
+                                        </a>
+
+                                        <span>{{ $item->short_description }}</span>
+                                    </figcaption>
+                                </div>
+                            @empty
+                                <h3>This category didn't have any novel</h3>
+                            @endforelse
+
+                        </div><!--grid-->
+                    </div>
+                </div><!--inner-content-->
+            </div>
+        </div>
+    </section>
+
 @endsection

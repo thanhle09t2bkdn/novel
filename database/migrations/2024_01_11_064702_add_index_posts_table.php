@@ -19,7 +19,6 @@ class AddIndexPostsTable extends Migration
             $table->index('slug');
             $table->index('image');
             $table->index('storage_link');
-            $table->index('thumbnail');
             $table->index('created_at');
             $table->index('updated_at');
         });
@@ -38,7 +37,6 @@ class AddIndexPostsTable extends Migration
             $table->dropIndex('posts_slug_index');
             $table->dropIndex('posts_image_index');
             $table->dropIndex('posts_storage_link_index');
-            $table->dropIndex('posts_thumbnail_index');
             $table->dropIndex('posts_created_at_index');
             $table->dropIndex('posts_updated_at_index');
         });

@@ -19,7 +19,7 @@ class Post extends Model
     use HasFactory;
     use Sluggable;
 
-    const SVG_TYPE = 1;
+    const NOVEL_TYPE = 1;
 
     /**
      * The attributes that are mass assignable.
@@ -29,13 +29,18 @@ class Post extends Model
     protected $fillable = [
         'category_id',
         'name',
+        'author',
         'slug',
+        'view_number',
+        'total_item',
+        'rate',
         'type',
-        'draft',
         'description',
+        'short_description',
         'content',
         'image',
         'storage_link',
+        'link',
     ];
 
     /**
@@ -56,7 +61,10 @@ class Post extends Model
         return $this->belongstoMany(Tag::class);
     }
 
-
+    public function chapters()
+    {
+        return $this->hasMany(Chapter::class);
+    }
 
     public function sluggable(): array
     {
@@ -68,7 +76,7 @@ class Post extends Model
     }
 
     public static $typeNames = [
-        self::SVG_TYPE => 'SVG',
+        self::NOVEL_TYPE => 'Novel',
     ];
 
     public function getTypeNameAttribute()

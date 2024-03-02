@@ -25,7 +25,6 @@ class Category extends Model
      */
     protected $fillable = [
         'name',
-        'item_total',
         'image',
         'slug',
         'description',

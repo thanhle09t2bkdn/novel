@@ -51,7 +51,7 @@ class NovelCoolChapterDetailCommand extends Command
     public function handle()
     {
 
-        Log::info('NovelCoolCommandSTART:');
+        Log::info('Novel Cool Chapter Detail START:');
         do {
             $chapters = $this->chapterRepository
                 ->where('content', null, '=')
@@ -76,7 +76,7 @@ class NovelCoolChapterDetailCommand extends Command
             }
         } while (count($chapters));
 
-        Log::info('NovelCoolCommandEND:');
+        Log::info('Novel Cool Chapter Detail END:');
         return 0;
     }
 }

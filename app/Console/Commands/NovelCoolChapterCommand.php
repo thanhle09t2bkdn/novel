@@ -52,7 +52,7 @@ class NovelCoolChapterCommand extends Command
     public function handle()
     {
 
-        Log::info('NovelCoolCommandSTART:');
+        Log::info('Novel Cool Chapter START:');
         do {
             $posts = $this->postRepository
                 ->where('author', null, '=')
@@ -96,12 +96,14 @@ class NovelCoolChapterCommand extends Command
                     }
                     $post->tags()->attach(array_unique($tagIds));
                 } catch (\Exception $e) {
+                    $post->author = 'error';
+                    $post->save();
                     Log::error('Error:', [$e->getMessage()]);
                 }
             }
         } while (count($posts));
 
-        Log::info('NovelCoolCommandEND:');
+        Log::info('Novel Cool Chapter END:');
         return 0;
     }
 }

@@ -98,8 +98,8 @@ class NovelCoolLatestPostCommand extends Command
                             foreach ($newElems as $svgDom) {
                                 $viewNumberObject = $svgDom->find('.chapter-item-views span', 0);
                                 $linkObject = $svgDom->find('a', 0);
-                                $existedPost = $this->chapterRepository->getByColumn($linkObject->href, 'link');
-                                if (!$existedPost) {
+                                $existedChapter = $this->chapterRepository->getByColumn($linkObject->href, 'link');
+                                if (!$existedChapter) {
                                     $this->chapterRepository->create([
                                         'name' => trim($linkObject->title),
                                         'view_number' => str_replace(',', '', $viewNumberObject->innertext),

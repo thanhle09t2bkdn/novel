@@ -11,21 +11,21 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
-class NovelCoolLatestPostCommand extends Command
+class NovelCoolPopularPostCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:novel-cool-latest-post';
+    protected $signature = 'command:novel-cool-popular-post';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Novel Cool Latest Post';
+    protected $description = 'Novel Cool Popular Post';
     private $postRepository;
     private $categoryRepository;
     private $tagRepository;
@@ -53,12 +53,12 @@ class NovelCoolLatestPostCommand extends Command
     public function handle()
     {
 
-        Log::info('NovelCoolCommandSTART: Latest Post');
+        Log::info('NovelCoolCommandSTART: Popular Post');
         $categoryModel = $this->categoryRepository->first();
         try {
             $content = Http::withHeaders([
                 'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
-            ])->get('https://www.novelcool.com/category/latest.html');
+            ])->get('https://www.novelcool.com/category/popular.html');
             $dom = HtmlDomParser::str_get_html($content->body());
 
             $elems = $dom->find('.book-item');
@@ -71,8 +71,6 @@ class NovelCoolLatestPostCommand extends Command
                         $imageObject = $svgDom->find('img', 0);
                         $nameObject = $svgDom->find('.book-name', 0);
                         $descriptionObject = $svgDom->find('.book-summary-content', 0);
-//                        $viewNumberObject = $svgDom->find('.book-data-num', 0);
-//                        $rateObject = $svgDom->find('.book-rate-num', 0);
 
                         $this->postRepository->create([
                             'name' => trim($nameObject->innertext),
@@ -80,9 +78,7 @@ class NovelCoolLatestPostCommand extends Command
                             'description' => $descriptionObject->innertext,
                             'short_description' => Str::limit($descriptionObject->innertext, 100) . '...',
                             'category_id' => $categoryModel->id,
-//                            'view_number' => str_replace(',', '', $viewNumberObject->innertext),
                             'link' => $linkObject->href,
-//                            'rate' => $rateObject->innertext,
                         ]);
                     }
 
@@ -91,7 +87,7 @@ class NovelCoolLatestPostCommand extends Command
         } catch (\Exception $e) {
             Log::error('Error:', [$e->getMessage()]);
         }
-        Log::info('NovelCoolCommandEND: Latest Post');
+        Log::info('NovelCoolCommandEND: Popular Post');
         return 0;
     }
 }

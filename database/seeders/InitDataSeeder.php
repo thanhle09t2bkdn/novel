@@ -14,9 +14,10 @@ class InitDataSeeder extends Seeder
      */
     public function run()
     {
-        Artisan::call('command:novel-cool-post');
+//        Artisan::call('command:novel-cool-post');
+        Artisan::call('command:novel-cool-popular-post');
 //        Artisan::call('command:novel-cool-latest-post');
-//        Artisan::call('command:novel-cool-chapter');
-//        Artisan::call('command:novel-cool-chapter-detail');
+        Artisan::call('command:novel-cool-chapter');
+        Artisan::call('command:novel-cool-chapter-detail');
     }
 }

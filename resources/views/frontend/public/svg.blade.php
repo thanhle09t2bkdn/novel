@@ -18,7 +18,7 @@
                                 <div class="col-12">
                                     <div class="rating-container">
                                         <div class="my-rating" data-rating="{{ $post->rate }}"></div>
-                                        <p><strong>{{ $post->view_number }}</strong> Views</p>
+                                        <p><strong>{{ formatNumber($post->view_number) }}</strong> Views</p>
                                     </div>
 
                                     <p>

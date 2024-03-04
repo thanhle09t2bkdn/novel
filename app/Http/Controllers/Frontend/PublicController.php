@@ -101,6 +101,8 @@ class PublicController extends Controller
         if (!$post) {
             throw (new ModelNotFoundException)->setModel(get_class($this->postRepository->makeModel()));
         }
+        $post->view_number++;
+        $post->save();
         $chapters = $this->chapterRepository
             ->where('post_id', $post->id)
             ->orderBy('id')
@@ -145,6 +147,11 @@ class PublicController extends Controller
         if (!$chapter) {
             throw (new ModelNotFoundException)->setModel(get_class($this->chapterRepository->makeModel()));
         }
+        $chapter->view_number++;
+        $chapter->save();
+        $post = $chapter->post;
+        $post->view_number++;
+        $post->save();
         try {
             $nextChapter = $this->chapterRepository
                 ->where('id', $chapter->id, '>')

@@ -26,18 +26,16 @@ class PostController extends Controller
      */
     private $postRepository;
     private $categoryRepository;
-    private $quizRepository;
 
     /**
      * Constructor.
      *
      * @param PostRepository $postRepository
      */
-    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository, TagRepository $quizRepository)
+    public function __construct(PostRepository $postRepository, CategoryRepository $categoryRepository)
     {
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
-        $this->quizRepository = $quizRepository;
     }
 
     /**

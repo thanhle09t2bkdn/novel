@@ -80,7 +80,7 @@
                                         <th>Name</th>
                                         <th>Category</th>
                                         <th>Status</th>
-                                        <th>Description</th>
+                                        <th>Short Description</th>
                                         <th class="text-center">Created at</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -94,26 +94,15 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->category ? $item->category->name : '' }}</td>
                                             <td>{{ $item->draft ? 'Draft' : 'Published' }}</td>
-                                            <td>{{ $item->description }}</td>
+                                            <td>{{ $item->short_description }}</td>
                                             <td class="text-center">{{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}</td>
                                             <td class="text-center">
-                                                <a href="{{ route('frontend.public.postAudio', $item->slug) }}" target="_blank" class="btn btn-sm btn-primary">
-                                                    <i class="fas fa-file-audio"></i>
-                                                </a>
                                                 <a href="{{ route('backend.posts.show', $item->id) }}" class="btn btn-sm btn-info">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                                 <a href="{{ route('backend.posts.edit', $item->id) }}" class="btn btn-sm btn-warning">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                @if($item->type == \App\Models\Post::QUIZ_TYPE)
-                                                    <a href="{{ route('backend.posts.quiz', $item->id) }}" class="btn btn-sm btn-warning">
-                                                        <i class="fas fa-calculator"></i>
-                                                    </a>
-                                                    <a href="{{ route('frontend.public.quiz', $item->slug) }}" class="btn btn-sm btn-warning">
-                                                        <i class="fas fa-book"></i>
-                                                    </a>
-                                                @endif
 
                                             </td>
                                         </tr>

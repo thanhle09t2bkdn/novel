@@ -32,9 +32,9 @@ class PostCreateRequest extends FormRequest
             'category_id' => 'nullable|exists:App\Models\Category,id',
             'content' => 'required',
             'type' => 'required|integer|in:' . implode(',', array_keys(Post::$typeNames)),
+            'short_description' => 'required',
             'description' => 'required',
             'image' => 'nullable|url|max:255',
-            'thumbnail' => 'nullable|url|max:255',
         ];
     }
 }

@@ -79,8 +79,6 @@
                             <ul class="menu-list">
                                 <li class="menu-item {{ $route->named('frontend.public.index') ? 'active' : '' }}"><a href="{{ route('frontend.public.index') }}">Home</a></li>
                                 <li class="menu-item {{ $route->named('frontend.public.latest') ? 'active' : '' }}"><a href="{{ route('frontend.public.latest') }}" class="nav-link">Latest Novel</a></li>
-                                <li class="menu-item {{ $route->named('frontend.public.hot') ? 'active' : '' }}"><a href="{{ route('frontend.public.hot') }}" class="nav-link">Hot Novel</a></li>
-                                <li class="menu-item {{ $route->named('frontend.public.completed') ? 'active' : '' }}"><a href="{{ route('frontend.public.completed') }}" class="nav-link">Completed Novel</a></li>
                                 <li class="menu-item {{ $route->named('frontend.public.popular') ? 'active' : '' }}"><a href="{{ route('frontend.public.popular') }}" class="nav-link">Most Popular</a></li>
                                 <li class="menu-item {{ $route->named('frontend.public.tags') ? 'active' : '' }}"><a href="{{ route('frontend.public.tags') }}" class="nav-link">Genre</a></li>
                             </ul>

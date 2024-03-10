@@ -87,7 +87,7 @@
                 <div class="col-md-12">
 
                     <div class="btn-wrap align-right">
-                        <a href="#" class="btn-accent-arrow">View all products <i
+                        <a href="{{ route('frontend.public.latest') }}" class="btn-accent-arrow">View all novels <i
                                 class="icon icon-ns-arrow-right"></i></a>
                     </div>
 
@@ -132,53 +132,6 @@
                     <!-- / row -->
 
                 </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="popular-books" class="bookshelf py-5 my-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-
-                    <div class="section-header align-center">
-                        <div class="title">
-                            <span>Some quality items</span>
-                        </div>
-                        <h2 class="section-title">Latest Novel</h2>
-                    </div>
-
-                    <div class="product-list" data-aos="fade-up">
-                        <div class="row">
-                            @foreach($popularPosts as $post)
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <figure class="product-style">
-                                            <span class="badge bg-primary position-absolute z-3 mt-2">⭐ {{ $post->rate }}</span>
-                                            <span class="badge bg-primary position-absolute top-0 end-0 z-3 mt-2"><strong>{{ formatNumber($post->view_number) }}</strong> Views</span>
-                                            <a href="{{ route('frontend.public.svg', $post->slug) }}"
-                                               title="{{ $post->name }}">
-                                                <img src="{{ $post->image }}" alt="{{ $post->name }}"
-                                                     class="product-item">
-                                            </a>
-                                        </figure>
-                                        <figcaption>
-                                            <a href="{{ route('frontend.public.svg', $post->slug) }}"
-                                               title="{{ $post->name }}">
-                                                <h3>{{ $post->name }}</h3>
-                                            </a>
-                                            <span>{{ $post->short_description }}</span>
-                                        </figcaption>
-                                    </div>
-                                </div>
-                            @endforeach
-
-                        </div><!--ft-books-slider-->
-                    </div><!--grid-->
-
-
-                </div><!--inner-content-->
 
             </div>
         </div>

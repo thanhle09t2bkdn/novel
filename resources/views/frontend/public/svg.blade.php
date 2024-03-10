@@ -134,9 +134,6 @@
                                             <img src="{{ $item->image }}" title="{{ $item->name }}"
                                                  alt="{{ $item->name }}" class="product-item">
                                         </a>
-                                        <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
-                                            Cart
-                                        </button>
                                     </figure>
                                     <figcaption>
                                         <a href="{{ route('frontend.public.svg', $item->slug) }}">

@@ -64,10 +64,6 @@
                                             <a href="{{ route('frontend.public.svg', $post->slug) }}" title="{{ $post->name }}">
                                                 <img src="{{ $post->image }}" alt="{{ $post->name }}" class="product-item">
                                             </a>
-
-                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
-                                                Cart
-                                            </button>
                                         </figure>
                                         <figcaption>
                                             <h3>{{ $post->name }}</h3>

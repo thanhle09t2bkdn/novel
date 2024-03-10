@@ -4,19 +4,19 @@
 	<url>
 	<loc>http://novel.test/most-popular-novel</loc>
 		<priority>1.0</priority>
-		<lastmod>2024-03-10T10:28:40+00:00</lastmod>
+		<lastmod>2024-03-10T10:33:07+00:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
 	<loc>http://novel.test/latest-novel</loc>
 		<priority>1.0</priority>
-		<lastmod>2024-03-10T10:28:40+00:00</lastmod>
+		<lastmod>2024-03-10T10:33:07+00:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
 	<loc>http://novel.test/genres</loc>
 		<priority>1.0</priority>
-		<lastmod>2024-03-10T10:28:40+00:00</lastmod>
+		<lastmod>2024-03-10T10:33:07+00:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>

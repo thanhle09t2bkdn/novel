@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Advertisement;
 use App\Models\Sanctum\PersonalAccessToken;
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Pagination\Paginator;
@@ -59,5 +60,10 @@ class AppServiceProvider extends ServiceProvider
                 );
             });
         }*/
+
+        view()->composer('layouts.frontend', function ($view) {
+            $view->with('socialBarBanner',
+                Advertisement::where('name', '=', 'social-bar-banner')->first());
+        });
     }
 }

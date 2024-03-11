@@ -145,7 +145,7 @@
         crossorigin="anonymous"></script>
 <script src="{{ asset('frontend/js/plugins.js') }}"></script>
 <script src="{{ asset('frontend/js/jquery.star-rating-svg.min.js') }}"></script>
-@if(env('APP_ENV', 'local') != 'prod' && $socialBarBanner)
+@if(env('APP_ENV', 'local') == 'prod' && $socialBarBanner)
     {!! $socialBarBanner->data !!}
 @endif
 @stack('after-scripts')

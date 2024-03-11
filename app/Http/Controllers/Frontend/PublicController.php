@@ -164,8 +164,7 @@ class PublicController extends Controller
         }
         $this->seo()->setTitle($chapter->name);
         $nativeBanner = $this->advertisementRepository->getByColumn('native-banner', 'name');
-        $socialBarBanner = $this->advertisementRepository->getByColumn('social-bar-banner', 'name');
-        return view('frontend.public.chapter', compact('chapter', 'nextChapter', 'previousChapter', 'nativeBanner', 'socialBarBanner'));
+        return view('frontend.public.chapter', compact('chapter', 'nextChapter', 'previousChapter', 'nativeBanner'));
     }
 
     public function search(Request $request)

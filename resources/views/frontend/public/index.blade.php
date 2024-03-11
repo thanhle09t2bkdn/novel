@@ -48,7 +48,7 @@
 
                     <div class="section-header align-center">
                         <div class="title">
-                            <span>Some quality items</span>
+                            <span>Some quality novels</span>
                         </div>
                         <h2 class="section-title">Latest Novel</h2>
                     </div>
@@ -137,7 +137,7 @@
         </div>
     </section>
 
-    <section id="quotation" class="align-center pb-5 mb-5">
+    <section id="quotation" class="align-center pb-5 mt-5 mb-5">
         <div class="inner-content">
             <h2 class="section-title divider">Quote of the day</h2>
             <blockquote data-aos="fade-up">
@@ -154,7 +154,7 @@
 
                     <div class="section-header align-center">
                         <div class="title">
-                            <span>Some quality items</span>
+                            <span>Some quality chapters</span>
                         </div>
                         <h2 class="section-title">Latest Chapter Releases</h2>
                     </div>

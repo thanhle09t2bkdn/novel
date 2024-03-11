@@ -1,9 +1,19 @@
 @push('after-scripts')
     <script src="{{ asset('frontend/js/chapter-detail.js') }}"></script>
+    @if(env('APP_ENV', 'local') == 'prod' && $socialBarBanner)
+        {!! $socialBarBanner->data !!}
+    @endif
 @endpush
 @extends('layouts.frontend')
 
 @section('content')
+
+    @if(env('APP_ENV', 'local') == 'prod' && $nativeBanner)
+        <section>
+            {!! $nativeBanner->data !!}
+        </section>
+    @endif
+
     <section>
         <div class="container">
             <div class="row">
@@ -11,7 +21,8 @@
                     <h1 class="page-title">{{ $chapter->name }}</h1>
                     <div class="breadcrumbs">
                         <span class="item"><a href="{{ route('frontend.public.index') }}">Home /</a></span>
-                        <span class="item"><a href="{{ route('frontend.public.svg', $chapter->post->slug) }}">{{ $chapter->post->name }}</a></span>
+                        <span class="item"><a
+                                href="{{ route('frontend.public.svg', $chapter->post->slug) }}">{{ $chapter->post->name }}</a></span>
                     </div>
                 </div>
             </div>

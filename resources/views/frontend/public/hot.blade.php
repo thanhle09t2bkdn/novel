@@ -24,11 +24,11 @@
                     <div class="col-md-3">
                         <div class="product-item">
                             <figure class="product-style">
+                                <span class="badge bg-primary position-absolute z-3 mt-2">⭐ {{ $item->rate }}</span>
+                                <span class="badge bg-primary position-absolute top-0 end-0 z-3 mt-2"><strong>{{ formatNumber($item->view_number) }}</strong> Views</span>
                                 <a href="{{ route('frontend.public.svg', $item->slug) }}">
                                     <img src="{{ $item->image }}" title="{{ $item->name }}" alt="{{ $item->name }}" class="product-item">
                                 </a>
-
-                                <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
                             </figure>
                             <figcaption>
                                 <a href="{{ route('frontend.public.svg', $item->slug) }}">

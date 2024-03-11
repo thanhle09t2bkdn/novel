@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Repositories\CategoryRepository;
+use App\Repositories\ChapterRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
 use HungCP\PhpSimpleHtmlDom\HtmlDomParser;
@@ -29,6 +30,7 @@ class NovelCoolLatestPostCommand extends Command
     private $postRepository;
     private $categoryRepository;
     private $tagRepository;
+    private $chapterRepository;
 
     /**
      * Create a new command instance.
@@ -37,12 +39,14 @@ class NovelCoolLatestPostCommand extends Command
      */
     public function __construct(PostRepository     $postRepository,
                                 CategoryRepository $categoryRepository,
+                                ChapterRepository  $chapterRepository,
                                 TagRepository      $tagRepository)
     {
         parent::__construct();
         $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
         $this->tagRepository = $tagRepository;
+        $this->chapterRepository = $chapterRepository;
     }
 
     /**
@@ -67,12 +71,10 @@ class NovelCoolLatestPostCommand extends Command
                 if ($typeObject->innertext == 'Novel') {
                     $linkObject = $svgDom->find('.book-info a', 0);
                     $existedPost = $this->postRepository->getByColumn($linkObject->href, 'link');
-                    if(!$existedPost) {
+                    if (!$existedPost) {
                         $imageObject = $svgDom->find('img', 0);
                         $nameObject = $svgDom->find('.book-name', 0);
                         $descriptionObject = $svgDom->find('.book-summary-content', 0);
-//                        $viewNumberObject = $svgDom->find('.book-data-num', 0);
-//                        $rateObject = $svgDom->find('.book-rate-num', 0);
 
                         $this->postRepository->create([
                             'name' => trim($nameObject->innertext),
@@ -80,10 +82,36 @@ class NovelCoolLatestPostCommand extends Command
                             'description' => $descriptionObject->innertext,
                             'short_description' => Str::limit($descriptionObject->innertext, 100) . '...',
                             'category_id' => $categoryModel->id,
-//                            'view_number' => str_replace(',', '', $viewNumberObject->innertext),
                             'link' => $linkObject->href,
-//                            'rate' => $rateObject->innertext,
                         ]);
+                    } else {
+                        try {
+                            $content = Http::withHeaders([
+                                'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+                            ])->get($linkObject->href);
+                            $dom = HtmlDomParser::str_get_html($content->body());
+                            $dataVals = $dom->find('.bk-data-val');
+                            $existedPost->rate = trim($dataVals[1]->text());
+                            $existedPost->save();
+                            $elems = $dom->find('.chp-item');
+                            $newElems = array_reverse(array_slice($elems, 0, 10));
+                            foreach ($newElems as $svgDom) {
+                                $viewNumberObject = $svgDom->find('.chapter-item-views span', 0);
+                                $linkObject = $svgDom->find('a', 0);
+                                $existedChapter = $this->chapterRepository->getByColumn($linkObject->href, 'link');
+                                if (!$existedChapter) {
+                                    $this->chapterRepository->create([
+                                        'name' => trim($linkObject->title),
+                                        'view_number' => str_replace(',', '', $viewNumberObject->innertext),
+                                        'link' => $linkObject->href,
+                                        'post_id' => $existedPost->id,
+                                    ]);
+                                }
+
+                            }
+                        } catch (\Exception $e) {
+                            Log::error('Error Sub Chapter:', [$e->getMessage()]);
+                        }
                     }
 
                 }

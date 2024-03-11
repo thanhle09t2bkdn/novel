@@ -48,7 +48,7 @@
 
                     <div class="section-header align-center">
                         <div class="title">
-                            <span>Some quality items</span>
+                            <span>Some quality novels</span>
                         </div>
                         <h2 class="section-title">Latest Novel</h2>
                     </div>
@@ -60,16 +60,16 @@
                                     <div class="product-item">
                                         <figure class="product-style">
                                             <span class="badge bg-primary position-absolute z-3 mt-2">⭐ {{ $post->rate }}</span>
+                                            <span class="badge bg-primary position-absolute top-0 end-0 z-3 mt-2"><strong>{{ formatNumber($post->view_number) }}</strong> Views</span>
                                             <a href="{{ route('frontend.public.svg', $post->slug) }}" title="{{ $post->name }}">
                                                 <img src="{{ $post->image }}" alt="{{ $post->name }}" class="product-item">
                                             </a>
-
-                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to
-                                                Cart
-                                            </button>
                                         </figure>
                                         <figcaption>
-                                            <h3>{{ $post->name }}</h3>
+                                            <a href="{{ route('frontend.public.svg', $post->slug) }}"
+                                               title="{{ $post->name }}">
+                                                <h3>{{ $post->name }}</h3>
+                                            </a>
                                             <span>{{ $post->short_description }}</span>
                                         </figcaption>
                                     </div>
@@ -87,7 +87,7 @@
                 <div class="col-md-12">
 
                     <div class="btn-wrap align-right">
-                        <a href="#" class="btn-accent-arrow">View all products <i
+                        <a href="{{ route('frontend.public.latest') }}" class="btn-accent-arrow">View all novels <i
                                 class="icon icon-ns-arrow-right"></i></a>
                     </div>
 
@@ -120,7 +120,7 @@
                                     <h3 class="item-title">{{ $bestPost->name }}</h3>
                                     <p>{{ $bestPost->short_description }}</p>
                                     <div class="btn-wrap">
-                                        <a href="{{ route('frontend.public.svg', $bestPost->slug) }}" class="btn-accent-arrow">shop it now <i
+                                        <a href="{{ route('frontend.public.svg', $bestPost->slug) }}" class="btn-accent-arrow">read it now <i
                                                 class="icon icon-ns-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -137,55 +137,7 @@
         </div>
     </section>
 
-    <section id="popular-books" class="bookshelf py-5 my-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-
-                    <div class="section-header align-center">
-                        <div class="title">
-                            <span>Some quality items</span>
-                        </div>
-                        <h2 class="section-title">Latest Novel</h2>
-                    </div>
-
-                    <div class="product-list" data-aos="fade-up">
-                        <div class="row">
-                            @foreach($popularPosts as $post)
-                                <div class="col-md-3">
-                                    <div class="product-item">
-                                        <figure class="product-style">
-                                            <span class="badge bg-primary position-absolute z-3 mt-2">⭐ {{ $post->rate }}</span>
-                                            <a href="{{ route('frontend.public.svg', $post->slug) }}"
-                                               title="{{ $post->name }}">
-                                                <img src="{{ $post->image }}" alt="{{ $post->name }}"
-                                                     class="product-item">
-                                            </a>
-
-                                            <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-                                                Add to
-                                                Cart
-                                            </button>
-                                        </figure>
-                                        <figcaption>
-                                            <h3>{{ $post->name }}</h3>
-                                            <span>{{ $post->short_description }}</span>
-                                        </figcaption>
-                                    </div>
-                                </div>
-                            @endforeach
-
-                        </div><!--ft-books-slider-->
-                    </div><!--grid-->
-
-
-                </div><!--inner-content-->
-
-            </div>
-        </div>
-    </section>
-
-    <section id="quotation" class="align-center pb-5 mb-5">
+    <section id="quotation" class="align-center pb-5 mt-5 mb-5">
         <div class="inner-content">
             <h2 class="section-title divider">Quote of the day</h2>
             <blockquote data-aos="fade-up">
@@ -202,7 +154,7 @@
 
                     <div class="section-header align-center">
                         <div class="title">
-                            <span>Some quality items</span>
+                            <span>Some quality chapters</span>
                         </div>
                         <h2 class="section-title">Latest Chapter Releases</h2>
                     </div>

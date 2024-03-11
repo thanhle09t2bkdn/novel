@@ -55,10 +55,8 @@ class PublicController extends Controller
         $slidePosts = $this->postRepository->orderBy('view_number', 'desc')->limit(8)->get();
         $bestPost = $this->postRepository->orderBy('view_number', 'desc')->first();
         $latestPosts = $this->postRepository->orderBy('created_at', 'desc')->limit(8)->get();
-        $popularPosts = $this->postRepository->orderBy('view_number', 'desc')->limit(8)->get();
-        $banner728x90 = $this->advertisementRepository->getByColumn('728x90_1', 'name');
         $latestChapters = $this->chapterRepository->latestChapters()->limit(20)->get();
-        return view('frontend.public.index', compact('popularPosts', 'latestPosts', 'bestPost', 'slidePosts', 'banner728x90', 'latestChapters'));
+        return view('frontend.public.index', compact('latestPosts', 'bestPost', 'slidePosts', 'latestChapters'));
     }
 
     /**
@@ -71,8 +69,7 @@ class PublicController extends Controller
         $category = $this->categoryRepository->getByColumn($slug, 'slug');
         $this->seo()->setTitle($category->name);
         $list = $this->postRepository->where('category_id', $category->id)->paginate()->onEachSide(1);
-        $banner160x600 = $this->advertisementRepository->getByColumn('160x600_1', 'name');
-        return view('frontend.public.category', compact('category', 'list', 'banner160x600'));
+        return view('frontend.public.category', compact('category', 'list'));
     }
 
     /**
@@ -85,8 +82,7 @@ class PublicController extends Controller
         $tag = $this->tagRepository->getByColumn($slug, 'slug');
         $this->seo()->setTitle($tag->name);
         $list = $tag->posts()->paginate(20)->onEachSide(1);
-        $banner160x300 = $this->advertisementRepository->getByColumn('160x300_1', 'name');
-        return view('frontend.public.tag', compact('tag', 'list', 'banner160x300'));
+        return view('frontend.public.tag', compact('tag', 'list'));
     }
 
 
@@ -101,6 +97,8 @@ class PublicController extends Controller
         if (!$post) {
             throw (new ModelNotFoundException)->setModel(get_class($this->postRepository->makeModel()));
         }
+        $post->view_number++;
+        $post->save();
         $chapters = $this->chapterRepository
             ->where('post_id', $post->id)
             ->orderBy('id')
@@ -128,10 +126,7 @@ class PublicController extends Controller
                 ->limit(8)
                 ->get();
         }
-
-        $banner300x250 = $this->advertisementRepository->getByColumn('300x250_1', 'name');
-        $banner320x50 = $this->advertisementRepository->getByColumn('320x50_1', 'name');
-        return view('frontend.public.svg', compact('post', 'relatedPosts', 'tags', 'banner300x250', 'banner320x50', 'chapters', 'latestChapters'));
+        return view('frontend.public.svg', compact('post', 'relatedPosts', 'tags', 'chapters', 'latestChapters'));
     }
 
     /**
@@ -145,6 +140,11 @@ class PublicController extends Controller
         if (!$chapter) {
             throw (new ModelNotFoundException)->setModel(get_class($this->chapterRepository->makeModel()));
         }
+        $chapter->view_number++;
+        $chapter->save();
+        $post = $chapter->post;
+        $post->view_number++;
+        $post->save();
         try {
             $nextChapter = $this->chapterRepository
                 ->where('id', $chapter->id, '>')
@@ -163,7 +163,9 @@ class PublicController extends Controller
             $previousChapter = null;
         }
         $this->seo()->setTitle($chapter->name);
-        return view('frontend.public.chapter', compact('chapter', 'nextChapter', 'previousChapter'));
+        $nativeBanner = $this->advertisementRepository->getByColumn('native-banner', 'name');
+        $socialBarBanner = $this->advertisementRepository->getByColumn('social-bar-banner', 'name');
+        return view('frontend.public.chapter', compact('chapter', 'nextChapter', 'previousChapter', 'nativeBanner', 'socialBarBanner'));
     }
 
     public function search(Request $request)
@@ -172,8 +174,7 @@ class PublicController extends Controller
         $this->seo()->setTitle('Search');
         $searchName = $request->get('name');
         $list = $this->postRepository->searchName($searchName)->paginate()->onEachSide(1);
-        $banner468x60 = $this->advertisementRepository->getByColumn('468x60_1', 'name');
-        return view('frontend.public.search', compact('searchName', 'list', 'banner468x60'));
+        return view('frontend.public.search', compact('searchName', 'list'));
     }
 
     public function download($id, $storageLink = '')

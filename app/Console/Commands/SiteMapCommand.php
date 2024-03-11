@@ -51,20 +51,18 @@ class SiteMapCommand extends Command
     {
         $sitemap = \App::make('sitemap');
         // add home pages mặc định
-        $sitemap->add(URL::to('/'), Carbon::now(), '1.0', 'daily');
-        $categories = $this->categoryRepository->orderBy('created_at')->get();
-        foreach ($categories as $category) {
-            $sitemap->add(route('frontend.public.category', [$category->slug]), $category->created_at, '0.6', 'daily');
+        $sitemap->add(URL::to('/most-popular-novel'), Carbon::now(), '1.0', 'daily');
+        $sitemap->add(URL::to('/latest-novel'), Carbon::now(), '1.0', 'daily');
+        $sitemap->add(URL::to('/genres'), Carbon::now(), '1.0', 'daily');
+        $tags = $this->tagRepository->orderBy('created_at')->get();
+        foreach ($tags as $tag) {
+            $sitemap->add(route('frontend.public.tag', [$tag->slug]), $tag->created_at, '0.6', 'daily');
         }
         $posts = $this->postRepository->orderBy('created_at')->get();
         foreach ($posts as $post) {
             $sitemap->add(route('frontend.public.svg', [$post->slug]), $post->created_at, '0.6', 'daily');
         }
 
-        $tags = $this->tagRepository->orderBy('created_at')->get();
-        foreach ($tags as $tag) {
-            $sitemap->add(route('frontend.public.tag', [$tag->slug]), $tag->created_at, '0.6', 'daily');
-        }
         $sitemap->store('xml', 'sitemap');
         if (File::exists(public_path() . '/sitemap.xml')) {
             chmod(public_path() . '/sitemap.xml', 0777);

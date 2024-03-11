@@ -38,8 +38,6 @@
                 </div>
                 <div class="col-md-6">
                     <div class="right-element">
-                        <a href="#" class="user-account for-buy"><i
-                                class="icon icon-user"></i><span>Account</span></a>
 
                         <div class="action-menu">
 

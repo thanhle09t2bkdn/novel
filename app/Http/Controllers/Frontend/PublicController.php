@@ -101,6 +101,7 @@ class PublicController extends Controller
         $post->save();
         $chapters = $this->chapterRepository
             ->where('post_id', $post->id)
+            ->where('content', null, '!=')
             ->orderBy('id')
             ->paginate()
             ->onEachSide(1);
@@ -149,6 +150,7 @@ class PublicController extends Controller
             $nextChapter = $this->chapterRepository
                 ->where('id', $chapter->id, '>')
                 ->where('post_id', $chapter->post_id)
+                ->where('content', null, '!=')
                 ->orderBy('id', 'asc')->first();
         } catch (ModelNotFoundException $exception) {
             $nextChapter = null;
@@ -158,6 +160,7 @@ class PublicController extends Controller
             $previousChapter = $this->chapterRepository
                 ->where('id', $chapter->id, '<')
                 ->where('post_id', $chapter->post_id)
+                ->where('content', null, '!=')
                 ->orderBy('id', 'desc')->first();
         } catch (ModelNotFoundException $exception) {
             $previousChapter = null;

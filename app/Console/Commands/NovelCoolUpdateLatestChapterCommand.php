@@ -60,7 +60,7 @@ class NovelCoolUpdateLatestChapterCommand extends Command
                 $post->rate = trim($dataVals[1]->text());
                 $post->save();
                 $elems = $dom->find('.chp-item');
-                $newElems = array_reverse(array_slice($elems, 0, 10));
+                $newElems = array_reverse(array_slice($elems, 0, 20));
                 foreach ($newElems as $svgDom) {
                     $viewNumberObject = $svgDom->find('.chapter-item-views span', 0);
                     $linkObject = $svgDom->find('a', 0);

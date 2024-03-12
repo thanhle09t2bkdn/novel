@@ -50,12 +50,12 @@
                         <div class="title">
                             <span>Some quality novels</span>
                         </div>
-                        <h2 class="section-title">Latest Novel</h2>
+                        <h2 class="section-title">Popular Novel</h2>
                     </div>
 
                     <div class="product-list" data-aos="fade-up">
                         <div class="row">
-                            @foreach($latestPosts as $post)
+                            @foreach($popularPosts as $post)
                                 <div class="col-md-3">
                                     <div class="product-item">
                                         <figure class="product-style">
@@ -87,7 +87,7 @@
                 <div class="col-md-12">
 
                     <div class="btn-wrap align-right">
-                        <a href="{{ route('frontend.public.latest') }}" class="btn-accent-arrow">View all novels <i
+                        <a href="{{ route('frontend.public.popular') }}" class="btn-accent-arrow">View all novels <i
                                 class="icon icon-ns-arrow-right"></i></a>
                     </div>
 

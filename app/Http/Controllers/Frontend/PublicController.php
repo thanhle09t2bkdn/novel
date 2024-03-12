@@ -54,9 +54,9 @@ class PublicController extends Controller
         $this->seo()->setTitle('Home');
         $slidePosts = $this->postRepository->orderBy('view_number', 'desc')->limit(8)->get();
         $bestPost = $this->postRepository->orderBy('view_number', 'desc')->first();
-        $latestPosts = $this->postRepository->orderBy('created_at', 'desc')->limit(8)->get();
+        $popularPosts = $this->postRepository->orderBy('view_number', 'desc')->limit(8)->get();
         $latestChapters = $this->chapterRepository->latestChapters()->limit(20)->get();
-        return view('frontend.public.index', compact('latestPosts', 'bestPost', 'slidePosts', 'latestChapters'));
+        return view('frontend.public.index', compact('popularPosts', 'bestPost', 'slidePosts', 'latestChapters'));
     }
 
     /**

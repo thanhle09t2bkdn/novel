@@ -135,7 +135,7 @@ class PublicController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function chapter(string $slug)
+    public function chapter(string $slug, Request $request)
     {
         $chapter = $this->chapterRepository->getByColumn($slug, 'slug');
         if (!$chapter) {
@@ -145,6 +145,7 @@ class PublicController extends Controller
         $chapter->save();
         $post = $chapter->post;
         $post->view_number++;
+        $request->session()->put('current_chapter_id', $chapter->id);
         $post->save();
         try {
             $nextChapter = $this->chapterRepository
@@ -226,5 +227,16 @@ class PublicController extends Controller
         $this->seo()->setTitle('Most Popular Novel');
         $list = $this->postRepository->orderBy('view_number', 'desc')->paginate()->onEachSide(1);
         return view('frontend.public.popular', compact('list'));
+    }
+
+    public function history(Request $request)
+    {
+        $this->seo()->setTitle('History Novel');
+        $chapterId = $request->session()->get('current_chapter_id');
+        $chapter = null;
+        if ($chapterId) {
+            $chapter = $this->chapterRepository->where('id', $chapterId)->first();
+        }
+        return view('frontend.public.history', compact('chapter'));
     }
 }

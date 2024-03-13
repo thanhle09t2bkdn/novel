@@ -108,6 +108,7 @@ class PublicController extends Controller
 
         $latestChapters = $this->chapterRepository
             ->where('post_id', $post->id)
+            ->where('content', null, '!=')
             ->orderBy('id', 'desc')
             ->limit(10)->get();
         $this->seo()->setTitle($post->name);

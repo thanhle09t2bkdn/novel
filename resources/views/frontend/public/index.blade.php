@@ -23,7 +23,7 @@
                                                 class="icon icon-ns-arrow-right"></i></a>
                                     </div>
                                 </div><!--banner-content-->
-                                <img src="{{ $post->image }}" alt="{{ $post->name }}" class="banner-image">
+                                <img src="{{ $post->storage_link ? $post->storage_link : $post->image }}" alt="{{ $post->name }}" class="banner-image">
                             </div><!--slider-item-->
                         @endforeach
 
@@ -62,7 +62,7 @@
                                             <span class="badge bg-primary position-absolute z-3 mt-2">⭐ {{ $post->rate }}</span>
                                             <span class="badge bg-primary position-absolute top-0 end-0 z-3 mt-2"><strong>{{ formatNumber($post->view_number) }}</strong> Views</span>
                                             <a href="{{ route('frontend.public.svg', $post->slug) }}" title="{{ $post->name }}">
-                                                <img src="{{ $post->image }}" alt="{{ $post->name }}" class="product-item">
+                                                <img src="{{ $post->storage_link ? $post->storage_link : $post->image }}" alt="{{ $post->name }}" class="product-item">
                                             </a>
                                         </figure>
                                         <figcaption>
@@ -107,7 +107,7 @@
 
                         <div class="col-md-6">
                             <figure class="products-thumb text-center">
-                                <img src="{{ $bestPost->image }}" alt="{{ $bestPost->name }}" class="single-image">
+                                <img src="{{ $bestPost->storage_link ? $bestPost->storage_link : $bestPost->image }}" alt="{{ $bestPost->name }}" class="single-image">
                             </figure>
                         </div>
 

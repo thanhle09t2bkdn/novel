@@ -32,7 +32,7 @@
                     <div class="col-md-2 mb-4">
                         <div class="card border-0 shadow-sm mb-2">
                             <a href="{{ route('frontend.public.svg', $item->slug) }}">
-                                <img class="svg-bg" width="auto" height="100"  src="{{ $item->image }}" title="{{ $item->name }}" alt="{{ $item->name }}" />
+                                <img class="svg-bg" width="auto" height="100"  src="{{ $item->storage_link ? $item->storage_link : $item->image }}" title="{{ $item->name }}" alt="{{ $item->name }}" />
                             </a>
                         </div>
                         <a rel="license" target="_blank" href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="https://licensebuttons.net/p/zero/1.0/80x15.png" style="border-style: none;" alt="CC0"></a>

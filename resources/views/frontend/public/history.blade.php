@@ -29,7 +29,7 @@
                                 <span
                                     class="badge bg-primary position-absolute top-0 end-0 z-3 mt-2"><strong>{{ formatNumber($chapter->post->view_number) }}</strong> Views</span>
                                 <a href="{{ route('frontend.public.chapter', $chapter->slug) }}">
-                                    <img src="{{ $chapter->post->image }}" title="{{ $chapter->post->name }}"
+                                    <img src="{{ $chapter->post->storage_link ? $chapter->post->storage_link : $chapter->post->image }}" title="{{ $chapter->post->name }}"
                                          alt="{{ $chapter->post->name }}" class="product-item">
                                 </a>
                             </figure>

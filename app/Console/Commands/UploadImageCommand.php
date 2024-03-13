@@ -54,8 +54,8 @@ class UploadImageCommand extends Command
                         'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
                     ])->get($post->image);
                     $imageName = $post->slug . '.jpg';
-                    Storage::disk()->put('images/' . $imageName, $content->body());
-                    $post->storage_link = $imageName;
+                    Storage::disk()->put('public/photos/shares/images/' . $imageName, $content->body());
+                    $post->storage_link = env('APP_URL') . '/storage/photos/shares/images/' . $imageName;
                     $post->save();
                 } catch (\Exception $e) {
                     Log::error('Error:', [$e->getMessage()]);

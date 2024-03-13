@@ -19,7 +19,8 @@ class Post extends Model
     use HasFactory;
     use Sluggable;
 
-    const NOVEL_TYPE = 1;
+    const NOVEL_COOL_TYPE = 1;
+    const ROYAL_ROAD_TYPE = 2;
 
     /**
      * The attributes that are mass assignable.
@@ -76,7 +77,8 @@ class Post extends Model
     }
 
     public static $typeNames = [
-        self::NOVEL_TYPE => 'Novel',
+        self::NOVEL_COOL_TYPE => 'Novel Cool',
+        self::ROYAL_ROAD_TYPE => 'Royal Road',
     ];
 
     public function getTypeNameAttribute()

@@ -1,13 +1,9 @@
 @push('after-scripts')
     <script src="{{ asset('frontend/js/chapter-detail.js') }}"></script>
-    @if(env('APP_ENV', 'local') == 'prod' && $socialBarBanner)
-        {!! $socialBarBanner->data !!}
-    @endif
 @endpush
 @extends('layouts.frontend')
 
 @section('content')
-
     @if(env('APP_ENV', 'local') == 'prod' && $nativeBanner)
         <section>
             {!! $nativeBanner->data !!}

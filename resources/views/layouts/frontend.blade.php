@@ -79,6 +79,7 @@
                                 <li class="menu-item {{ $route->named('frontend.public.latest') ? 'active' : '' }}"><a href="{{ route('frontend.public.latest') }}" class="nav-link">Latest Novel</a></li>
                                 <li class="menu-item {{ $route->named('frontend.public.popular') ? 'active' : '' }}"><a href="{{ route('frontend.public.popular') }}" class="nav-link">Most Popular</a></li>
                                 <li class="menu-item {{ $route->named('frontend.public.tags') ? 'active' : '' }}"><a href="{{ route('frontend.public.tags') }}" class="nav-link">Genre</a></li>
+                                <li class="menu-item {{ $route->named('frontend.public.history') ? 'active' : '' }}"><a href="{{ route('frontend.public.history') }}" class="nav-link">History</a></li>
                             </ul>
 
                             <div class="hamburger">
@@ -97,7 +98,6 @@
     </header>
 
 </div><!--header-wrap-->
-
 @yield('content')
 
 <footer id="footer">
@@ -146,7 +146,9 @@
         crossorigin="anonymous"></script>
 <script src="{{ asset('frontend/js/plugins.js') }}"></script>
 <script src="{{ asset('frontend/js/jquery.star-rating-svg.min.js') }}"></script>
-
+@if(env('APP_ENV', 'local') == 'prod' && $socialBarBanner)
+    {!! $socialBarBanner->data !!}
+@endif
 @stack('after-scripts')
 <script src="{{ asset('frontend/js/script.js') }}"></script>
 </body>

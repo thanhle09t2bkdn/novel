@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
-class UploadSvgCommand extends Command
+class UploadImageCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:upload-svg';
+    protected $signature = 'command:upload-image';
 
     /**
      * The console command description.
@@ -53,9 +53,9 @@ class UploadSvgCommand extends Command
                     $content = Http::withHeaders([
                         'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
                     ])->get($post->image);
-                    $svgName = $post->slug . '.svg';
-                    Storage::disk('bunnycdn')->put('svg/' . $svgName, $content->body());
-                    $post->storage_link = $svgName;
+                    $imageName = $post->slug . '.jpg';
+                    Storage::disk()->put('public/photos/shares/images/' . $imageName, $content->body());
+                    $post->storage_link = env('APP_URL') . '/storage/photos/shares/images/' . $imageName;
                     $post->save();
                 } catch (\Exception $e) {
                     Log::error('Error:', [$e->getMessage()]);

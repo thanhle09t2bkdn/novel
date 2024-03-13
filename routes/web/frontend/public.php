@@ -3,6 +3,7 @@
 Route::get('', 'PublicController@index')->name('public.index');
 Route::get('download/{id}/{storageLink?}', 'PublicController@download')->name('public.download');
 Route::get('search', 'PublicController@search')->name('public.search');
+Route::get('history', 'PublicController@history')->name('public.history');
 Route::get('category/{slug}', 'PublicController@category')->name('public.category');
 Route::get('genres', 'PublicController@tags')->name('public.tags');
 Route::get('latest-novel', 'PublicController@latest')->name('public.latest');

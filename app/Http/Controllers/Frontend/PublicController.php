@@ -54,9 +54,9 @@ class PublicController extends Controller
         $this->seo()->setTitle('Home');
         $slidePosts = $this->postRepository->orderBy('view_number', 'desc')->limit(8)->get();
         $bestPost = $this->postRepository->orderBy('view_number', 'desc')->first();
-        $latestPosts = $this->postRepository->orderBy('created_at', 'desc')->limit(8)->get();
+        $popularPosts = $this->postRepository->orderBy('view_number', 'desc')->limit(8)->get();
         $latestChapters = $this->chapterRepository->latestChapters()->limit(20)->get();
-        return view('frontend.public.index', compact('latestPosts', 'bestPost', 'slidePosts', 'latestChapters'));
+        return view('frontend.public.index', compact('popularPosts', 'bestPost', 'slidePosts', 'latestChapters'));
     }
 
     /**
@@ -101,12 +101,14 @@ class PublicController extends Controller
         $post->save();
         $chapters = $this->chapterRepository
             ->where('post_id', $post->id)
+            ->where('content', null, '!=')
             ->orderBy('id')
             ->paginate()
             ->onEachSide(1);
 
         $latestChapters = $this->chapterRepository
             ->where('post_id', $post->id)
+            ->where('content', null, '!=')
             ->orderBy('id', 'desc')
             ->limit(10)->get();
         $this->seo()->setTitle($post->name);
@@ -134,7 +136,7 @@ class PublicController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function chapter(string $slug)
+    public function chapter(string $slug, Request $request)
     {
         $chapter = $this->chapterRepository->getByColumn($slug, 'slug');
         if (!$chapter) {
@@ -144,11 +146,13 @@ class PublicController extends Controller
         $chapter->save();
         $post = $chapter->post;
         $post->view_number++;
+        $request->session()->put('current_chapter_id', $chapter->id);
         $post->save();
         try {
             $nextChapter = $this->chapterRepository
                 ->where('id', $chapter->id, '>')
                 ->where('post_id', $chapter->post_id)
+                ->where('content', null, '!=')
                 ->orderBy('id', 'asc')->first();
         } catch (ModelNotFoundException $exception) {
             $nextChapter = null;
@@ -158,14 +162,14 @@ class PublicController extends Controller
             $previousChapter = $this->chapterRepository
                 ->where('id', $chapter->id, '<')
                 ->where('post_id', $chapter->post_id)
+                ->where('content', null, '!=')
                 ->orderBy('id', 'desc')->first();
         } catch (ModelNotFoundException $exception) {
             $previousChapter = null;
         }
         $this->seo()->setTitle($chapter->name);
         $nativeBanner = $this->advertisementRepository->getByColumn('native-banner', 'name');
-        $socialBarBanner = $this->advertisementRepository->getByColumn('social-bar-banner', 'name');
-        return view('frontend.public.chapter', compact('chapter', 'nextChapter', 'previousChapter', 'nativeBanner', 'socialBarBanner'));
+        return view('frontend.public.chapter', compact('chapter', 'nextChapter', 'previousChapter', 'nativeBanner'));
     }
 
     public function search(Request $request)
@@ -222,7 +226,18 @@ class PublicController extends Controller
     public function popular(Request $request)
     {
         $this->seo()->setTitle('Most Popular Novel');
-        $list = $this->postRepository->orderBy('created_at', 'desc')->paginate()->onEachSide(1);
+        $list = $this->postRepository->orderBy('view_number', 'desc')->paginate()->onEachSide(1);
         return view('frontend.public.popular', compact('list'));
+    }
+
+    public function history(Request $request)
+    {
+        $this->seo()->setTitle('History Novel');
+        $chapterId = $request->session()->get('current_chapter_id');
+        $chapter = null;
+        if ($chapterId) {
+            $chapter = $this->chapterRepository->where('id', $chapterId)->first();
+        }
+        return view('frontend.public.history', compact('chapter'));
     }
 }

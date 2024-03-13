@@ -149,6 +149,17 @@
 @if(env('APP_ENV', 'local') == 'prod' && $socialBarBanner)
     {!! $socialBarBanner->data !!}
 @endif
+@if(env('APP_ENV', 'local') == 'prod')
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHS79NBTDX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-QHS79NBTDX');
+    </script>
+@endif
 @stack('after-scripts')
 <script src="{{ asset('frontend/js/script.js') }}"></script>
 </body>

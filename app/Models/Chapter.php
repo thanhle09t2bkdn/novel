@@ -16,7 +16,8 @@ class Chapter extends Model
 {
     use HasFactory;
     use Sluggable;
-
+    const NOVEL_COOL_TYPE = 1;
+    const ROYAL_ROAD_TYPE = 2;
 
     /**
      * The attributes that are mass assignable.
@@ -57,4 +58,9 @@ class Chapter extends Model
             ]
         ];
     }
+
+    public static $typeNames = [
+        self::NOVEL_COOL_TYPE => 'Novel Cool',
+        self::ROYAL_ROAD_TYPE => 'Royal Road',
+    ];
 }

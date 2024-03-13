@@ -6,6 +6,7 @@ use App\Repositories\ChapterRepository;
 use App\Repositories\PostRepository;
 use HungCP\PhpSimpleHtmlDom\HtmlDomParser;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -80,6 +81,7 @@ class NovelCoolUpdateLatestChapterCommand extends Command
             }
         }
         Log::info('NovelCoolCommandEND: Latest Chapter');
+        Artisan::call('command:novel-cool-chapter-detail');
         return 0;
     }
 }

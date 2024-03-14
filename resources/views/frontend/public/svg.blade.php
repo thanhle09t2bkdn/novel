@@ -6,7 +6,7 @@
             <div class="row">
 
                 <div class="col-md-3 text-center">
-                    <a href="#" class="product-image"><img src="{{ $post->image }}" title="{{ $post->name }}"
+                    <a href="#" class="product-image"><img src="{{ $post->storage_link ? $post->storage_link : $post->image }}" title="{{ $post->name }}"
                                                            alt="{{ $post->name }}"></a>
                 </div>
 

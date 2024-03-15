@@ -101,7 +101,6 @@ class ScribbleHubChapterCommand extends Command
                     Log::error('Error:', [$e->getMessage()]);
                 }
             }
-            break;
         } while (count($posts));
 
         Log::info('Scribble Hub Chapter END:');

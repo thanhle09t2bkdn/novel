@@ -76,9 +76,9 @@ class RoyalRoadPopularPostCommand extends Command
                         'type' => Post::ROYAL_ROAD_TYPE,
                         'category_id' => $categoryModel->id,
 //                        'view_number' => 0,
-                        'link' => $linkObject->href,
+                        'link' => 'https://www.royalroad.com' . $linkObject->href,
                         'rate' => $rateObject->title,
-                        'image' => $imageObject->src,
+                        'image' => str_replace('covers-full', 'covers-large', $imageObject->src),
                         'description' => $descriptionObject->text(),
                         'short_description' => Str::limit($descriptionObject->text(), 100) . '...',
                     ]);

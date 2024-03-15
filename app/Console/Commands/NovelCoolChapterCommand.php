@@ -88,9 +88,10 @@ class NovelCoolChapterCommand extends Command
                     $tagIds = [];
                     $tags = $dom->find('.bk-cate-item a');
                     foreach ($tags as $tag) {
-                        $tagModel = $this->tagRepository->getByColumn(trim($tag->text()), 'name');
+                        $tagName = ucfirst(trim($tag->text()));
+                        $tagModel = $this->tagRepository->getByColumn($tagName, 'name');
                         if (!$tagModel) {
-                            $tagModel = $this->tagRepository->create(['name' => trim($tag->text())]);
+                            $tagModel = $this->tagRepository->create(['name' => $tagName]);
                         }
                         $tagIds[] = $tagModel->id;
 

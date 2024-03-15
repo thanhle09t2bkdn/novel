@@ -22,7 +22,7 @@ class InitDataSeeder extends Seeder
 //        Artisan::call('command:scribble-hub-popular-post');
 //        Artisan::call('command:scribble-hub-chapter');
         Artisan::call('command:royal-road-popular-post');
-        Artisan::call('command:royal-road-chapter');
+//        Artisan::call('command:royal-road-chapter');
 //        Artisan::call('command:royal-road-chapter-detail');
     }
 }

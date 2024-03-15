@@ -20,7 +20,9 @@ class Post extends Model
     use Sluggable;
 
     const NOVEL_COOL_TYPE = 1;
-    const ROYAL_ROAD_TYPE = 2;
+    const SCRIBBLE_HUB_TYPE = 2;
+    const ROYAL_ROAD_TYPE = 3;
+
 
     /**
      * The attributes that are mass assignable.

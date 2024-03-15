@@ -10,22 +10,23 @@ use HungCP\PhpSimpleHtmlDom\HtmlDomParser;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
-class NovelCoolChapterCommand extends Command
+class ScribbleHubChapterCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:novel-cool-chapter';
+    protected $signature = 'command:scribble-hub-chapter';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Novel Cool Chapter';
+    protected $description = 'Scribble Hub Chapter';
     private $postRepository;
     private $chapterRepository;
     private $tagRepository;
@@ -53,40 +54,36 @@ class NovelCoolChapterCommand extends Command
     public function handle()
     {
 
-        Log::info('Novel Cool Chapter START:');
+        Log::info('Scribble Hub Chapter START:');
         do {
             $posts = $this->postRepository
-                ->where('author', null)
-                ->where('type', Post::NOVEL_COOL_TYPE)
+                ->where('description', null)
+                ->where('type', Post::SCRIBBLE_HUB_TYPE)
                 ->orderBy('name')
                 ->paginate(200);
             foreach ($posts as $post) {
+                var_dump($post->name);
                 try {
                     $content = Http::withHeaders([
                         'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
                     ])->get($post->link);
                     $dom = HtmlDomParser::str_get_html($content->body());
-                    $authorObject = $dom->find('.bookinfo-author .hover-underline', 0);
-                    $dataVals = $dom->find('.bk-data-val');
-                    $post->rate = trim($dataVals[1]->text());
-                    $post->view_number = str_replace(',', '', trim($dataVals[2]->text()));
-                    $post->author = $authorObject->title;
+                    $descriptionObject = $dom->find('.wi_fic_desc', 0);
+                    $post->description = $descriptionObject->text();
+                    $post->short_description = Str::limit($descriptionObject->text(), 100) . '...';
                     $post->save();
-                    $elems = $dom->find('.chp-item');
+                    $elems = $dom->find('.toc_a');
                     $newElems = array_reverse($elems);
-                    foreach ($newElems as $svgDom) {
-                        $viewNumberObject = $svgDom->find('.chapter-item-views span', 0);
-                        $linkObject = $svgDom->find('a', 0);
+                    foreach ($newElems as $linkObject) {
                         $this->chapterRepository->create([
-                            'name' => trim($linkObject->title),
-                            'view_number' => str_replace(',', '', $viewNumberObject->innertext),
+                            'name' => trim($linkObject->innertext),
                             'link' => $linkObject->href,
                             'post_id' => $post->id,
                         ]);
                     }
 
                     $tagIds = [];
-                    $tags = $dom->find('.bk-cate-item a');
+                    $tags = $dom->find('.fic_genre');
                     foreach ($tags as $tag) {
                         $tagModel = $this->tagRepository->getByColumn(trim($tag->text()), 'name');
                         if (!$tagModel) {
@@ -102,9 +99,10 @@ class NovelCoolChapterCommand extends Command
                     Log::error('Error:', [$e->getMessage()]);
                 }
             }
+            break;
         } while (count($posts));
 
-        Log::info('Novel Cool Chapter END:');
+        Log::info('Scribble Hub Chapter END:');
         return 0;
     }
 }

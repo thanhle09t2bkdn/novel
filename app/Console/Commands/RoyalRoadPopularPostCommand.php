@@ -66,7 +66,6 @@ class RoyalRoadPopularPostCommand extends Command
 
                 $elems = $dom->find('.fiction-list-item');
                 foreach ($elems as $svgDom) {
-//                    $viewNumberObject = $svgDom->find('.book-data-num', 0);
                     $rateObject = $svgDom->find('.star', 0);
                     $linkObject = $svgDom->find('.fiction-title a', 0);
                     $imageObject = $svgDom->find('.img-responsive', 0);
@@ -75,7 +74,6 @@ class RoyalRoadPopularPostCommand extends Command
                         'name' => trim($linkObject->innertext),
                         'type' => Post::ROYAL_ROAD_TYPE,
                         'category_id' => $categoryModel->id,
-//                        'view_number' => 0,
                         'link' => 'https://www.royalroad.com' . $linkObject->href,
                         'rate' => $rateObject->title,
                         'image' => str_replace('covers-full', 'covers-large', $imageObject->src),

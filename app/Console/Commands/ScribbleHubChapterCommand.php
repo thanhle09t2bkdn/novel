@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Repositories\ChapterRepository;
 use App\Repositories\PostRepository;
 use App\Repositories\TagRepository;
+use App\Services\CommonService;
 use HungCP\PhpSimpleHtmlDom\HtmlDomParser;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
@@ -30,6 +31,7 @@ class ScribbleHubChapterCommand extends Command
     private $postRepository;
     private $chapterRepository;
     private $tagRepository;
+    private $commonService;
 
     /**
      * Create a new command instance.
@@ -38,11 +40,13 @@ class ScribbleHubChapterCommand extends Command
      */
     public function __construct(PostRepository    $postRepository,
                                 TagRepository     $tagRepository,
+                                CommonService $commonService,
                                 ChapterRepository $chapterRepository)
     {
         parent::__construct();
         $this->postRepository = $postRepository;
         $this->chapterRepository = $chapterRepository;
+        $this->commonService = $commonService;
         $this->tagRepository = $tagRepository;
     }
 
@@ -100,7 +104,9 @@ class ScribbleHubChapterCommand extends Command
                     $post->save();
                     Log::error('Error:', [$e->getMessage()]);
                 }
+                break;
             }
+            break;
         } while (count($posts));
 
         Log::info('Scribble Hub Chapter END:');

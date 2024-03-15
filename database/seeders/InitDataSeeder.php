@@ -20,5 +20,6 @@ class InitDataSeeder extends Seeder
 //        Artisan::call('command:novel-cool-chapter');
 //        Artisan::call('command:novel-cool-chapter-detail');
         Artisan::call('command:scribble-hub-popular-post');
+        Artisan::call('command:scribble-hub-chapter');
     }
 }

@@ -62,15 +62,17 @@ class ScribbleHubChapterCommand extends Command
                 ->orderBy('name')
                 ->paginate(200);
             foreach ($posts as $post) {
-                var_dump($post->name);
                 try {
                     $content = Http::withHeaders([
                         'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
                     ])->get($post->link);
                     $dom = HtmlDomParser::str_get_html($content->body());
                     $descriptionObject = $dom->find('.wi_fic_desc', 0);
+                    $imageObject = $dom->find('.fic_image img', 0);
                     $post->description = $descriptionObject->text();
+
                     $post->short_description = Str::limit($descriptionObject->text(), 100) . '...';
+                    $post->image = $imageObject->src;
                     $post->save();
                     $elems = $dom->find('.toc_a');
                     $newElems = array_reverse($elems);

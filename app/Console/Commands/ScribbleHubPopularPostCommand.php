@@ -66,7 +66,6 @@ class ScribbleHubPopularPostCommand extends Command
 
                 $elems = $dom->find('.search_main_box');
                 foreach ($elems as $svgDom) {
-                    $imageObject = $svgDom->find('.search_img img', 0);
 //                    $viewNumberObject = $svgDom->find('.book-data-num', 0);
                     $rateObject = $svgDom->find('.search_ratings', 0);
                     $linkObject = $svgDom->find('.search_title a', 0);
@@ -75,7 +74,6 @@ class ScribbleHubPopularPostCommand extends Command
                     $authorObject = $dom->find('.a_un_st a', 0);
                     $this->postRepository->create([
                         'name' => trim($linkObject->innertext),
-                        'image' => $imageObject->src,
                         'type' => Post::SCRIBBLE_HUB_TYPE,
                         'category_id' => $categoryModel->id,
 //                        'view_number' => 0,

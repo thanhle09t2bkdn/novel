@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Chapter;
 use App\Models\Post;
 use App\Repositories\ChapterRepository;
 use App\Repositories\PostRepository;
@@ -82,6 +83,7 @@ class NovelCoolChapterCommand extends Command
                             'view_number' => str_replace(',', '', $viewNumberObject->innertext),
                             'link' => $linkObject->href,
                             'post_id' => $post->id,
+                            'type' => Chapter::ROYAL_ROAD_TYPE,
                         ]);
                     }
 

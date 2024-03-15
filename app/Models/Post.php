@@ -82,6 +82,7 @@ class Post extends Model
     public static $typeNames = [
         self::NOVEL_COOL_TYPE => 'Novel Cool',
         self::ROYAL_ROAD_TYPE => 'Royal Road',
+        self::SCRIBBLE_HUB_TYPE => 'Scribble Hub',
     ];
 
     public function getTypeNameAttribute()

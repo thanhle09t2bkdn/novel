@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Chapter;
 use App\Models\Post;
 use App\Repositories\ChapterRepository;
 use App\Repositories\PostRepository;
@@ -83,6 +84,7 @@ class RoyalRoadChapterCommand extends Command
                             'name' => trim($linkObject->innertext),
                             'link' => 'https://www.royalroad.com' . $linkObject->href,
                             'post_id' => $post->id,
+                            'type' => Chapter::ROYAL_ROAD_TYPE,
                         ]);
                     }
 

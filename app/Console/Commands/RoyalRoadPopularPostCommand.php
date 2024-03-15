@@ -56,7 +56,7 @@ class RoyalRoadPopularPostCommand extends Command
 
         Log::info('RoyalRoadCommandSTART:');
         $categoryModel = $this->categoryRepository->first();
-        for ($page = 1; $page <= 1; $page++) {
+        for ($page = 1; $page <= 3; $page++) {
             Log::info('ScribbleHubCommandEND: page' . $page . PHP_EOL);
             try {
                 $content = Http::withHeaders([

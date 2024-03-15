@@ -105,9 +105,7 @@ class RoyalRoadChapterCommand extends Command
                     $post->save();
                     Log::error('Error:', [$e->getMessage()]);
                 }
-                break;
             }
-            break;
         } while (count($posts));
 
         Log::info('Royal Road Chapter END:');

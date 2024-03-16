@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
          $schedule->command('command:novel-cool-update-latest-chapter')->hourly();
+         $schedule->command('command:royal-road-update-latest-chapter')->hourly();
     }
 
     /**

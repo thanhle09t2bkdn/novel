@@ -91,7 +91,7 @@ class RoyalRoadChapterCommand extends Command
                     $tagIds = [];
                     $tags = $dom->find('.margin-bottom-10 .label');
                     foreach ($tags as $tag) {
-                        $tagName = ucfirst(trim(strtolower($tag->text())));
+                        $tagName = ucwords(trim(strtolower($tag->text())));
                         $tagModel = $this->tagRepository->getByColumn($tagName, 'name');
                         if (!$tagModel) {
                             $tagModel = $this->tagRepository->create(['name' => $tagName]);

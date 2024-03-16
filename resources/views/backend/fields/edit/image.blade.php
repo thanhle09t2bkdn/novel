@@ -12,7 +12,7 @@
         @endif
     </div>
     <p id="preview-image" class="my-3">
-        @if (old('image'))
+        @if (old('image', $item->image))
             <img src="{{ old('image', $item->image) }}" style="height: 5rem;">
         @endif
     </p>

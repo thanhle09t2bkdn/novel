@@ -43,6 +43,9 @@
                                                     @include('backend.fields.edit.image')
                                                 </div>
                                                 <div class="col-md-12">
+                                                    @include('backend.fields.edit.storage-link')
+                                                </div>
+                                                <div class="col-md-12">
                                                     @include('backend.fields.edit.category')
                                                 </div>
                                                 <div class="col-md-12">

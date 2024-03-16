@@ -36,6 +36,9 @@
                                                 @include('backend.fields.create.image')
                                             </div>
                                             <div class="col-md-12">
+                                                @include('backend.fields.create.storage-link')
+                                            </div>
+                                            <div class="col-md-12">
                                                 @include('backend.fields.create.category')
                                             </div>
                                             <div class="col-md-12">

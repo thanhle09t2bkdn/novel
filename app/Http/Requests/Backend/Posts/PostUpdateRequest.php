@@ -30,11 +30,12 @@ class PostUpdateRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:255',
             'category_id' => 'nullable|exists:App\Models\Category,id',
-            'content' => 'required',
+            'content' => 'nullable',
             'type' => 'required|integer|in:' . implode(',', array_keys(Post::$typeNames)),
             'short_description' => 'required',
             'description' => 'required',
             'image' => 'nullable|url|max:255',
+            'storage_link' => 'nullable|url|max:255',
         ];
     }
 }

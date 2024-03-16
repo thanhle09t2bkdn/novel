@@ -61,7 +61,7 @@ class RoyalRoadPopularPostCommand extends Command
             try {
                 $content = Http::withHeaders([
                     'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
-                ])->get('https://www.royalroad.com/fictions/best-rated?page=' . $page);
+                ])->get('https://www.royalroad.com/fictions/weekly-popular?page=' . $page);
                 $dom = HtmlDomParser::str_get_html($content->body());
 
                 $elems = $dom->find('.fiction-list-item');

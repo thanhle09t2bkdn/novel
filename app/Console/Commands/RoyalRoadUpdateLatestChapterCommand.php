@@ -75,7 +75,7 @@ class RoyalRoadUpdateLatestChapterCommand extends Command
                     $existedChapter = $this->chapterRepository->getByColumn($linkObject->href, 'link');
                     if (!$existedChapter) {
                         $this->chapterRepository->create([
-                            'name' => trim($linkObject->innertext),
+                            'name' => $post->name . ' ' . trim($linkObject->innertext),
                             'link' => 'https://www.royalroad.com' . $linkObject->href,
                             'post_id' => $post->id,
                             'type' => Chapter::ROYAL_ROAD_TYPE,

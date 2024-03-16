@@ -81,7 +81,7 @@ class RoyalRoadChapterCommand extends Command
                     foreach ($elems as $elem) {
                         $linkObject = $elem->find('td a', 0);
                         $this->chapterRepository->create([
-                            'name' => trim($linkObject->innertext),
+                            'name' => $post->name . ' ' . trim($linkObject->innertext),
                             'link' => 'https://www.royalroad.com' . $linkObject->href,
                             'post_id' => $post->id,
                             'type' => Chapter::ROYAL_ROAD_TYPE,

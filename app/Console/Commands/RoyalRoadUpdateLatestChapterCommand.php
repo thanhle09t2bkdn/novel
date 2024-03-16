@@ -72,7 +72,7 @@ class RoyalRoadUpdateLatestChapterCommand extends Command
                 $newElems = array_slice($elems, $offset, 20);
                 foreach ($newElems as $elem) {
                     $linkObject = $elem->find('td a', 0);
-                    $existedChapter = $this->chapterRepository->getByColumn($linkObject->href, 'link');
+                    $existedChapter = $this->chapterRepository->getByColumn('https://www.royalroad.com' . $linkObject->href, 'link');
                     if (!$existedChapter) {
                         $this->chapterRepository->create([
                             'name' => $post->name . ' ' . trim($linkObject->innertext),

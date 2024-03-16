@@ -21,6 +21,9 @@ class Post extends Model
 
     const NOVEL_COOL_TYPE = 1;
     const ROYAL_ROAD_TYPE = 2;
+    const SCRIBBLE_HUB_TYPE = 3;
+
+
 
     /**
      * The attributes that are mass assignable.
@@ -79,6 +82,7 @@ class Post extends Model
     public static $typeNames = [
         self::NOVEL_COOL_TYPE => 'Novel Cool',
         self::ROYAL_ROAD_TYPE => 'Royal Road',
+        self::SCRIBBLE_HUB_TYPE => 'Scribble Hub',
     ];
 
     public function getTypeNameAttribute()

@@ -16,8 +16,13 @@ class InitDataSeeder extends Seeder
     {
 //        Artisan::call('command:novel-cool-post');
 //        Artisan::call('command:novel-cool-popular-post');
-        Artisan::call('command:novel-cool-latest-post');
+//        Artisan::call('command:novel-cool-latest-post');
 //        Artisan::call('command:novel-cool-chapter');
 //        Artisan::call('command:novel-cool-chapter-detail');
+//        Artisan::call('command:scribble-hub-popular-post');
+//        Artisan::call('command:scribble-hub-chapter');
+        Artisan::call('command:royal-road-popular-post');
+//        Artisan::call('command:royal-road-chapter');
+//        Artisan::call('command:royal-road-chapter-detail');
     }
 }

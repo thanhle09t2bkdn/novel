@@ -15,6 +15,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-title">{{ $chapter->name }}</h1>
+                    <p>Published at: {{ $chapter->created_at }}</p>
                     <div class="breadcrumbs">
                         <span class="item"><a href="{{ route('frontend.public.index') }}">Home /</a></span>
                         <span class="item"><a

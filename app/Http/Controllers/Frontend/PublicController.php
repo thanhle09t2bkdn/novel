@@ -119,6 +119,7 @@ class PublicController extends Controller
             $tagKeywords[] = $tag->name;
         }
         $this->seo()->metatags()->addKeyword($tagKeywords);
+        $this->seo()->metatags()->addMeta('article:published_time', $post->created_at->toW3CString(), 'property');
         $relatedPosts = [];
         if (count($post->tags)) {
             $relatedPosts = $this->postRepository
@@ -168,6 +169,8 @@ class PublicController extends Controller
             $previousChapter = null;
         }
         $this->seo()->setTitle($chapter->name);
+        $this->seo()->metatags()->addMeta('article:published_time', $chapter->created_at->toW3CString(), 'property');
+        $this->seo()->metatags()->addMeta('article:section', $post->name, 'property');
         $nativeBanner = $this->advertisementRepository->getByColumn('native-banner', 'name');
         return view('frontend.public.chapter', compact('chapter', 'nextChapter', 'previousChapter', 'nativeBanner'));
     }

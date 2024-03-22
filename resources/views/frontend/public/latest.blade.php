@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 @empty
-                    <h3>This tag didn't have any svg</h3>
+                    <h3>This genre didn't have any novel</h3>
                 @endforelse
 
 

@@ -98,6 +98,7 @@
                                         <a href="{{ route('frontend.public.chapter', $chapter->slug) }}"
                                            title="{{ $chapter->name }}"
                                            class="text-decoration-none text-dark hover-title">{{ $chapter->name }}</a>
+                                        <span>({{ (new Carbon\Carbon($chapter->created_at))->diffForHumans() }})</span>
                                     </li>
                                 @empty
                                     <h3>This story didn't have any latest chapter</h3>
